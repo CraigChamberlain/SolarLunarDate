@@ -3,7 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
-namespace SolarLunarName
+namespace SolarLunarName.Forms
 {
     public partial class App : Application
     {
