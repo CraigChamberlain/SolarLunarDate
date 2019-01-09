@@ -2,16 +2,21 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="RestSharp.Newtonsoft.Json" Version="1.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="System.ComponentModel.Annotations">
-      <HintPath>..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.1.0\ref\netcoreapp2.1\System.ComponentModel.Annotations.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1">
+      <ExcludeAssets></ExcludeAssets>
+      <IncludeAssets>All</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="RestSharp" Version="106.6.2">
+      <ExcludeAssets></ExcludeAssets>
+      <IncludeAssets>All</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0">
+    </PackageReference>
   </ItemGroup>
 
 </Project>

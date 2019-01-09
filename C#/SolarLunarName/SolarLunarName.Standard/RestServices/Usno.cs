@@ -36,7 +36,8 @@ namespace SolarLunarName.Standard.RestServices.Usno
         {
 
             var request = new RestRequest("/moon/phase", Method.GET);
-            request.AddQueryParameter("year", year); 
+            request.AddQueryParameter("year", year);
+            request.AddQueryParameter("Id", "CChamb");
             // execute the request
             //IRestResponse response = client.Execute(request);
             //var content = response.Content; // raw content as string

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SolarLunarName.PoSH": {
+      "commandName": "Executable",
+      "executablePath": "powershell",
+      "commandLineArgs": "-ExecutionPolicy Bypass   -noexit  .\\debug.ps1 ",
+      "workingDirectory": "C:\\Users\\Craig\\Source\\Repos\\SolarLunarName\\C#\\SolarLunarName\\SolarLunarName.PoSH\\"
+    }
+  }
+}

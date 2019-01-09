@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace SolarLunarName.Standard.Models
@@ -18,7 +17,6 @@ namespace SolarLunarName.Standard.Models
         England,
         Wales,
         Scotland,
-        [Display(Name = "Northern Ireland")]
         NorthernIreland
     }
 }
