@@ -1,7 +1,10 @@
 ﻿using SolarLunarName.Standard.RestServices.Admiralty;
 using System;
-using System.Configuration;
 using SolarLunarName.Standard.ApplicationServices;
+using SQLite;
+using SolarLunarName.Standard.Models;
+using System.Collections.Generic;
+
 namespace SolarLunarName.CLI
 {
     class Program
@@ -14,7 +17,7 @@ namespace SolarLunarName.CLI
                 //var phase2 = SunCalc.GetMoonIllumination(date);
                 
                 var httpClient = new System.Net.Http.HttpClient( );
-                string ApiKey = ConfigurationManager.AppSettings["AdmiraltyApiKey"];
+                string ApiKey = System.Configuration.ConfigurationManager.AppSettings["AdmiraltyApiKey"];
                 httpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", ApiKey);
 
                 var StationsClient = new StationsClient(httpClient);
@@ -36,6 +39,12 @@ namespace SolarLunarName.CLI
                 //var ting1 = new GetSolarLunarName(dateTime1);
                 //Console.WriteLine(ting1.ToString());
 
+                var db = new DataAccess();
+                var years = System.Linq.Enumerable.Range(1900, 3000);
+                foreach (int year in years)
+                {
+                    db.PopulateYear(year.ToString());
+                }
                 var dateTime2 = DateTime.Now.AddDays(3);
                 var ting2 = new GetSolarLunarName(dateTime2);
                 Console.WriteLine(ting2.ToString());
