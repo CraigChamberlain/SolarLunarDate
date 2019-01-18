@@ -39,12 +39,12 @@ namespace SolarLunarName.CLI
                 //var ting1 = new GetSolarLunarName(dateTime1);
                 //Console.WriteLine(ting1.ToString());
 
-                var db = new DataAccess();
-                var years = System.Linq.Enumerable.Range(1900, 3000);
-                foreach (int year in years)
-                {
-                    db.PopulateYear(year.ToString());
-                }
+                //var db = new DataAccess();
+                //var years = System.Linq.Enumerable.Range(1700, 2083); //min and max years API has published
+                //foreach (int year in years)
+                //{
+                //    db.PopulateYear(year.ToString());
+                //}
                 var dateTime2 = DateTime.Now.AddDays(3);
                 var ting2 = new GetSolarLunarName(dateTime2);
                 Console.WriteLine(ting2.ToString());

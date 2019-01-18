@@ -53,6 +53,7 @@ namespace SolarLunarName.CLI
                 { "Dec" , 12}
 
             };
+            if(response.PhaseData == null) { return; }
             foreach (PhaseDataResponse value in response.PhaseData)
             {
                 //Example Date "date": "2018 Jan 08",
