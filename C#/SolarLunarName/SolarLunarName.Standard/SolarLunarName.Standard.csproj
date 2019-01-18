@@ -15,8 +15,13 @@
       <ExcludeAssets></ExcludeAssets>
       <IncludeAssets>All</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0">
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\" />
   </ItemGroup>
 
 </Project>
