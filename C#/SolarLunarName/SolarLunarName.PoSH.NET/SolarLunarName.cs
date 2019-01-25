@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Management.Automation;
 
 namespace SolarLunarName.PoSH
@@ -11,8 +12,9 @@ namespace SolarLunarName.PoSH
 
         protected override void EndProcessing()
         {
-            string path = @"C:\Users\Craig\Documents\LunarSolarDate\C#\SolarLunarName\SolarLunarName.PoSH\bin\Debug\netstandard2.0\assets\MoonPhase.sqlite";
-            //this.WriteObject(path);
+            //path to sqlite file in manifest
+            string path = MyInvocation.MyCommand.Module.FileList.First();
+
             var solarLunarName = new Standard.ApplicationServices.GetSolarLunarName(UtcDateTime, path);
             
             this.WriteObject(solarLunarName);
