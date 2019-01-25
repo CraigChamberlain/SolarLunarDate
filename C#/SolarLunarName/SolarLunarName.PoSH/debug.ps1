@@ -1,2 +1,2 @@
-﻿import-module .\SolarLunarName.PoSH.dll
+﻿import-module .\SolarLunarName.psd1
 Get-Date | Get-SolarLunarName -debug
