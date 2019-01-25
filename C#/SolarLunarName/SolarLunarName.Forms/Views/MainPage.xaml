@@ -9,6 +9,16 @@
         <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <Label Text="Solar/Lunar Time"
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        <Label BindingContext="name"           
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        <DatePicker            
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        
     </StackLayout>
 
 </ContentPage>

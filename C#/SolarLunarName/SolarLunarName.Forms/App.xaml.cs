@@ -1,17 +1,20 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SQLite;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace SolarLunarName.Forms
 {
     public partial class App : Application
     {
-        public App ()
+        public App()
         {
+
             InitializeComponent();
 
             MainPage = new MainPage();
+
         }
 
         protected override void OnStart ()

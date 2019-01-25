@@ -92,9 +92,9 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SolarLunarName\SolarLunarName.csproj">
-      <Project>{A1646BEA-337E-45CD-8F9B-222153555B8C}</Project>
-      <Name>SolarLunarName</Name>
+    <ProjectReference Include="..\SolarLunarName.Forms\SolarLunarName.Forms.csproj">
+      <Project>{8d0c677e-4607-45ad-b872-ce4bb73e3c55}</Project>
+      <Name>SolarLunarName.Forms</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

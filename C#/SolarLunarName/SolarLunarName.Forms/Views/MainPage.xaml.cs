@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolarLunarName.Standard.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,12 @@ namespace SolarLunarName.Forms
         public MainPage()
         {
             InitializeComponent();
+            var dateTime = DateTime.Now.AddDays(3);
+            var ting2 = new GetSolarLunarName(dateTime, "./MoonPhase.sqlite");
+
+            string name = ting2.ToString();
+
+
         }
     }
 }
