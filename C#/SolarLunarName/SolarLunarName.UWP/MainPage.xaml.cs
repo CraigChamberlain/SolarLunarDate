@@ -21,7 +21,7 @@ namespace SolarLunarName.UWP
         {
             this.InitializeComponent();
 
-            string dbPath = FileAccessHelper.GetLocalFilePath("MoonPhase.sqlite");
+            string dbPath = ApplicationData.Current.LocalFolder.GetFileAsync("MoonPhase.sqlite");
 
             LoadApplication(new SolarLunarName.Forms.App());
 
