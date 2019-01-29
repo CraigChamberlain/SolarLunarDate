@@ -3,21 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SolarLunarName.Forms"
              x:Class="SolarLunarName.Forms.MainPage">
-
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
         <Label Text="Solar/Lunar Time"
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
-        <Label BindingContext="name"           
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-        <DatePicker            
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <DatePicker 
+            
+            MinimumDate="{Binding MinDate, Mode=OneTime}"
+            MaximumDate="{Binding MaxDate, Mode=OneTime}"
+            Date="{Binding DateTime, Mode=TwoWay}" 
+            DateSelected="OnDatePickerValueChanged"
+            
+
+        />
+        <Button Text="Calculate Solar Lunar Date"
+                Clicked="CalculateSolarLunarDate"
+                />
+
+
         
     </StackLayout>
 

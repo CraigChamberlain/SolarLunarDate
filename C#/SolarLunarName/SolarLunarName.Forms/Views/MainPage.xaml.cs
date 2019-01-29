@@ -1,4 +1,5 @@
-﻿using SolarLunarName.Standard.ApplicationServices;
+﻿using SolarLunarName.Forms.ViewModels;
+using SolarLunarName.Standard.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,6 +20,7 @@ namespace SolarLunarName.Forms
             var dateTime = DateTime.Now.AddDays(3);
 
             var ting2 = GetData(dateTime);
+            BindingContext = new MainPageViewModel();
 
 
         }
@@ -32,6 +34,17 @@ namespace SolarLunarName.Forms
 
             return sln;
 
+        }
+
+
+        void CalculateSolarLunarDate(object sender, EventArgs args)
+        {
+            //await GetData((DateTime)sender);
+        }
+
+        async void OnDatePickerValueChanged(object sender, ValueChangedEventArgs args)
+        {
+            await GetData(((DatePicker)sender).Date);
         }
 
     }

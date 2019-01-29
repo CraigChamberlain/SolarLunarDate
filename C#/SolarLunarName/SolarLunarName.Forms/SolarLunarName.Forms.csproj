@@ -16,8 +16,4 @@
   <ItemGroup>
     <ProjectReference Include="..\SolarLunarName.Standard\SolarLunarName.Standard.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
 </Project>
