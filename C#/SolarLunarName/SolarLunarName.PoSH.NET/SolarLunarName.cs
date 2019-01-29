@@ -15,7 +15,8 @@ namespace SolarLunarName.PoSH
             //path to sqlite file in manifest
             string path = MyInvocation.MyCommand.Module.FileList.First();
 
-            var solarLunarName = new Standard.ApplicationServices.GetSolarLunarName(UtcDateTime, path);
+            var dI = new Standard.ApplicationServices.DateInterpreter();
+            var solarLunarName = dI.GetSolarLunarName(UtcDateTime, path);
             
             this.WriteObject(solarLunarName);
             base.EndProcessing();

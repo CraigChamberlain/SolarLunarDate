@@ -3,53 +3,91 @@ using System;
 using System.Linq;
 using static SolarLunarName.Standard.Models.Moon;
 using SQLite;
+using System.Threading.Tasks;
 
 namespace SolarLunarName.Standard.ApplicationServices
 {
-    public class GetSolarLunarName
+    public class DateInterpreter
     {
-        public DateTime SolarDateTime { get; }
-        public int Year { get; }
-        public int LunarMonth { get; }
-        public int LunarDay { get; }
 
-        public override string ToString()
-        {
-            var stringFormat = string.Format("{0}-{1}-{2}", Year.ToString(), LunarMonth.ToString(), LunarDay.ToString());
-            return stringFormat;
-        }
-        public GetSolarLunarName(DateTime solarDateTime, string database)
+        public Models.SolarLunarName GetSolarLunarName(DateTime solarDateTime, string database)
         {
 
-            SolarDateTime = solarDateTime;
-            Year = solarDateTime.Year;
-            var startOfYear = new DateTime(Year, 1, 1);
-            var db = new SQLiteConnection(database);
-
-            var newMoons = db.Table<MoonPhaseEntity>().Where(
-                                x => x.Date > startOfYear
-                                && x.Date < SolarDateTime
-                                &&  x.Phase == MoonPhase.NewMoon
-
-                            )
-                            .OrderBy(x => x.Date);
-
-            LunarMonth = newMoons.Count();
-
-            if (newMoons.Any())
+            var year = solarDateTime.Year;
+            var startOfYear = new DateTime(year, 1, 1);
+            using (var db = new SQLiteConnection(database))
             {
-                var dayOfNewMoon = newMoons.Last().Date.DayOfYear;
-                LunarDay = SolarDateTime.DayOfYear - dayOfNewMoon;
+
+                var newMoons = db.Table<MoonPhaseEntity>().Where(
+                                    x => x.Date > startOfYear
+                                    && x.Date < solarDateTime
+                                    && x.Phase == MoonPhase.NewMoon
+
+                                )
+                                .OrderBy(x => x.Date);
+
+                var lunarMonth = newMoons.Count();
+
+                int lunarDay;
+                if (newMoons.Any())
+                {
+                    var dayOfNewMoon = newMoons.Last().Date.DayOfYear;
+                    lunarDay = solarDateTime.DayOfYear - dayOfNewMoon;
+                }
+                else
+                {
+                    lunarDay = solarDateTime.DayOfYear;
+                }
+
+                return new Models.SolarLunarName(solarDateTime, year, lunarMonth, lunarDay);
+
             }
-            else
-            {
-                LunarDay = SolarDateTime.DayOfYear;
-            }
-
-
-
         }
+
+
+
+
+
+
+        public async Task<Models.SolarLunarName> GetSolarLunarNameAsync(DateTime solarDateTime, string database)
+        {
+
+            var year = solarDateTime.Year;
+            var startOfYear = new DateTime(year, 1, 1);
+            var db = new SQLiteAsyncConnection(database);
+            
+
+                var query = db.Table<MoonPhaseEntity>().Where(
+                                    x => x.Date > startOfYear
+                                    && x.Date < solarDateTime
+                                    && x.Phase == MoonPhase.NewMoon
+
+                                )
+                                .OrderBy(x => x.Date);
+
+                var newMoons = await query.ToListAsync();
+
+                var lunarMonth = newMoons.Count();
+
+                int lunarDay;
+                if (newMoons.Any())
+                {
+                    var dayOfNewMoon = newMoons.Last().Date.DayOfYear;
+                    lunarDay = solarDateTime.DayOfYear - dayOfNewMoon;
+                }
+                else
+                {
+                    lunarDay = solarDateTime.DayOfYear;
+                }
+
+                return new Models.SolarLunarName(solarDateTime, year, lunarMonth, lunarDay);
+
+            
+        }
+
+
 
 
     }
 }
+

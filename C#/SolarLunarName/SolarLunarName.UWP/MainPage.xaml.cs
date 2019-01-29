@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -20,8 +21,6 @@ namespace SolarLunarName.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
-            string dbPath = ApplicationData.Current.LocalFolder.GetFileAsync("MoonPhase.sqlite");
 
             LoadApplication(new SolarLunarName.Forms.App());
 
