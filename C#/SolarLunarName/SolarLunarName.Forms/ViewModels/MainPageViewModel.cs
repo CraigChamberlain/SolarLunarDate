@@ -1,7 +1,9 @@
-﻿using System;
+﻿using SolarLunarName.Standard.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace SolarLunarName.Forms.ViewModels
@@ -9,22 +11,16 @@ namespace SolarLunarName.Forms.ViewModels
     class MainPageViewModel : INotifyPropertyChanged
     {
         DateTime dateTime;
-        DateTime MinDate = new DateTime(1700, 1, 1);
-        DateTime MaxDate = new DateTime(2083, 1, 1);
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        string SolarLunarName { get; set;}
+        string solarLunarName;
 
         public MainPageViewModel()
         {
             this.dateTime = DateTime.Now;
 
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
-            {
-                this.DateTime = DateTime.Now;
-                return true;
-            });
+
         }
 
         public DateTime DateTime
@@ -34,6 +30,8 @@ namespace SolarLunarName.Forms.ViewModels
                 if (dateTime != value)
                 {
                     dateTime = value;
+                    CalculateSolarLunarName();
+
 
                     if (PropertyChanged != null)
                     {
@@ -47,8 +45,42 @@ namespace SolarLunarName.Forms.ViewModels
             }
         }
 
+        public string SolarLunarName
+        {
+            set
+            {
+                if (solarLunarName != value)
+                {
+                    solarLunarName = value;
+
+
+
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("SolarLunarName"));
+                    }
+                }
+            }
+            get
+            {
+                return solarLunarName;
+            }
+        }
+
+        async void CalculateSolarLunarName()
+        {
+            var DBPath = await DependencyService.Get<IFileAccessHelper>().GetDBPathAndCreateIfNotExists();
+            var di = new DateInterpreter();
+            var sln = await di.GetSolarLunarNameAsync(DateTime, DBPath);
+
+            SolarLunarName = sln.ToString();
+
+        }
+
 
     }
+
+
 
 
 }

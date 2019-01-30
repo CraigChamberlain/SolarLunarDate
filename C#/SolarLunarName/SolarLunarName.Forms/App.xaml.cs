@@ -25,6 +25,10 @@ namespace SolarLunarName.Forms
         protected override void OnSleep ()
         {
             // Handle when your app sleeps
+
+            //Connections are owned by pool.  
+            //This will dispose of any open connections
+            SQLiteAsyncConnection.ResetPool();
         }
 
         protected override void OnResume ()

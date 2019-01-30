@@ -9,20 +9,18 @@
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
         <DatePicker 
-            
-            MinimumDate="{Binding MinDate, Mode=OneTime}"
-            MaximumDate="{Binding MaxDate, Mode=OneTime}"
-            Date="{Binding DateTime, Mode=TwoWay}" 
-            DateSelected="OnDatePickerValueChanged"
-            
+            x:Name="DatePicker"
+            Date="{Binding DateTime, Mode=TwoWay}"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand"
 
         />
-        <Button Text="Calculate Solar Lunar Date"
-                Clicked="CalculateSolarLunarDate"
-                />
+        <Label 
+           Text="{Binding SolarLunarName}"
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
 
 
-        
     </StackLayout>
 
 </ContentPage>
