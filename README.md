@@ -1,5 +1,5 @@
-# LunarSolarDate
-Utility to help name Beach Cast sculpture on a Lunar/Solar Calendar
+# SolarLunarDate
+Utility to help name Beach Cast sculpture on a Solar/Lunar Calendar
 
 ## Date format may ultimately be one of the following
 - {SolarYear}-{FullmoonsOfYTD}-{Phase of Moon in 1/8ths of Moon}  
