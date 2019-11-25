@@ -42,4 +42,4 @@ Therefore, the Gregorian calendar, and all other predetermined calendars, as we 
 Furthermore buisness and agriculture is almostly universally conducted in the Gregorian Calendar, freeing this calendar from such practical requirements.  It need only serve as a cosmological or poetic calendar.
 
 I have another page describing the rules which are used to compute a given year or month in
-[my proposed calendar]({{ site.url }}/my-calendar) and another looking at the [technology]({{ site.url }}/technology) used to present and calculate my calendar.
+[my proposed calendar]({{ site.url }}/{{ site.baseurl }}/my-calendar) and another looking at the [technology]({{ site.url }}/{{ site.baseurl }}/technology) used to present and calculate my calendar.
