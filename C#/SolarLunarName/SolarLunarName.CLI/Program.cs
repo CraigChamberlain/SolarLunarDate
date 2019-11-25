@@ -46,7 +46,8 @@ namespace SolarLunarName.CLI
                 //    db.PopulateYear(year.ToString());
                 //}
                 var dateTime2 = DateTime.Now.AddDays(3);
-                var ting2 = new GetSolarLunarName(dateTime2, "./MoonPhase.sqlite");
+                var DateInterpeter = new DateInterpreter();
+                var ting2 = DateInterpeter.GetSolarLunarName(dateTime2, "./MoonPhase.sqlite");
                 Console.WriteLine(ting2.ToString());
 
 

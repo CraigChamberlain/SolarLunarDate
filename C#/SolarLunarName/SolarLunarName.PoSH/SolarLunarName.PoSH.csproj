@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
 
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
 
@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0">
-      <IncludeAssets>All</IncludeAssets>
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.0-preview.4" >
+          <IncludeAssets>All</IncludeAssets>
     </PackageReference>
     <ProjectReference Include="..\SolarLunarName.Standard\SolarLunarName.Standard.csproj">
       <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>

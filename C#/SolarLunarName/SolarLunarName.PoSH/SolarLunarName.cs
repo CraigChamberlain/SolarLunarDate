@@ -11,9 +11,10 @@ namespace SolarLunarName.PoSH
 
         protected override void EndProcessing()
         {
-            string path = @"C:\Users\Craig\Documents\LunarSolarDate\C#\SolarLunarName\SolarLunarName.PoSH\bin\Debug\netstandard2.0\assets\MoonPhase.sqlite";
+            string path = @"/assets/MoonPhase.sqlite";
             //this.WriteObject(path);
-            var solarLunarName = new Standard.ApplicationServices.GetSolarLunarName(UtcDateTime, path);
+            var interpreter = new Standard.ApplicationServices.DateInterpreter();
+            var solarLunarName = interpreter.GetSolarLunarName(UtcDateTime, path);
             
             this.WriteObject(solarLunarName);
             base.EndProcessing();
