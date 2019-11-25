@@ -1,4 +1,4 @@
-## Why is the Moon Involved in the Naming of a Sculpture
+![Figure 1.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=640&height=640&select=d9InyNA1qXpage0)
 
 ## Date format may ultimately be one of the following
 - {SolarYear}-{FullmoonsOfYTD}-{Phase of Moon in 1/8ths of Moon}  

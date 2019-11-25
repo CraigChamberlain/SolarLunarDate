@@ -4,7 +4,7 @@ The moon, as many will know, is linked to the tides on earth.  It is the orbital
 
 My sculptures are taken from the surface of beaches as the tides retreat to reveal ripples in the sand.
 
-I became interested in the physics of the tides and wanted to pull in other significant ideas related to the recording of time.
+I became interested in the physics of the tides and wanted to pull in other significant ideas related to the recording of time and their cosmological significance.
 
 ## About Calendars, the Sun and the Moon
 
@@ -18,22 +18,28 @@ The Islamic calendar or [Hijra calendar](https://en.wikipedia.org/wiki/Islamic_c
 
 Although, the two calendars above are charactorised as Solar and Lunar respectively, both remain influenced by the sun and the moon.  For example in the Gregorian calendar the months are between 29 and 31 days, very close to the synodic month of ~29.53 days.  [Indeed the word "month" shares a common root with the word "moon".](https://www.etymonline.com/word/Month) Similarly, although the year and the month of the Hijra are defined by the moon, the day is dictated by the rising and setting of the sun.
 
-There is a third class of calendar, the [Lunisolar calendars](https://en.wikipedia.org/wiki/Lunisolar_calendar) of which there are a great many examples throughout the world.
+There is a third class of calendar, the [Lunisolar calendars](https://en.wikipedia.org/wiki/Lunisolar_calendar), of which there are a great many sophisticated examples throughout the world and throughout history.
+
+These calendars promise to fix seasons and festivals in a locked, repeating cycle, unlike a the Hijra lunar calendar, in which the year is shorter than the solar year and a festival may fall in summer or winter.  In addition, months can be marked in the passage of moons in a satisfying and practical manner.
+
 
 ## Why a New Calendar?
 
-Now time is measured in ticks from unixtime 0.  Atomic clock, interest inrecovering complexity and nature from past.
+If Lunisolar calendars have been previlent throughout the globe and history, why do should I attemt to make a new one?
 
-## Date format may ultimately be one of the following
-- {SolarYear}-{FullmoonsOfYTD}-{Phase of Moon in 1/8ths of Moon}  
-  e.g 2018-10-1/2
-  Only input would be a datetime object
-- {SolarYear}-{FullmoonsOfYTD}-{DaysOfCurrentMoon} 
-  e.g 2018-10-12
-  Only input would be a datetime object
-- {SolarYear}-{FullmoonsOfYTD}-{DaysOfCurrentMoon}-{Tide}  
-  e.g 2018-10-12-1
-  Would require a some location parameters in addition to datetime.  It may be possible to estimate the tide but it would be most likely looked up via a 3rd party API. 
+Initially I started to do this as I was simply curious to do so. If I had not set out to design a calendar I would not have even considered the other existing lunisolar calendars.  Therefore, it is not because I have any reason to think my calendar will surpass the existing calendars in accuracy or symbolic meaning.
 
-[My proposed calendar](/my-calendar)
-[technology](/technology)
+Why having discovered mature alternative calendars do I still think a new one is worth persuing?
+
+The other existing calendars are rather complex and had to be, they had to preserve the concept of time into the past and future with great accuracy.  Agriculture, astronomy and religious traditions demanded continuity through the ages.
+
+However, the continuity of time is now largely maintained by the observation of the oscillation of caesium atoms in atomic clocks.  This time is devorced from the movements of the celestial bodies which were our principle orientation through time until the twentieth century.  The second, once a division of an average day, a division of a solar year is now scientifically defined as ["the duration of 9,192,631,770 periods of the radiation corresponding to the transition between the two hyperfine levels of the ground state of the caesium-133 atom"](https://en.wikipedia.org/wiki/Second#%22Atomic%22_second), or 9,192,631,770 oscilations of a caesium atom.
+
+Furthermore, most time reconing is now achieved with computers and counted simply in seconds, or a fraction of, since a given epoch. Years, months, days and hours are simply calculated on demand from this single intiger value and can be rendered in various different calendars and time zones as required. Perhaps the most common system is Unix time which is counted from 1 January 1970.  Mac and Windows may use alternate epochs but time is still a single dimentional affair to a computer.
+
+Therefore, the Gregorian calendar, and all other predetermined calendars, as we experience them, are now a virtual masks applied to this abstract digital time system of conceptually limitless ticks.  Any contemporary calendar now has no requirement to resolve exacly the discrepancies between the length of 12 lunar months and the solar year in order to keep internal order over years and centuries.  Where other calendars needed to add days or even months in strict rotation.  A new calendar may simply compare known facts such as the length of a year and the apperance of a new moon in a basic algorithm and output unique combinations of months and days, for each year until the limit of predictable time.
+
+Furthermore buisness and agriculture is almostly universally conducted in the Gregorian Calendar, freeing this calendar from such practical requirements.  It need only serve as a cosmological or poetic calendar.
+
+I have another page describing the rules which are used to compute a given year or month in
+[my proposed calendar]({{ site.url }}/my-calendar) and another looking at the [technology]({{ site.url }}/technology) used to present and calculate my calendar.
