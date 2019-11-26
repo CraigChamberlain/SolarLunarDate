@@ -1,12 +1,10 @@
-﻿using SQLite;
-using System;
+﻿using System;
 
 namespace SolarLunarName.Standard.Models
 {
-    class MoonPhaseEntity
+    public class MoonPhaseEntity
     {
       
-            [PrimaryKey, AutoIncrement]
             public int Id { get; set; }
             public DateTime Date { get; set; }
             public Moon.MoonPhase Phase { get; set; }

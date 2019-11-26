@@ -23,10 +23,6 @@
       <ExcludeAssets></ExcludeAssets>
       <IncludeAssets>All</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="sqlite-net-pcl" Version="1.5.231">
-      <IncludeAssets>All</IncludeAssets>
-      <ExcludeAssets></ExcludeAssets>
-    </PackageReference>
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0">
     </PackageReference>
   </ItemGroup>
