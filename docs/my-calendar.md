@@ -10,7 +10,7 @@ This calander could have taken the dates of one of these astronmical events as t
 
 ## The Measurement of Months
 
-![Figure 1.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=640&height=640&select=d1rjgmgOwa)
+![Figure 1.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=d1rjgmgOwa)
 
 There are between 12 and 13 lunar months in a solar year.  Typically in a lunisolar calendar, this means that to preserve complete year and month cycle, extra months must be added on particular years, in the way leep days are added to years in the Gregorian Calendar.
 
@@ -20,7 +20,7 @@ This is not completely unpresidented and is somewhat related to the concept of u
 
 Therefore, months will begin on the day of the new moon or the start of a new year.  Months will end on the day before the new moon or the end of the year.
 
-![Figure 2.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=640&height=640&select=bUzavqqsE)
+![Figure 2.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=bUzavqqsE)
 
 ## Identifying the Date of the New Moon
 
@@ -31,9 +31,9 @@ The new moon will be identified by api lookup or calculation.  It will not depen
 Months will be named 0-13.  I chose 0 as the first month as it will only be a complete month in exceptional circumstances.  It would be fun to name the final month X for the same reasons.  However, I will stick with integers as I also like the reference to (the indexing of sequences which begins at 0 in computing and mathematics)[https://en.wikipedia.org/wiki/Zero-based_numbering].
 
 ## Lenghth of Month
-The Synodic month is not a whole number of days.  Therefore the calendar months will have varialble lenghts.
+The Synodal month is not a whole number of days.  Therefore the calendar months will have varialble lenghts.
 
-![Figure 3.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=640&height=640&select=d9InyNA1qXpage0)
+![Figure 3.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=400&select=d9InyNA1qXpage0)
 
 Each month will have have 29-30 days.
 
