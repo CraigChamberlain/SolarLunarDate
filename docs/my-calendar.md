@@ -56,5 +56,5 @@ Finally I would really like to include some notion of geographic location, parti
 
 This may be displayed as follows but would perhaps include co-ordinates in the object.
 
-- {SolarYear}-{FullmoonsOfYTD}-{DaysOfCurrentMoon}-{Tide}  
-  e.g 2018-10-12-1
+    {SolarYear}-{FullmoonsOfYTD}-{DaysOfCurrentMoon}-{Tide}  
+    e.g 2018-10-12-1
