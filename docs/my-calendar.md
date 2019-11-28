@@ -28,7 +28,7 @@ The new moon will be identified by api lookup or calculation.  It will not depen
 
 ## The Naming of Months
 
-Months will be named 0-13.  I chose 0 as the first month as it will only be a complete month in exceptional circumstances.  It would be fun to name the final month X for the same reasons.  However, I will stick with integers as I also like the reference to (the indexing of sequences which begins at 0 in computing and mathematics)[https://en.wikipedia.org/wiki/Zero-based_numbering].
+Months will be named 0-13.  I chose 0 as the first month as it will only be a complete month in exceptional circumstances.  It would be fun to name the final month X for the same reasons.  However, I will stick with integers as I also like the reference to [the indexing of sequences which begins at 0 in computing and mathematics](https://en.wikipedia.org/wiki/Zero-based_numbering).
 
 ## Lenghth of Month
 The Synodal month is not a whole number of days.  Therefore the calendar months will have varialble lenghts.
