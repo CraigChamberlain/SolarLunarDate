@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DatePickerComp.fs" />
     <Compile Include="Main.fs" />
     <Compile Include="Startup.fs" />
   </ItemGroup>
@@ -13,5 +14,7 @@
     <PackageReference Include="Bolero.HotReload" Version="0.10.4-preview9" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="3.0-preview9.*" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.DevServer" Version="3.0-preview9.*" />
+    <PackageReference Include="NodaTime" Version="3.0.0-beta01" />
+    <PackageReference Include="NodaTimePicker" Version="0.4.2" />
   </ItemGroup>
 </Project>

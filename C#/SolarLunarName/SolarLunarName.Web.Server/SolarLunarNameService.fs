@@ -12,6 +12,7 @@ type SolarLunarDateService(ctx: IRemoteContext, env: IWebHostEnvironment) =
     
     let di = SolarLunarName.Standard.ApplicationServices.DateInterpreter()
     let solarLunarName dateTime = di.GetSolarLunarName(dateTime)
+    let gregorianCalendarDate = di.ConvertSolarLunarName 
 
     override this.Handler =
         {
@@ -19,6 +20,17 @@ type SolarLunarDateService(ctx: IRemoteContext, env: IWebHostEnvironment) =
             getSolarLunarDate = fun dateTime -> async {
                 return solarLunarName dateTime |> string
             }
+            
+            convertSolarLunarDate = 
 
-
+                
+                    fun solarLunarDate -> async{
+                        try
+                        let date =  gregorianCalendarDate(solarLunarDate.Year, solarLunarDate.Month, solarLunarDate.Day)
+                        return Ok(date)
+                        with 
+                        | :? System.InvalidOperationException ->  
+                            return Error "Try a smaller month. You may have tried to parse for a day ot month that does not exist in this calendar." 
+            }
+            
         }

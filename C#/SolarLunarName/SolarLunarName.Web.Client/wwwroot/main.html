@@ -13,10 +13,25 @@
       </div>
 
       <template id="Home">
-        <h1 class="title">A simple counter</h1>
+        <h1 class="title">Pick a date to Convert to SolarLunarDate Form.</h1>
+        ${GregorianDate}
         <p>
-          <input type="date" id="gregorianDate" class="input" bind-onchange="${GregorianDate}" >
-          ${SolarLunarDate}
+          <dl>
+            <dt>Gregorian Calendar Date:</dt>
+            <dd>${GregorianDateString}</dd>
+            <dt>SolarLunarDate:</dt>
+            <dd>${SolarLunarDate}</dd>
+          </dl>   
+        </p>
+
+        <h1 class="title">Pick a Solar Lunar Date to Convert to Gregorian Calendar Form.</h1>
+        <dl>
+            <dt>SolarLunarDate:</dt>
+            <dd>${SolarLunarDatePicker}</dd>
+            <dt>Gregorian Calendar Date:</dt>
+            <dd>${GregorianDateString}</dd>
+
+          </dl>   
         </p>
       </template>
 
