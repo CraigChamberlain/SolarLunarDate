@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Net;
 using Newtonsoft.Json;
@@ -9,12 +10,12 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson{
     public class  RemoteMoonDataClient
     {
 
-        const string BaseUrl = "https://raw.githubusercontent.com/CraigChamberlain/SolarLunarDate/master/docs/api/moon-data/";
+        const string BaseUrl = "https://craigchamberlain.github.io/moon-data/api/new-moon-data/";
         
-        public List<MoonPhaseEntity> GetYear(string year){
+        public List<DateTime> GetYear(string year){
             using(var client = new WebClient()){
-                var yearJson = client.DownloadString(BaseUrl+year+".json");
-                return JsonConvert.DeserializeObject<List<MoonPhaseEntity>>(yearJson);
+                var yearJson = client.DownloadString(BaseUrl+year);
+                return JsonConvert.DeserializeObject<List<DateTime>>(yearJson);
             }
         }
     }

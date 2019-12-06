@@ -35,7 +35,7 @@ namespace SolarLunarName.PoSH
             }
 
             var di = new DateInterpreter();
-            var solarLunarName = di.GetSolarLunarName(UtcDateTime);
+            var solarLunarName = di.GetRemoteSolarLunarName(UtcDateTime);
 
             this.WriteObject(solarLunarName);
             base.EndProcessing();

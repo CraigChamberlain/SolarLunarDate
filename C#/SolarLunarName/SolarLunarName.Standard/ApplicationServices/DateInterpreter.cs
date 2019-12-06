@@ -53,19 +53,16 @@ namespace SolarLunarName.Standard.ApplicationServices
                 var db = new RestServices.RemoteJson.RemoteMoonDataClient();
 
                 var newMoons = db.GetYear(year.ToString()).Where(
-                                    x => x.Date > startOfYear
-                                    && x.Date < solarDateTime
-                                    && x.Phase == Moon.MoonPhase.NewMoon
-
+                                    x => x < solarDateTime
                                 )
-                                .OrderBy(x => x.Date);
+                                .OrderBy(x => x);
 
                 var lunarMonth = newMoons.Count();
 
                 int lunarDay;
                 if (newMoons.Any())
                 {
-                    var dayOfNewMoon = newMoons.Last().Date.DayOfYear;
+                    var dayOfNewMoon = newMoons.Last().DayOfYear;
                     lunarDay = solarDateTime.DayOfYear - dayOfNewMoon;
                 }
                 else
