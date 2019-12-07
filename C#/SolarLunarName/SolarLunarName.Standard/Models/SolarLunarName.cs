@@ -42,6 +42,13 @@ namespace SolarLunarName.Standard.Models
             
         }
 
+        public int Subtract(SolarLunarName other){
+            
+            return this.SolarDateTime.Subtract(other.SolarDateTime).Days;
+
+            
+        }
+
         public static int DaysInMonth (int year, int month){
 
             return cds.GetSolarLunarMonth(year, month).Days;
