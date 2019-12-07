@@ -19,4 +19,17 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson{
             }
         }
     }
+
+    public class  RemoteLunarCalendarClient
+    {
+
+        const string BaseUrl = "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar/";
+        
+        public List<LunarSolarCalendarMonth> GetYearData(string year){
+            using(var client = new WebClient()){
+                var yearJson = client.DownloadString(BaseUrl+year);
+                return JsonConvert.DeserializeObject<List<LunarSolarCalendarMonth>>(yearJson);
+            }
+        }
+    }
 }

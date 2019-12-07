@@ -43,8 +43,6 @@ namespace SolarLunarName.Standard.ApplicationServices
             
         }
 
-
-    
         public Models.SolarLunarName GetRemoteSolarLunarName(DateTime solarDateTime)
             {
 
