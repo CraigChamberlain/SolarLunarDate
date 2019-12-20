@@ -6,7 +6,14 @@ namespace SolarLunarName.Standard.ApplicationServices
 {
     public class CalendarDataService
     {   
-        private RemoteLunarCalendarClient db = new RemoteLunarCalendarClient();
+        public CalendarDataService(){
+            db = new RemoteLunarCalendarClient();
+        }
+        public CalendarDataService(RemoteLunarCalendarClient calendarClient){
+            db = calendarClient;
+
+        }
+        private RemoteLunarCalendarClient db;
 
         public List<Models.LunarSolarCalendarMonth> GetSolarLunarYear(int year)
         {       
@@ -19,6 +26,18 @@ namespace SolarLunarName.Standard.ApplicationServices
                 return  db.GetYearData(year.ToString())[month];
 
             }
+
+        public int DaysInMonth (int year, int month){
+
+            return GetSolarLunarMonth(year, month).Days;
+        
+        }
+
+        public int MonthsInYear (int year){
+
+            return GetSolarLunarYear(year).Count;
+        
+        }
 
 
     }

@@ -22,6 +22,13 @@ namespace SolarLunarName.PoSH
         [Parameter(ParameterSetName="typed", Position = 2, ValueFromPipelineByPropertyName = true)]
         [ValidateDay()]
         public int Day  { get; set; }
+        private DateInstantiator di;
+
+        protected override void BeginProcessing(){
+
+            di = new DateInstantiator();
+
+        }
 
         protected override void ProcessRecord()
         {
@@ -34,8 +41,7 @@ namespace SolarLunarName.PoSH
                 UtcDateTime = new DateTime(Year, Month, Day);
             }
 
-            var di = new DateInterpreter();
-            var solarLunarName = di.GetRemoteSolarLunarName(UtcDateTime);
+            var solarLunarName = (SolarLunarName.Standard.Types.SolarLunarName)di.GetRemoteSolarLunarName(UtcDateTime);
 
             this.WriteObject(solarLunarName);
             base.EndProcessing();

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Management.Automation;
+﻿using System.Management.Automation;
 using SolarLunarName.Standard.ApplicationServices;
 
 namespace SolarLunarName.PoSH
@@ -20,10 +19,17 @@ namespace SolarLunarName.PoSH
         [ValidateDay()]
         public int Day  { get; set; }
 
+        private SolarDateParser sdp;
+
+        protected override void BeginProcessing(){
+
+            sdp = new SolarDateParser();
+
+        }
+
         protected override void ProcessRecord()
         {
-            var di = new DateInterpreter();
-            var solarLunarName = di.ConvertSolarLunarName(Year, Month, Day);
+            var solarLunarName = sdp.ConvertSolarLunarName(Year, Month, Day);
 
             this.WriteObject(solarLunarName);
             base.EndProcessing();

@@ -5,7 +5,7 @@ using SolarLunarName.Standard.RestServices.LocalJson;
 
 namespace SolarLunarName.Standard.ApplicationServices
 {
-    public partial class DateInterpreter
+    public class DateInstantiator
     {
 
         public Models.SolarLunarName GetSolarLunarName(DateTime solarDateTime)

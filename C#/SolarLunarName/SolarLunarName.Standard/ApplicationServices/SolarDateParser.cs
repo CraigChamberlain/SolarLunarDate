@@ -5,7 +5,7 @@ using SolarLunarName.Standard.RestServices.LocalJson;
 
 namespace SolarLunarName.Standard.ApplicationServices
 {
-    public partial class DateInterpreter
+    public class SolarDateParser
     {
 
         public DateTime ConvertSolarLunarName(int year, int month, int day)
