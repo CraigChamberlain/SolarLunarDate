@@ -29,7 +29,7 @@ namespace SolarLunarName.PoSH
 
         protected override void ProcessRecord()
         {
-            var solarLunarName = sdp.ConvertSolarLunarName(Year, Month, Day);
+            var solarLunarName = sdp.ConvertRemoteSolarLunarName(Year, Month, Day);
 
             this.WriteObject(solarLunarName);
             base.EndProcessing();
