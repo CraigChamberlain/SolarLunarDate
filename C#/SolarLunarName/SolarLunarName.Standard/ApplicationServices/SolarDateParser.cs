@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using SolarLunarName.Standard.RestServices.LocalJson;
+using SolarLunarName.Standard.RestServices.RemoteJson;
 
 namespace SolarLunarName.Standard.ApplicationServices
 {
@@ -24,6 +25,25 @@ namespace SolarLunarName.Standard.ApplicationServices
                             .OrderBy(x => x.Date)
                             .Where((_, index) => index == month )
                             .Select(x => x.Date )
+                            .First();
+
+            var solarDateTime = newMoon.AddDays(day - 1);
+
+            return new DateTime(solarDateTime.Year, solarDateTime.Month, solarDateTime.Day);
+
+            
+        }
+        public DateTime ConvertRemoteSolarLunarName(int year, int month, int day)
+        {
+
+            var startOfYear = new DateTime(year, 1, 1);
+            var db = new RemoteLunarCalendarClient();
+                
+            
+            DateTime newMoon = db.GetYearData(year.ToString())
+                            .OrderBy(x => x.Date)
+                            .Where((_, index) => index == month )
+                            .Select( x => x.Date)
                             .First();
 
             var solarDateTime = newMoon.AddDays(day - 1);
