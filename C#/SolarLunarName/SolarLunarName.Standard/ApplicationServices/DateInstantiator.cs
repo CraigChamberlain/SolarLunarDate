@@ -61,7 +61,7 @@ namespace SolarLunarName.Standard.ApplicationServices
                 if (newMoons.Any())
                 {
                     var dayOfNewMoon = newMoons.Last().DayOfYear;
-                    lunarDay = solarDateTime.DayOfYear - dayOfNewMoon;
+                    lunarDay = solarDateTime.DayOfYear - dayOfNewMoon + 1;
                 }
                 else
                 {
