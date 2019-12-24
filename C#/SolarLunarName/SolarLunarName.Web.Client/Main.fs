@@ -83,13 +83,13 @@ let update remote message (model:Model) =
         | Result.Error msg -> { model with error = Some msg }, Cmd.none
     | SetYear y ->
         { model with solarLunarDateBuilder = 
-            { model.solarLunarDateBuilder with Year = y } }, Cmd.none
+                        { model.solarLunarDateBuilder with Year = y } }, Cmd.none
     | SetMonth m ->
         { model with solarLunarDateBuilder = 
-            { model.solarLunarDateBuilder with Month = m } }, Cmd.none
+                        { model.solarLunarDateBuilder with Month = m } }, Cmd.none
     | SetDay d ->
         { model with solarLunarDateBuilder = 
-            { model.solarLunarDateBuilder with Day = d } }, Cmd.none
+                        { model.solarLunarDateBuilder with Day = d } }, Cmd.none
 
 type Main = Template<"wwwroot/main.html">
 
