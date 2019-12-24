@@ -1,0 +1,9 @@
+language: csharp
+solution: ./C#/SolarLunarName.sln
+install:
+  - nuget restore ./C#/SolarLunarName/SolarLunarName.Standard.Tests/SolarLunarName.Standard.Tests.csproj
+  - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
+script:
+  - msbuild /p:Configuration=Release ./C#/SolarLunarName/SolarLunarName.Standard.Tests 
+  - ls ./C#/SolarLunarName/SolarLunarName.Standard.Tests/bin/Release/
+  - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./C#/SolarLunarName/SolarLunarName.Standard.Tests/bin/Release/netcoreapp3.0/SolarLunarName.Standard.Tests.dll
