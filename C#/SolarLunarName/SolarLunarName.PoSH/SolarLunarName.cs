@@ -7,21 +7,28 @@ namespace SolarLunarName.PoSH
     [Cmdlet(VerbsCommon.Get, "SolarLunarName", DefaultParameterSetName="typed")]
     public class GetSolarLunarName : PSCmdlet
     {   
-        [Parameter(ParameterSetName="dateTime", Position = 0, ValueFromPipeline = true, Mandatory = true)]
+        [Parameter(ParameterSetName="dateTime", Position = 0, ValueFromPipeline = true, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateDateTime()]
         public DateTime UtcDateTime { get; set; }
 
-        [Parameter(ParameterSetName="typed", Position = 0)]
+        [Parameter(ParameterSetName="typed", Position = 0, ValueFromPipelineByPropertyName = true)]
         [ValidateYear()]
         public int Year { get; set; }
 
-        [Parameter(ParameterSetName="typed", Position = 1)]
+        [Parameter(ParameterSetName="typed", Position = 1, ValueFromPipelineByPropertyName = true)]
         [ValidateMonth()]
         public int Month  { get; set; }
 
-        [Parameter(ParameterSetName="typed", Position = 2)]
+        [Parameter(ParameterSetName="typed", Position = 2, ValueFromPipelineByPropertyName = true)]
         [ValidateDay()]
         public int Day  { get; set; }
+        private DateInstantiator di;
+
+        protected override void BeginProcessing(){
+
+            di = new DateInstantiator();
+
+        }
 
         protected override void ProcessRecord()
         {
@@ -34,56 +41,12 @@ namespace SolarLunarName.PoSH
                 UtcDateTime = new DateTime(Year, Month, Day);
             }
 
-            var di = new DateInterpreter();
-            var solarLunarName = di.GetSolarLunarName(UtcDateTime);
+            var solarLunarName = (SolarLunarName.Standard.Types.SolarLunarName)di.GetRemoteSolarLunarName(UtcDateTime);
 
             this.WriteObject(solarLunarName);
             base.EndProcessing();
         }
 
-        protected static void IsValidYear(int Year, string Title, string VariableName){
-            if( Year < 1700 || Year > 2083){
-                throw new ArgumentOutOfRangeException(Title, VariableName+" must be between 1700 and 2083");
-            }
-
-        }
-
-
-        class ValidateDateTime:ValidateArgumentsAttribute {
-        protected override void Validate(object arguments,EngineIntrinsics engineIntrinsics) {
-            var date = (DateTime)arguments;
-            IsValidYear(date.Year, "UtcDateTime", "UtcDateTime.Year"); 
-            
-        }
-        }
-
-        class ValidateYear:ValidateArgumentsAttribute {
-        protected override void Validate(object arguments,EngineIntrinsics engineIntrinsics) {
-            var year = (int)arguments;
-            IsValidYear(year, "Year", "Year"); 
-            
-        }
-        }
-
-        class ValidateMonth:ValidateArgumentsAttribute {
-        protected override void Validate(object arguments,EngineIntrinsics engineIntrinsics) {
-            var month = (int)arguments;
-            if( month < 1 || month > 12){
-                throw new ArgumentOutOfRangeException("Month", "Month must be between 1 and 12");
-            }
-            
-        }
-        }
-
-        class ValidateDay:ValidateArgumentsAttribute {
-        protected override void Validate(object arguments,EngineIntrinsics engineIntrinsics) {
-            var day = (int)arguments;
-            if( day < 1 || day > 31){
-                throw new ArgumentOutOfRangeException("Day", "Day must be between 1 and 31");
-            }
-            
-        }
-        }
     }
 }
     

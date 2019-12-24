@@ -7,19 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\MoonPhase.sqlite" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Assets\MoonPhase.sqlite" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1">
       <ExcludeAssets></ExcludeAssets>
       <IncludeAssets>All</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="RestSharp" Version="106.6.2">
+    <PackageReference Include="RestSharp" Version="106.6.10">
       <ExcludeAssets></ExcludeAssets>
       <IncludeAssets>All</IncludeAssets>
     </PackageReference>

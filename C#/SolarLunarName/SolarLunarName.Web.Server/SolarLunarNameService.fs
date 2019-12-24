@@ -10,9 +10,10 @@ open SolarLunarName.Web
 type SolarLunarDateService(ctx: IRemoteContext, env: IWebHostEnvironment) =
     inherit RemoteHandler<Client.Main.SolarLunarDateService>()
     
-    let di = SolarLunarName.Standard.ApplicationServices.DateInterpreter()
-    let solarLunarName dateTime = di.GetSolarLunarName(dateTime)
-    let gregorianCalendarDate = di.ConvertSolarLunarName 
+    let di = SolarLunarName.Standard.ApplicationServices.DateInstantiator()
+    let solarLunarName dateTime = di.GetRemoteSolarLunarName(dateTime)
+    let dp = SolarLunarName.Standard.ApplicationServices.SolarDateParser()
+    let gregorianCalendarDate = dp.ConvertRemoteSolarLunarName 
 
     override this.Handler =
         {
