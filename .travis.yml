@@ -5,6 +5,6 @@ dotnet: 3.0
 install:
   - dotnet restore ./C#/SolarLunarName/SolarLunarName.Standard.Tests/SolarLunarName.Standard.Tests.csproj
 script:
-  - msbuild /p:Configuration=Release ./C#/SolarLunarName/SolarLunarName.Standard.Tests 
+  - dotnet build /p:Configuration=Release ./C#/SolarLunarName/SolarLunarName.Standard.Tests 
   - dotnet test /p:Configuration=Release ./C#/SolarLunarName/SolarLunarName.Standard.Tests/
   
