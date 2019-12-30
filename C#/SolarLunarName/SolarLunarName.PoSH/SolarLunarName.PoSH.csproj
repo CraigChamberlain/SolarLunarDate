@@ -4,6 +4,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <PackageTags>PSModule</PackageTags>
+    <PackageId>SolarLunarName.PoSH</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>Craig Chamberlain</Authors>
+    <Company>Craig Chamberlain IT</Company>
   </PropertyGroup>
 
   <ItemGroup>
