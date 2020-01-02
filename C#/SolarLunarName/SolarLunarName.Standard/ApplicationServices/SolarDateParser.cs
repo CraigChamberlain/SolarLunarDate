@@ -3,12 +3,19 @@ using System;
 using System.Linq;
 using SolarLunarName.Standard.RestServices.LocalJson;
 using SolarLunarName.Standard.RestServices.RemoteJson;
+using System.Text.RegularExpressions;
 
 namespace SolarLunarName.Standard.ApplicationServices
 {
     public class SolarDateParser
     {
 
+        public DateTime ConvertRemoteSolarLunarName(string date){
+
+            var SolarLunarName = ParseSolarLunarName(date);
+
+            return ConvertRemoteSolarLunarName(SolarLunarName.Year, SolarLunarName.LunarMonth, SolarLunarName.LunarDay);
+        }
         public DateTime ConvertSolarLunarName(int year, int month, int day)
         {
 
@@ -52,8 +59,19 @@ namespace SolarLunarName.Standard.ApplicationServices
 
             
         }
+        public SolarLunarNameSimple ParseSolarLunarName(string date){
 
-
+            var rx = new Regex(@"(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})", RegexOptions.Compiled);
+            
+            var match = rx.Match(date);
+            if( match.Success == false ){
+                throw new FormatException("Should be of format '{{Year}}-{{Month}}-{{Day}}' for example '1750-10-6'.  Year must be four digits and Month & Day one or two digits.");
+            }
+            var year = Int16.Parse(match.Groups["year"].Value);
+            var month = Int16.Parse(match.Groups["month"].Value);
+            var day = Int16.Parse(match.Groups["day"].Value);
+            return new SolarLunarNameSimple(year, month, day);
+        }
     }
 }
 
