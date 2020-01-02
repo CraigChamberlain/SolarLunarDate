@@ -5,7 +5,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <PackageTags>PSModule</PackageTags>
     <PackageId>SolarLunarName.PoSH</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Craig Chamberlain</Authors>
     <Company>Craig Chamberlain IT</Company>
   </PropertyGroup>
