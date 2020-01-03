@@ -42,7 +42,7 @@ namespace SolarLunarName.PoSH
         [Parameter(
             Position = 0, 
             Mandatory = true, 
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             ParameterSetName = "String"
         )]
         public string SolarLunarDate  { get; set; }
