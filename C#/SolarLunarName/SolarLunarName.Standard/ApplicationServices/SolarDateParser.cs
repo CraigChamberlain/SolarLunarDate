@@ -7,71 +7,62 @@ using System.Text.RegularExpressions;
 
 namespace SolarLunarName.Standard.ApplicationServices
 {
-    public class SolarDateParser
+    public partial class SolarDateParser
     {
-
         public DateTime ConvertRemoteSolarLunarName(string date){
 
             var SolarLunarName = ParseSolarLunarName(date);
 
             return ConvertRemoteSolarLunarName(SolarLunarName.Year, SolarLunarName.LunarMonth, SolarLunarName.LunarDay);
         }
-        public DateTime ConvertSolarLunarName(int year, int month, int day)
-        {
-
-            var startOfYear = new DateTime(year, 1, 1);
-            var db = new MoonDataClient();
-                
-            string path = @"./assets/moon-data/"+ year+".json";
-
-            DateTime newMoon = db.GetYear(path).Where(
-                                x => x.Date.Year == year
-                                && x.Phase == Moon.MoonPhase.NewMoon
-
-                            )
-                            .OrderBy(x => x.Date)
-                            .Where((_, index) => index == month )
-                            .Select(x => x.Date )
-                            .First();
-
-            var solarDateTime = newMoon.AddDays(day - 1);
-
-            return new DateTime(solarDateTime.Year, solarDateTime.Month, solarDateTime.Day);
-
-            
-        }
         public DateTime ConvertRemoteSolarLunarName(int year, int month, int day)
         {
 
-            var startOfYear = new DateTime(year, 1, 1);
-            var db = new RemoteLunarCalendarClient();
-                
+            try{
+                return ConvertRemoteSolarLunarNameExact(year, month, day);
+            }
+            catch
+            {   
+                var nextMonth = NextMonth(new SolarLunarNameSimple(year, month, day));
+                return ConvertRemoteSolarLunarName(nextMonth.Year, nextMonth.LunarMonth, nextMonth.LunarDay);
+            }
             
-            DateTime newMoon = db.GetYearData(year.ToString())
-                            .OrderBy(x => x.Date)
-                            .Where((_, index) => index == month )
-                            .Select( x => x.Date)
+        }
+
+        // will find next month if day not available in month. Does not handle month not in year?
+        public SolarLunarNameSimple NextMonth(SolarLunarNameSimple solarLunarNameSimple){
+            
+            var db = new RemoteLunarCalendarClient(); 
+            
+            var data = db.GetYearData(solarLunarNameSimple.Year.ToString());
+                            
+            var daysOfMonth = 
+                            data                
+                            .Where((_, index) => index == solarLunarNameSimple.LunarMonth )
+                            .Select( x => x.Days)
                             .First();
 
-            var solarDateTime = newMoon.AddDays(day - 1);
-
-            return new DateTime(solarDateTime.Year, solarDateTime.Month, solarDateTime.Day);
-
-            
-        }
-        public SolarLunarNameSimple ParseSolarLunarName(string date){
-
-            var rx = new Regex(@"(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})", RegexOptions.Compiled);
-            
-            var match = rx.Match(date);
-            if( match.Success == false ){
-                throw new FormatException("Should be of format '{{Year}}-{{Month}}-{{Day}}' for example '1750-10-6'.  Year must be four digits and Month & Day one or two digits.");
+            int daysRemaining;
+            int dayDifference = solarLunarNameSimple.LunarDay - daysOfMonth;
+            if(dayDifference > 0){
+              daysRemaining = dayDifference;
             }
-            var year = Int16.Parse(match.Groups["year"].Value);
-            var month = Int16.Parse(match.Groups["month"].Value);
-            var day = Int16.Parse(match.Groups["day"].Value);
-            return new SolarLunarNameSimple(year, month, day);
+            else{
+                daysRemaining = solarLunarNameSimple.LunarDay;
+            }
+
+            var year = solarLunarNameSimple.Year;
+            var month = solarLunarNameSimple.LunarMonth + 1;
+
+            if(month > data.Count){
+                year += 1;
+                month = 0;
+            }  
+            
+            return new SolarLunarNameSimple(year, month, daysRemaining);
         }
+       
+
     }
 }
 
