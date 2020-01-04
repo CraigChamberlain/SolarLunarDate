@@ -35,30 +35,31 @@ namespace SolarLunarName.Standard.ApplicationServices
             var db = new RemoteLunarCalendarClient(); 
             
             var data = db.GetYearData(solarLunarNameSimple.Year.ToString());
-                            
+            
             var daysOfMonth = 
                             data                
                             .Where((_, index) => index == solarLunarNameSimple.LunarMonth )
                             .Select( x => x.Days)
-                            .First();
+                            .FirstOrDefault();
 
+            int month = solarLunarNameSimple.LunarMonth;
             int daysRemaining;
             int dayDifference = solarLunarNameSimple.LunarDay - daysOfMonth;
+            var year = solarLunarNameSimple.Year;
+            
             if(dayDifference > 0){
               daysRemaining = dayDifference;
+              if(daysOfMonth != 0){month += 1;}
             }
             else{
                 daysRemaining = solarLunarNameSimple.LunarDay;
             }
 
-            var year = solarLunarNameSimple.Year;
-            var month = solarLunarNameSimple.LunarMonth + 1;
-
-            if(month > data.Count){
+            if(month > data.Count - 1){
                 year += 1;
-                month = 0;
-            }  
-            
+                month = month - data.Count;
+            }
+
             return new SolarLunarNameSimple(year, month, daysRemaining);
         }
        

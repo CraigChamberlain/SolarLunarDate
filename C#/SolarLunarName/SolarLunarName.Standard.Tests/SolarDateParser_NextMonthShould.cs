@@ -2,6 +2,7 @@ using Xunit;
 using SolarLunarName.Standard.ApplicationServices;
 using System;
 using SolarLunarName.Standard.Models;
+using SolarLunarName.Standard.Exceptions;
 
 namespace SolarLunarName.Standard.Tests
 {
@@ -29,11 +30,41 @@ namespace SolarLunarName.Standard.Tests
         }
 
         [Fact]
-        public void NextMonthShould_InputIs201955_Return201955()
+        public void NextMonthShould_InputIs20190531_Return20190601()
         {   
-            TestTemplate(2019, 5, 50, 2019, 6, 20);
+            TestTemplate(2019, 5, 31, 2019, 6, 1);
         }
     
+        [Fact]
+        public void NextMonthShould_InputIs17001307_Return17010107()
+        {   
+            TestTemplate(1700, 13, 7, 1701, 0, 7);
+        }
+    
+        [Fact]
+        public void NextMonthShould_InputIs17001309_Return17010009()
+        {   
+            TestTemplate(1700, 13, 9, 1701, 0, 9);
+            //TestTemplate(1700, 13, 9, 1701, 1, 1); if applied recursively
+        }
+
+        [Fact]
+        public void NextMonthShould_InputIs17010009_Return17010101()
+        {   
+            TestTemplate(1701, 0, 9, 1701, 1, 1);
+        }
+
+         private void ExceptionTemplate(int year, int lunarMonth, int lunarDay){
+            var solarLunarDate = new SolarLunarNameSimple(year, lunarMonth, lunarDay);
+            Assert.Throws<YearOutOfRangeException>(() => dp.NextMonth(solarLunarDate));
+        }
+
+        [Fact]
+        public void NextMonthShould_YearTooHigh_ThrowException()
+        {   
+            ExceptionTemplate(2082,9,1);
+        }
+
     }
     
 }
