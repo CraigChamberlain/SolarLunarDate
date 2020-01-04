@@ -29,7 +29,9 @@ namespace SolarLunarName.Standard.ApplicationServices
             
         }
 
-        // will find next month if day not available in month. Does not handle month not in year?
+        // will find next month if day not available in month even if in next year.
+        // Wraps on month or year but not recursively.  Should probably be targeted better.
+        // Wrapping may be better precisely defined before more work.
         public SolarLunarNameSimple NextMonth(SolarLunarNameSimple solarLunarNameSimple){
             
             var db = new RemoteLunarCalendarClient(); 
