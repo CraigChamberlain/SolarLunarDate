@@ -103,7 +103,7 @@ let homePage model dispatch =
     let selectToDate = DatePickerComp.datePicker model.gregorianDate (fun d -> d |> SetDate |> dispatch)
     let solarLunarDatePicker = form [] [
         input [ attr.``type`` "number"
-                attr.max 2083
+                attr.max 2082
                 attr.min 1700
                 attr.value model.solarLunarDateBuilder.Year
                 bind.changeInt model.solarLunarDateBuilder.Year (fun y -> y |> SetYear |> dispatch)
