@@ -2,22 +2,18 @@
 
 namespace SolarLunarName.Standard.Models
 {
-    public class SolarLunarName
-    {
+    public class SolarLunarName: SolarLunarNameSimple
+    {   
+        
         public SolarLunarName(DateTime solarDateTime, int year, int lunarMonth, int lunarDay)
+            :base(year, lunarMonth, lunarDay)
         {
         SolarDateTime = solarDateTime;
-        Year = year;
-        LunarMonth = lunarMonth;
-        LunarDay = lunarDay;
         }
-        
-        public DateTime SolarDateTime { get; set; }
-        public int Year { get; set; }
-        public int LunarMonth { get; set; }
-        public int LunarDay { get;  set; }
-    }
 
+        public DateTime SolarDateTime { get; set; }
+
+    }
 
 
 }

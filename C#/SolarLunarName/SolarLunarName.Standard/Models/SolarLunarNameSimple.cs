@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations;
+using SolarLunarName.Standard.Exceptions;
 
 namespace SolarLunarName.Standard.Models
 {
@@ -11,9 +12,54 @@ namespace SolarLunarName.Standard.Models
         LunarDay = lunarDay;
         }
         
-        public int Year { get; set; }
-        public int LunarMonth { get; set; }
-        public int LunarDay { get;  set; }
+        private int _year;
+        public int Year { 
+            get {
+                return _year ;
+                }
+            set {
+                if (value < 1700 || value > 2082)
+                {
+                    throw new YearOutOfRangeException();
+                }
+                else
+                {
+                    _year = value;
+                }
+            } 
+        }
+        private int _lunarMonth;
+        public int LunarMonth {    
+            get {
+                return _lunarMonth ;
+                }
+            set {
+                if (value < 0 || value > 13)
+                {
+                    throw new MonthOutOfRangeException();
+                }
+                else
+                {
+                    _lunarMonth = value;
+                }
+            } 
+        }
+        private int _lunarDay;
+        public int LunarDay {    
+            get {
+                return _lunarDay ;
+                }
+            set {
+                if (value < 1 || value > 31)
+                {
+                    throw new DayOutOfRangeException();
+                }
+                else
+                {
+                    _lunarDay = value;
+                }
+            } 
+        }
     }
 
 
