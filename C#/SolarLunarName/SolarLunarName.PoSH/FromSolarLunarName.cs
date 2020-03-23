@@ -1,5 +1,6 @@
 ﻿using System.Management.Automation;
 using SolarLunarName.Standard.ApplicationServices;
+using SolarLunarName.Standard.RestServices.RemoteJson;
 
 namespace SolarLunarName.PoSH
 {
@@ -23,13 +24,13 @@ namespace SolarLunarName.PoSH
 
         protected override void BeginProcessing(){
 
-            sdp = new SolarDateParser();
+            sdp = new SolarDateParser(new LunarCalendarClient());
 
         }
 
         protected override void ProcessRecord()
         {
-            var solarLunarName = sdp.ConvertRemoteSolarLunarName(Year, Month, Day);
+            var solarLunarName = sdp.ConvertSolarLunarName(Year, Month, Day);
 
             this.WriteObject(solarLunarName);
             base.EndProcessing();

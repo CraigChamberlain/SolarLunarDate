@@ -1,19 +1,17 @@
 using System;
-using System.Collections.Generic;
 using Xunit;
 using SolarLunarName.Standard.ApplicationServices;
-using System.Linq;
-using SolarLunarName.Standard.RestServices.RemoteJson;
+using SolarLunarName.Standard.RestServices.LocalJson;
 
 namespace SolarLunarName.Standard.Tests
 {
-    public class DateInstantiator_GetSolarLunarNameShould
+    public class DateInstantiator_GetLocalSolarLunarNameShould
     {   
         private DateInstantiator di;
 
-        public DateInstantiator_GetSolarLunarNameShould(){
+        public DateInstantiator_GetLocalSolarLunarNameShould(){
 
-            di = new DateInstantiator(new MoonDataClient() );
+            di = new DateInstantiator(new MoonDataClient(@"../../../../../../../moon-data/api/new-moon-data") );
 
         }
 

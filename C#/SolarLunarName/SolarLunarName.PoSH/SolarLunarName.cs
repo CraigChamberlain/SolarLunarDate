@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Management.Automation;
 using SolarLunarName.Standard.ApplicationServices;
+using SolarLunarName.Standard.RestServices.RemoteJson;
 
 namespace SolarLunarName.PoSH
 {
@@ -26,7 +27,7 @@ namespace SolarLunarName.PoSH
 
         protected override void BeginProcessing(){
 
-            di = new DateInstantiator();
+            di = new DateInstantiator(new MoonDataClient());
 
         }
 
@@ -41,7 +42,7 @@ namespace SolarLunarName.PoSH
                 UtcDateTime = new DateTime(Year, Month, Day);
             }
 
-            var solarLunarName = (SolarLunarName.Standard.Types.SolarLunarName)di.GetRemoteSolarLunarName(UtcDateTime);
+            var solarLunarName = (SolarLunarName.Standard.Types.SolarLunarName)di.GetSolarLunarName(UtcDateTime);
 
             this.WriteObject(solarLunarName);
             base.EndProcessing();

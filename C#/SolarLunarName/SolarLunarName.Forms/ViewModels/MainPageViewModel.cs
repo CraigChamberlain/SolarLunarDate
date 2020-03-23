@@ -70,8 +70,8 @@ namespace SolarLunarName.Forms.ViewModels
         async void CalculateSolarLunarName()
         {
             var DBPath = await DependencyService.Get<IFileAccessHelper>().GetDBPathAndCreateIfNotExists();
-            var di = new DateInterpreter();
-            var sln = await di.GetSolarLunarNameAsync(DateTime, DBPath);
+            var di = new DateInstantiator();
+            var sln = di.GetSolarLunarName(DateTime);
 
             SolarLunarName = sln.ToString();
 

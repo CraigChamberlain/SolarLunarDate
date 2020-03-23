@@ -28,8 +28,8 @@ namespace SolarLunarName.PoSH
         private CalendarDataService cds;
 
         protected override void BeginProcessing(){
-
-            cds = new CalendarDataService();
+            var client = new Standard.RestServices.RemoteJson.LunarCalendarClient();
+            cds = new CalendarDataService(client);
 
         }
 
