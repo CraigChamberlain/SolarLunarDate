@@ -1,4 +1,5 @@
 ﻿using SolarLunarName.Standard.RestServices.RemoteJson;
+using SolarLunarName.Standard.Types;
 using System.Collections.Generic;
 
 
@@ -6,14 +7,12 @@ namespace SolarLunarName.Standard.ApplicationServices
 {
     public class CalendarDataService
     {   
-        public CalendarDataService(){
-            db = new RemoteLunarCalendarClient();
-        }
-        public CalendarDataService(RemoteLunarCalendarClient calendarClient){
+
+        public CalendarDataService(ISolarLunarCalendarClient calendarClient){
             db = calendarClient;
 
         }
-        private RemoteLunarCalendarClient db;
+        private ISolarLunarCalendarClient db;
 
         public List<Models.LunarSolarCalendarMonth> GetSolarLunarYear(int year)
         {       

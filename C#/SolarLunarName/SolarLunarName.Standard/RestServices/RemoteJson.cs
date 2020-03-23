@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Net;
 using Newtonsoft.Json;
 using SolarLunarName.Standard.Models;
-
+using SolarLunarName.Standard.Types;
 
 namespace SolarLunarName.Standard.RestServices.RemoteJson{
 
-    public class  RemoteMoonDataClient
+    public class  MoonDataClient: IMoonDataClient
     {
 
         const string BaseUrl = "https://craigchamberlain.github.io/moon-data/api/new-moon-data/";
@@ -20,7 +20,7 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson{
         }
     }
 
-    public class  RemoteLunarCalendarClient
+    public class  LunarCalendarClient: ISolarLunarCalendarClient
     {
 
         const string BaseUrl = "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar/";
