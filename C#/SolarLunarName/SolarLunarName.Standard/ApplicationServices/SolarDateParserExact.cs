@@ -10,42 +10,17 @@ namespace SolarLunarName.Standard.ApplicationServices
     public partial class  SolarDateParser
     {
 
-        public DateTime ConvertRemoteSolarLunarNameExact(string date){
+        public DateTime ConvertSolarLunarNameExact(string date){
 
             var SolarLunarName = ParseSolarLunarName(date);
 
-            return ConvertRemoteSolarLunarNameExact(SolarLunarName.Year, SolarLunarName.LunarMonth, SolarLunarName.LunarDay);
+            return ConvertSolarLunarNameExact(SolarLunarName.Year, SolarLunarName.LunarMonth, SolarLunarName.LunarDay);
         }
+
         public DateTime ConvertSolarLunarNameExact(int year, int month, int day)
         {
 
             var startOfYear = new DateTime(year, 1, 1);
-            var db = new MoonDataClient();
-                
-            string path = @"./assets/moon-data/"+ year+".json";
-
-            DateTime newMoon = db.GetYear(path).Where(
-                                x => x.Date.Year == year
-                                && x.Phase == Moon.MoonPhase.NewMoon
-
-                            )
-                            .OrderBy(x => x.Date)
-                            .Where((_, index) => index == month )
-                            .Select(x => x.Date )
-                            .First();
-
-            var solarDateTime = newMoon.AddDays(day - 1);
-
-            return new DateTime(solarDateTime.Year, solarDateTime.Month, solarDateTime.Day);
-
-            
-        }
-        public DateTime ConvertRemoteSolarLunarNameExact(int year, int month, int day)
-        {
-
-            var startOfYear = new DateTime(year, 1, 1);
-            var db = new RemoteLunarCalendarClient();
-                
             
             DateTime newMoon = db.GetYearData(year.ToString())
                             .OrderBy(x => x.Date)

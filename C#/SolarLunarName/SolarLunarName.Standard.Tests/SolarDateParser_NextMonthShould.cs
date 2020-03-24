@@ -3,6 +3,7 @@ using SolarLunarName.Standard.ApplicationServices;
 using System;
 using SolarLunarName.Standard.Models;
 using SolarLunarName.Standard.Exceptions;
+using SolarLunarName.Standard.RestServices.LocalJson;
 
 namespace SolarLunarName.Standard.Tests
 {
@@ -12,7 +13,7 @@ namespace SolarLunarName.Standard.Tests
 
         public SolarDateParser_NextMonthShould(){
 
-            dp = new SolarDateParser();
+            dp = new SolarDateParser(new LunarCalendarClient(@"../../../../../../../moon-data/api/lunar-solar-calendar"));
 
         }
         
