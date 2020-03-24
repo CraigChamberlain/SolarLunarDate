@@ -6,14 +6,18 @@ open Bolero
 open Bolero.Remoting
 open Bolero.Remoting.Server
 open SolarLunarName.Web
+open SolarLunarName.Standard.RestServices.LocalJson
 
 type SolarLunarDateService(ctx: IRemoteContext, env: IWebHostEnvironment) =
     inherit RemoteHandler<Client.Main.SolarLunarDateService>()
     
-    let di = SolarLunarName.Standard.ApplicationServices.DateInstantiator()
-    let solarLunarName dateTime = di.GetRemoteSolarLunarName(dateTime)
-    let dp = SolarLunarName.Standard.ApplicationServices.SolarDateParser()
-    let gregorianCalendarDate = dp.ConvertRemoteSolarLunarName 
+    let client = MoonDataClient(@"../../../../../../../moon-data/api/new-moon-data");
+    let di = SolarLunarName.Standard.ApplicationServices.DateInstantiator(client)
+    let solarLunarName dateTime = di.GetSolarLunarName(dateTime)
+    
+    let calClient = LunarCalendarClient(@"../../../../../../../moon-data/api/lunar-solar-calendar")
+    let dp = SolarLunarName.Standard.ApplicationServices.SolarDateParser(calClient)
+    let gregorianCalendarDate = dp.ConvertSolarLunarName 
 
     override this.Handler =
         {

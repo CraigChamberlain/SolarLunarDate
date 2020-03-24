@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Management.Automation;
 using SolarLunarName.Standard.ApplicationServices;
+using SolarLunarName.Standard.RestServices.RemoteJson;
 
 namespace SolarLunarName.PoSH
 {
@@ -52,7 +53,7 @@ namespace SolarLunarName.PoSH
 
         protected override void BeginProcessing(){
 
-            sdp = new SolarDateParser();
+            sdp = new SolarDateParser(new LunarCalendarClient());
 
         }
 
@@ -60,7 +61,7 @@ namespace SolarLunarName.PoSH
         {   
             if(ParameterSetName == "Object"){
                 gregorianCalendarDate = 
-                    sdp.ConvertRemoteSolarLunarName(Year, Month, Day);
+                    sdp.ConvertSolarLunarName(Year, Month, Day);
             }
             else{
                 gregorianCalendarDate = 

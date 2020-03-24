@@ -4,6 +4,7 @@ using System.Linq;
 using SolarLunarName.Standard.RestServices.LocalJson;
 using SolarLunarName.Standard.RestServices.RemoteJson;
 using System.Text.RegularExpressions;
+using SolarLunarName.Standard.Types;
 
 namespace SolarLunarName.Standard.ApplicationServices
 {
@@ -13,18 +14,25 @@ namespace SolarLunarName.Standard.ApplicationServices
 
             var SolarLunarName = ParseSolarLunarName(date);
 
-            return ConvertRemoteSolarLunarName(SolarLunarName.Year, SolarLunarName.LunarMonth, SolarLunarName.LunarDay);
+            return ConvertSolarLunarName(SolarLunarName.Year, SolarLunarName.LunarMonth, SolarLunarName.LunarDay);
         }
-        public DateTime ConvertRemoteSolarLunarName(int year, int month, int day)
+
+        public SolarDateParser(ISolarLunarCalendarClient calendarClient){
+            db = calendarClient;
+
+        }
+        private ISolarLunarCalendarClient db;
+      
+        public DateTime ConvertSolarLunarName(int year, int month, int day)
         {
 
             try{
-                return ConvertRemoteSolarLunarNameExact(year, month, day);
+                return ConvertSolarLunarNameExact(year, month, day);
             }
             catch
             {   
                 var nextMonth = NextMonth(new SolarLunarNameSimple(year, month, day));
-                return ConvertRemoteSolarLunarName(nextMonth.Year, nextMonth.LunarMonth, nextMonth.LunarDay);
+                return ConvertSolarLunarName(nextMonth.Year, nextMonth.LunarMonth, nextMonth.LunarDay);
             }
             
         }
@@ -34,8 +42,7 @@ namespace SolarLunarName.Standard.ApplicationServices
         // Wrapping may be better precisely defined before more work.
         public SolarLunarNameSimple NextMonth(SolarLunarNameSimple solarLunarNameSimple){
             
-            var db = new RemoteLunarCalendarClient(); 
-            
+                   
             var data = db.GetYearData(solarLunarNameSimple.Year.ToString());
             
             var daysOfMonth = 

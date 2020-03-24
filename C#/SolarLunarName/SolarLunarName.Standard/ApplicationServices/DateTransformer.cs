@@ -7,10 +7,6 @@ namespace SolarLunarName.Standard.ApplicationServices
 {
     public class DateTransformer
     {
-        public DateTransformer(){
-            di = new DateInstantiator();
-
-        }
         public DateTransformer(DateInstantiator dateInstantiator){
             di = dateInstantiator;
 
@@ -19,19 +15,19 @@ namespace SolarLunarName.Standard.ApplicationServices
 
          public Models.SolarLunarName AddDays(Models.SolarLunarName solarLunarName, double value){
             
-            return di.GetRemoteSolarLunarName(solarLunarName.SolarDateTime.AddDays(value));
+            return di.GetSolarLunarName(solarLunarName.SolarDateTime.AddDays(value));
 
         }
 
         public Models.SolarLunarName AddMonths(Models.SolarLunarName solarLunarName, int value){
 
-            return di.GetRemoteSolarLunarName(solarLunarName.SolarDateTime.AddMonths(value));
+            return di.GetSolarLunarName(solarLunarName.SolarDateTime.AddMonths(value));
             
         }
 
         public Models.SolarLunarName AddYears(Models.SolarLunarName solarLunarName, int value){
 
-            return di.GetRemoteSolarLunarName(solarLunarName.SolarDateTime.AddYears(value));
+            return di.GetSolarLunarName(solarLunarName.SolarDateTime.AddYears(value));
             
         }
 

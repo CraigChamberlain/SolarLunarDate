@@ -11,7 +11,8 @@ namespace SolarLunarName.Standard.Tests
         private readonly CalendarDataService _calendarDataService;
 
         public CalendarDataService_GetSolarLunarYearShould(){
-            _calendarDataService = new CalendarDataService();
+            var client = new Standard.RestServices.RemoteJson.LunarCalendarClient();
+            _calendarDataService = new CalendarDataService(client);
         }
 
         [Fact]
