@@ -23,9 +23,9 @@ namespace SolarLunarName.Standard.ApplicationServices
             var startOfYear = new DateTime(year, 1, 1);
             
             DateTime newMoon = db.GetYearData(year.ToString())
-                            .OrderBy(x => x.Date)
+                            .OrderBy(x => x.FirstDay)
                             .Where((_, index) => index == month )
-                            .Select( x => x.Date)
+                            .Select( x => x.FirstDay)
                             .First();
 
             var solarDateTime = newMoon.AddDays(day - 1);

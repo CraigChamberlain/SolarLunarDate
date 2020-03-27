@@ -64,9 +64,9 @@ namespace SolarLunarName.Standard.ApplicationServices
                 daysRemaining = solarLunarNameSimple.LunarDay;
             }
 
-            if(month > data.Count - 1){
+            if(month > data.Count() - 1){
                 year += 1;
-                month = month - data.Count;
+                month = month - data.Count();
             }
 
             return new SolarLunarNameSimple(year, month, daysRemaining);
