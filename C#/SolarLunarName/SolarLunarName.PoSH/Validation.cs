@@ -6,8 +6,8 @@ namespace SolarLunarName.PoSH
 {
     static class Helper {
         internal static void IsValidYear(int Year, string Title, string VariableName){
-            if( Year < 1700 || Year > 2082){
-                throw new ArgumentOutOfRangeException(Title, VariableName+" must be between 1700 and 2082");
+            if( Year < 1700 || Year > 2081){
+                throw new ArgumentOutOfRangeException(Title, VariableName+" must be between 1700 and 2081");
             }
 
         }
@@ -31,8 +31,8 @@ namespace SolarLunarName.PoSH
     class ValidateMonth:ValidateArgumentsAttribute {
         protected override void Validate(object arguments,EngineIntrinsics engineIntrinsics) {
             var month = (int)arguments;
-            if( month < 1 || month > 13){
-                throw new ArgumentOutOfRangeException("Month", "Month must be between 1 and 13");
+            if( month < 0 || month > 13){
+                throw new ArgumentOutOfRangeException("Month", "Month must be between 0 and 13");
             }
             
         }

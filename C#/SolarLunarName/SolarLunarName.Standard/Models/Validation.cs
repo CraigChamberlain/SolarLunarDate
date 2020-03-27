@@ -28,10 +28,10 @@ namespace SolarLunarName.Standard.Models
                     IsValid(object value, ValidationContext validationContext)
             {   
                 int _year = Convert.ToInt16(value); 
-                if (_year < 1700 || _year > 2082)
+                if (_year < 1700 || _year > 2081)
                 {
                     return new ValidationResult
-                        ("Year must be between 1700 and 2082");}
+                        ("Year must be between 1700 and 2081");}
                 else
                 {
                     return ValidationResult.Success;
@@ -45,10 +45,10 @@ namespace SolarLunarName.Standard.Models
                     IsValid(object value, ValidationContext validationContext)
             {   
                 int _month = Convert.ToInt16(value); 
-                if (_month < 1 || _month > 13)
+                if (_month < 0 || _month > 13)
                 {
                     return new ValidationResult
-                        ("Month must be between 1 and 13");}
+                        ("Month must be between 0 and 13");}
                 else
                 {
                     return ValidationResult.Success;
