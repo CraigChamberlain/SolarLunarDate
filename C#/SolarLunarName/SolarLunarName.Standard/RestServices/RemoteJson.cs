@@ -25,8 +25,8 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson{
     {
 
         const string BaseUrl = "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar/";
-
-        public ILunarSolarCalendarMonth GetMonthData(int year, int month)
+        
+                public ILunarSolarCalendarMonth GetMonthData(int year, int month)
         {
             using(var client = new WebClient()){
                 var uri = new Uri (new Uri(new Uri(BaseUrl), year.ToString()), month.ToString());
@@ -36,7 +36,7 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson{
                 return  JsonConvert.DeserializeObject<LunarSolarCalendarMonth>(yearJson);
             }
         }
-
+        
         public IList<ILunarSolarCalendarMonth> GetYearData(string year){
             using(var client = new WebClient()){
                 var yearJson = client.DownloadString(BaseUrl+year);

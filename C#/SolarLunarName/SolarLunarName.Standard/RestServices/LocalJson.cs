@@ -56,8 +56,8 @@ namespace SolarLunarName.Standard.RestServices.LocalJson{
                 var yearJson = System.IO.File.ReadAllText(path);
                 
                 return JsonConvert.DeserializeObject<LunarSolarCalendarMonth>(yearJson);
-
-        }
+                
+                }
     }
 
     public class  LunarCalendarClientDetailed: LunarCalendarClient, ISolarLunarCalendarClientDetailed
