@@ -14,13 +14,13 @@ namespace SolarLunarName.Standard.ApplicationServices
         }
         private ISolarLunarCalendarClient db;
 
-        public List<Models.LunarSolarCalendarMonth> GetSolarLunarYear(int year)
+        public IList<ILunarSolarCalendarMonth> GetSolarLunarYear(int year)
         {       
                 return db.GetYearData(year.ToString());
 
             }
 
-        public Models.LunarSolarCalendarMonth GetSolarLunarMonth(int year, int month)
+        public ILunarSolarCalendarMonth GetSolarLunarMonth(int year, int month)
         {                
                 return  db.GetYearData(year.ToString())[month];
 

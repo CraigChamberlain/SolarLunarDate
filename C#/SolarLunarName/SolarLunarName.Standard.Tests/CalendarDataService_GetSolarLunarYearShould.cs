@@ -11,7 +11,7 @@ namespace SolarLunarName.Standard.Tests
         private readonly CalendarDataService _calendarDataService;
 
         public CalendarDataService_GetSolarLunarYearShould(){
-            var client = new Standard.RestServices.RemoteJson.LunarCalendarClient();
+            var client = new Standard.RestServices.LocalJson.LunarCalendarClient(@"../../../../../../../moon-data/api/lunar-solar-calendar");
             _calendarDataService = new CalendarDataService(client);
         }
 
@@ -37,7 +37,7 @@ namespace SolarLunarName.Standard.Tests
             };
 
             var result = yearLiteral
-                            .Zip(year, (m1, m2) => m1.Date == m2.Date && m1.Days == m2.Days )
+                            .Zip(year, (m1, m2) => m1.FirstDay == m2.FirstDay && m1.Days == m2.Days )
                             .All(x => x);
 
             Assert.True(result, "Returns correct year data.");

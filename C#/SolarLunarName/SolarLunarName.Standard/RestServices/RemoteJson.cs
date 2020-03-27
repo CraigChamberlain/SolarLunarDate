@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using Newtonsoft.Json;
 using SolarLunarName.Standard.Models;
@@ -12,7 +13,7 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson{
 
         const string BaseUrl = "https://craigchamberlain.github.io/moon-data/api/new-moon-data/";
         
-        public List<DateTime> GetYear(string year){
+        public IList<DateTime> GetYear(string year){
             using(var client = new WebClient()){
                 var yearJson = client.DownloadString(BaseUrl+year);
                 return JsonConvert.DeserializeObject<List<DateTime>>(yearJson);
@@ -25,11 +26,29 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson{
 
         const string BaseUrl = "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar/";
         
-        public List<LunarSolarCalendarMonth> GetYearData(string year){
+        public IList<ILunarSolarCalendarMonth> GetYearData(string year){
             using(var client = new WebClient()){
                 var yearJson = client.DownloadString(BaseUrl+year);
-                return JsonConvert.DeserializeObject<List<LunarSolarCalendarMonth>>(yearJson);
+                IList<ILunarSolarCalendarMonth> yearData = 
+                     JsonConvert
+                            .DeserializeObject<List<LunarSolarCalendarMonth>>(yearJson)
+                            .Select(month => (ILunarSolarCalendarMonth) month)
+                            .ToList();
+                return yearData;
             }
         }
+    }
+
+    public class  LunarCalendarClientDetailed: LunarCalendarClient, ISolarLunarCalendarClientDetailed
+    {
+
+        const string BaseUrl = "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar-detailed/";
+        
+        public IList<ILunarSolarCalendarMonthDetailed> GetYearDataDetailed(string year)
+        {
+            throw new NotImplementedException();
+        }
+
+    
     }
 }

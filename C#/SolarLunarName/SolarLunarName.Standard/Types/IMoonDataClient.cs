@@ -5,6 +5,6 @@ namespace SolarLunarName.Standard.Types{
 
     public interface IMoonDataClient
     {
-        List<DateTime> GetYear(string year);
+        IList<DateTime> GetYear(string year);
     }
 }
