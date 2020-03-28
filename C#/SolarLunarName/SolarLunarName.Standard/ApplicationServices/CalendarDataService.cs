@@ -12,7 +12,7 @@ namespace SolarLunarName.Standard.ApplicationServices
             db = calendarClient;
 
         }
-        private ISolarLunarCalendarClient db;
+        protected ISolarLunarCalendarClient db;
 
         public IList<ILunarSolarCalendarMonth> GetSolarLunarYear(int year)
         {       

@@ -9,6 +9,6 @@ namespace SolarLunarName.Standard.Types
     public interface ILunarSolarCalendarMonthDetailed : ILunarSolarCalendarMonth
     {
         int Month { get; set; }
-        List<Moon.MoonPhase> Phases { get; set; }
+        IList<MoonPhaseEntity> Phases { get; set; }
     }
 }

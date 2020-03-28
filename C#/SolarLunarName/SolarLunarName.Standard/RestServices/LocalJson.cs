@@ -57,7 +57,14 @@ namespace SolarLunarName.Standard.RestServices.LocalJson{
                 
                 return JsonConvert.DeserializeObject<LunarSolarCalendarMonth>(yearJson);
                 
-                }
+        }
+
+        public IList<DateTime> GetYear(string year)
+        {
+            return GetYearData(year)
+                .Select(Month => Month.FirstDay)
+                .ToList();
+        }
     }
 
     public class  LunarCalendarClientDetailed: LunarCalendarClient, ISolarLunarCalendarClientDetailed
@@ -69,7 +76,27 @@ namespace SolarLunarName.Standard.RestServices.LocalJson{
 
         public IList<ILunarSolarCalendarMonthDetailed> GetYearDataDetailed(string year)
         {
-            throw new NotImplementedException();
+            string path = System.IO.Path.Combine(_basePath, year, "index.json");
+
+                var yearJson = System.IO.File.ReadAllText(path);
+                
+                IList<ILunarSolarCalendarMonthDetailed> yearData = 
+                     JsonConvert
+                            .DeserializeObject<List<LunarSolarCalendarMonthDetailed>>(yearJson)
+                            .Select(month => (ILunarSolarCalendarMonthDetailed) month)
+                            .ToList();
+
+                return (List<ILunarSolarCalendarMonthDetailed>)yearData;
+        }
+
+        public ILunarSolarCalendarMonthDetailed GetMonthDataDetailed(int year, int month)
+        {
+            string path = System.IO.Path.Combine(_basePath, year.ToString(), month.ToString(), "index.json");
+
+                var yearJson = System.IO.File.ReadAllText(path);
+                
+                return JsonConvert.DeserializeObject<LunarSolarCalendarMonthDetailed>(yearJson);
+                
         }
 
     }

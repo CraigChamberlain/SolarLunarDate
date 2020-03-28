@@ -7,5 +7,6 @@ namespace SolarLunarName.Standard.Types{
     public interface ISolarLunarCalendarClientDetailed : ISolarLunarCalendarClient
     {    
         IList<ILunarSolarCalendarMonthDetailed> GetYearDataDetailed(string year);
+        ILunarSolarCalendarMonthDetailed GetMonthDataDetailed(int year, int month);
     }
 }

@@ -8,11 +8,11 @@ namespace SolarLunarName.Standard.Tests
 {
     public class CalendarDataService_GetSolarLunarMonthShould
     {   
-        private readonly CalendarDataService _calendarDataService;
+        private readonly DetailedCalendarDataService _calendarDataService;
 
         public CalendarDataService_GetSolarLunarMonthShould(){
-            var client = new Standard.RestServices.LocalJson.LunarCalendarClient(@"../../../../../../../moon-data/api/lunar-solar-calendar");
-            _calendarDataService = new CalendarDataService(client);
+            var client = new Standard.RestServices.LocalJson.LunarCalendarClientDetailed(@"../../../../../../../moon-data/api/lunar-solar-calendar-detailed");
+            _calendarDataService = new DetailedCalendarDataService(client);
         }
 
         [Fact]

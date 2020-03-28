@@ -37,6 +37,12 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson{
             }
         }
         
+        public IList<DateTime> GetYear(string year)
+        {
+            return GetYearData(year)
+                .Select(Month => Month.FirstDay)
+                .ToList();
+        }
         public IList<ILunarSolarCalendarMonth> GetYearData(string year){
             using(var client = new WebClient()){
                 var yearJson = client.DownloadString(BaseUrl+year);
@@ -54,7 +60,12 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson{
     {
 
         const string BaseUrl = "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar-detailed/";
-        
+
+        public ILunarSolarCalendarMonthDetailed GetMonthDataDetailed(int year, int month)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<ILunarSolarCalendarMonthDetailed> GetYearDataDetailed(string year)
         {
             throw new NotImplementedException();

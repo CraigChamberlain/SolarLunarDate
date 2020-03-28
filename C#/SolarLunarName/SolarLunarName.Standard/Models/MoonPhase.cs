@@ -10,10 +10,11 @@ namespace SolarLunarName.Standard.Models
 
         public enum MoonPhase
         {   
-            NewMoon,
-            FirstQuarter,//WaxingCressent,
-            FullMoon,
-            LastQuarter//WainingCressent
+            Partial = -1,
+            NewMoon = 0,
+            FirstQuarter = 1,//WaxingCressent,
+            FullMoon = 2,
+            LastQuarter = 3 //WainingCressent
 
         }
 
