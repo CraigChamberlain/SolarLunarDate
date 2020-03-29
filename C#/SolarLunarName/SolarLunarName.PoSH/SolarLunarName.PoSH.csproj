@@ -17,6 +17,14 @@
       <IncludeAssets>all</IncludeAssets>
       <Private>true</Private>
     </ProjectReference>
+
+    <ProjectReference Include="..\SolarLunarName.SharedTypes\SolarLunarName.SharedTypes.csproj">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <IncludeAssets>all</IncludeAssets>
+      <Private>true</Private>
+    </ProjectReference>
+  
+
   </ItemGroup>
 
   <ItemGroup>

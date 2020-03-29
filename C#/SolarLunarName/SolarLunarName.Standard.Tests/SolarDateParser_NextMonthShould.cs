@@ -1,9 +1,8 @@
 using Xunit;
 using SolarLunarName.Standard.ApplicationServices;
-using System;
-using SolarLunarName.Standard.Models;
-using SolarLunarName.Standard.Exceptions;
 using SolarLunarName.Standard.RestServices.LocalJson;
+using SolarLunarName.SharedTypes.Models;
+using SolarLunarName.SharedTypes.Exceptions;
 
 namespace SolarLunarName.Standard.Tests
 {
@@ -55,15 +54,16 @@ namespace SolarLunarName.Standard.Tests
             TestTemplate(1701, 0, 9, 1701, 1, 1);
         }
 
-         private void ExceptionTemplate(int year, int lunarMonth, int lunarDay){
+        private void ExceptionTemplate(int year, int lunarMonth, int lunarDay){
             var solarLunarDate = new SolarLunarNameSimple(year, lunarMonth, lunarDay);
             Assert.Throws<YearOutOfRangeException>(() => dp.NextMonth(solarLunarDate));
         }
 
+
         [Fact]
         public void NextMonthShould_YearTooHigh_ThrowException()
         {   
-            ExceptionTemplate(2082,9,1);
+            ExceptionTemplate(2081,13,3);
         }
 
     }

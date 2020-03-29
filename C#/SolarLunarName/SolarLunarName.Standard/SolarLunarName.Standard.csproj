@@ -17,6 +17,14 @@
     </PackageReference>
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0">
     </PackageReference>
+
+      <ProjectReference Include="..\SolarLunarName.SharedTypes\SolarLunarName.SharedTypes.csproj">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <IncludeAssets>all</IncludeAssets>
+      <Private>true</Private>
+    </ProjectReference>
   </ItemGroup>
+
+
 
 </Project>

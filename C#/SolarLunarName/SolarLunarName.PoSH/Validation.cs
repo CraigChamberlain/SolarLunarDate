@@ -1,18 +1,18 @@
 ﻿using System.Management.Automation;
 using System;
-
+using SolarLunarName.SharedTypes.Constants;
 
 namespace SolarLunarName.PoSH
 {
     static class Helper {
         internal static void IsValidYear(int Year, string Title, string VariableName){
-            if( Year < 1700 || Year > 2081){
-                throw new ArgumentOutOfRangeException(Title, VariableName+" must be between 1700 and 2081");
-            }
-
+                    if (! Ranges.Year.InRange(Year))
+                    {
+                        throw new ArgumentOutOfRangeException(Title,
+                            ($"{VariableName} must be {Ranges.Year.Min} and {Ranges.Year.Max}"));
+                    }
         }
     }
-
     class ValidateDateTime:ValidateArgumentsAttribute {
         protected override void Validate(object arguments,EngineIntrinsics engineIntrinsics) {
             var date = (DateTime)arguments;
@@ -31,8 +31,10 @@ namespace SolarLunarName.PoSH
     class ValidateMonth:ValidateArgumentsAttribute {
         protected override void Validate(object arguments,EngineIntrinsics engineIntrinsics) {
             var month = (int)arguments;
-            if( month < 0 || month > 13){
-                throw new ArgumentOutOfRangeException("Month", "Month must be between 0 and 13");
+            if (! Ranges.Month.InRange(month))
+            {
+                throw new ArgumentOutOfRangeException(Ranges.Month.Label,
+                    ($"{Ranges.Month.Label} must be {Ranges.Month.Min} and {Ranges.Month.Max}"));
             }
             
         }
@@ -41,13 +43,16 @@ namespace SolarLunarName.PoSH
     class ValidateDay:ValidateArgumentsAttribute {
         protected override void Validate(object arguments,EngineIntrinsics engineIntrinsics) {
             var day = (int)arguments;
-            if( day < 1 || day > 31){
-                throw new ArgumentOutOfRangeException("Day", "Day must be between 1 and 31");
-            }
+            if (! Ranges.Day.InRange(day))
+                {
+                    throw new ArgumentOutOfRangeException(Ranges.Day.Label,
+                        ($"{Ranges.Day.Label} must be {Ranges.Day.Min} and {Ranges.Day.Max}"));
+                }
             
         }
     }
     
 }
+
     
 

@@ -1,8 +1,6 @@
-//"Date":"1700-01-01T00:00:00","Days":19
-
 using System;
 
-namespace SolarLunarName.Standard.Types
+namespace SolarLunarName.SharedTypes.Interfaces
 {
     public interface ILunarSolarCalendarMonth
     {

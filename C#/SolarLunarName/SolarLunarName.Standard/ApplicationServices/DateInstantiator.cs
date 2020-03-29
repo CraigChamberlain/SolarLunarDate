@@ -1,8 +1,7 @@
-﻿using SolarLunarName.Standard.Models;
-using System;
+﻿using System;
 using System.Linq;
-using SolarLunarName.Standard.RestServices.LocalJson;
-using SolarLunarName.Standard.Types;
+using SolarLunarName.SharedTypes.Interfaces;
+using SolarLunarName.SharedTypes.Models;
 
 namespace SolarLunarName.Standard.ApplicationServices
 {
@@ -14,7 +13,7 @@ namespace SolarLunarName.Standard.ApplicationServices
         }
         private IMoonDataClient db;
 
-        public Models.SolarLunarName GetSolarLunarName(DateTime solarDateTime)
+        public SolarLunarNameModel GetSolarLunarName(DateTime solarDateTime)
             {
 
                 var year = solarDateTime.Year;
@@ -38,7 +37,7 @@ namespace SolarLunarName.Standard.ApplicationServices
                     lunarDay = solarDateTime.DayOfYear;
                 }
 
-                return new Models.SolarLunarName(solarDateTime, year, lunarMonth, lunarDay);
+                return new SolarLunarNameModel(solarDateTime, year, lunarMonth, lunarDay);
 
                 
             }

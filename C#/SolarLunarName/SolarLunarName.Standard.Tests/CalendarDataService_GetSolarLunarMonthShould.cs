@@ -1,8 +1,7 @@
 using System;
-using System.Collections.Generic;
 using Xunit;
 using SolarLunarName.Standard.ApplicationServices;
-using System.Linq;
+using SolarLunarName.SharedTypes.Models;
 
 namespace SolarLunarName.Standard.Tests
 {
@@ -20,7 +19,7 @@ namespace SolarLunarName.Standard.Tests
         {
             var month = _calendarDataService.GetSolarLunarMonth(1700,0);
 
-            var monthLiteral = new Models.LunarSolarCalendarMonth(19, DateTime.Parse("1700-01-01T00:00:00"));
+            var monthLiteral = new LunarSolarCalendarMonth(19, DateTime.Parse("1700-01-01T00:00:00"));
 
             var result =  month.FirstDay == monthLiteral.FirstDay && month.Days == monthLiteral.Days;
 

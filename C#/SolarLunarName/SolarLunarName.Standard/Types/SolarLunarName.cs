@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using SolarLunarName.SharedTypes.Models;
 
 namespace SolarLunarName.Standard.Types
 {
@@ -18,7 +19,7 @@ namespace SolarLunarName.Standard.Types
             LunarDay = lunarDay;
         }
 
-        public static explicit operator SolarLunarName(Models.SolarLunarName sln) => 
+        public static explicit operator SolarLunarName(SolarLunarNameModel sln) => 
             new SolarLunarName(sln.SolarDateTime, sln.SolarDateTime.Year, sln.LunarMonth, sln.LunarDay);
 
         public int Subtract(SolarLunarName other){

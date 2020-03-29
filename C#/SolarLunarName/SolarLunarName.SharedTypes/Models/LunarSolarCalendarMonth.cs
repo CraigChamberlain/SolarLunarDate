@@ -1,10 +1,7 @@
-//"Date":"1700-01-01T00:00:00","Days":19
-
 using System;
-using Newtonsoft.Json;
-using SolarLunarName.Standard.Types;
+using SolarLunarName.SharedTypes.Interfaces;
 
-namespace SolarLunarName.Standard.Models
+namespace SolarLunarName.SharedTypes.Models
 {
     public class LunarSolarCalendarMonth : ILunarSolarCalendarMonth
     {
@@ -14,8 +11,6 @@ namespace SolarLunarName.Standard.Models
         }
         
         public int Days { get; set; }
-
-        [JsonProperty("Date")]
         public DateTime FirstDay { get; set;}
     }
 }

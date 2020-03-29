@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using Newtonsoft.Json;
-using SolarLunarName.Standard.Models;
-using SolarLunarName.Standard.Types;
+using SolarLunarName.SharedTypes.Models;
+using SolarLunarName.SharedTypes.Interfaces;
 
 namespace SolarLunarName.Standard.RestServices.RemoteJson{
 

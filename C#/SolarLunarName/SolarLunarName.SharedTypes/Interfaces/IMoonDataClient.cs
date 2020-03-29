@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SolarLunarName.Standard.Types{
+namespace SolarLunarName.SharedTypes.Interfaces{
 
     public interface IMoonDataClient
     {

@@ -1,10 +1,8 @@
-﻿using SolarLunarName.Standard.Models;
+﻿using SolarLunarName.SharedTypes.Interfaces;
+using SolarLunarName.SharedTypes.Models;
 using System;
 using System.Linq;
-using SolarLunarName.Standard.RestServices.LocalJson;
-using SolarLunarName.Standard.RestServices.RemoteJson;
-using System.Text.RegularExpressions;
-using SolarLunarName.Standard.Types;
+
 
 namespace SolarLunarName.Standard.ApplicationServices
 {

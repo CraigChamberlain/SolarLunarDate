@@ -1,5 +1,4 @@
-﻿using SolarLunarName.Standard.RestServices.RemoteJson;
-using SolarLunarName.Standard.Types;
+﻿using SolarLunarName.SharedTypes.Interfaces;
 using System.Collections.Generic;
 
 

@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using SolarLunarName.Standard.Exceptions;
+﻿using SolarLunarName.SharedTypes.Exceptions;
+using SolarLunarName.SharedTypes.Constants;
 
-namespace SolarLunarName.Standard.Models
+namespace SolarLunarName.SharedTypes.Models
 {
     public class SolarLunarNameSimple
     {
@@ -18,7 +18,7 @@ namespace SolarLunarName.Standard.Models
                 return _year ;
                 }
             set {
-                if (value < 1700 || value > 2082)
+                if (! Ranges.Year.InRange(value))
                 {
                     throw new YearOutOfRangeException();
                 }
@@ -34,7 +34,7 @@ namespace SolarLunarName.Standard.Models
                 return _lunarMonth ;
                 }
             set {
-                if (value < 0 || value > 13)
+                if (! Ranges.Month.InRange(value))
                 {
                     throw new MonthOutOfRangeException();
                 }
@@ -50,7 +50,7 @@ namespace SolarLunarName.Standard.Models
                 return _lunarDay ;
                 }
             set {
-                if (value < 1 || value > 31)
+                if (! Ranges.Day.InRange(value))
                 {
                     throw new DayOutOfRangeException();
                 }
@@ -60,6 +60,7 @@ namespace SolarLunarName.Standard.Models
                 }
             } 
         }
+
     }
 
 

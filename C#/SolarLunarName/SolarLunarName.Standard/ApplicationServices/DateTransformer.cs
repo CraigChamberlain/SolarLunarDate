@@ -1,7 +1,4 @@
-﻿using SolarLunarName.Standard.Models;
-using System;
-using System.Linq;
-using SolarLunarName.Standard.RestServices.LocalJson;
+﻿using SolarLunarName.SharedTypes.Models;
 
 namespace SolarLunarName.Standard.ApplicationServices
 {
@@ -13,19 +10,19 @@ namespace SolarLunarName.Standard.ApplicationServices
         }
         private DateInstantiator di;
 
-         public Models.SolarLunarName AddDays(Models.SolarLunarName solarLunarName, double value){
+         public SolarLunarNameModel AddDays(SolarLunarNameModel solarLunarName, double value){
             
             return di.GetSolarLunarName(solarLunarName.SolarDateTime.AddDays(value));
 
         }
 
-        public Models.SolarLunarName AddMonths(Models.SolarLunarName solarLunarName, int value){
+        public SolarLunarNameModel AddMonths(SolarLunarNameModel solarLunarName, int value){
 
             return di.GetSolarLunarName(solarLunarName.SolarDateTime.AddMonths(value));
             
         }
 
-        public Models.SolarLunarName AddYears(Models.SolarLunarName solarLunarName, int value){
+        public SolarLunarNameModel AddYears(SolarLunarNameModel solarLunarName, int value){
 
             return di.GetSolarLunarName(solarLunarName.SolarDateTime.AddYears(value));
             

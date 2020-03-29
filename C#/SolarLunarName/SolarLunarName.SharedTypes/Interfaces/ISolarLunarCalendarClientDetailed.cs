@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
-using SolarLunarName.Standard.Models;
 
-namespace SolarLunarName.Standard.Types{
+namespace SolarLunarName.SharedTypes.Interfaces{
 
     public interface ISolarLunarCalendarClientDetailed : ISolarLunarCalendarClient
     {    

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System;
+using SolarLunarName.SharedTypes.Constants;
 
-
-namespace SolarLunarName.Standard.Models
+namespace SolarLunarName.SharedTypes.Models
 {
     class ValidateDateTime:ValidationAttribute {
 
@@ -10,10 +10,10 @@ namespace SolarLunarName.Standard.Models
                     IsValid(object value, ValidationContext validationContext)
             {   
                 DateTime _gregorianDate = Convert.ToDateTime(value); 
-                if (_gregorianDate.Year < 1700 || _gregorianDate.Year > 2082)
+                if (! Ranges.Year.InRange(_gregorianDate.Year))
                 {
                     return new ValidationResult
-                        ("Datetime must be between 1700 and 2082");}
+                        ($"Datetime must be between {Ranges.Year.Min} and {Ranges.Year.Max}");}
                 else
                 {
                     return ValidationResult.Success;
@@ -28,10 +28,10 @@ namespace SolarLunarName.Standard.Models
                     IsValid(object value, ValidationContext validationContext)
             {   
                 int _year = Convert.ToInt16(value); 
-                if (_year < 1700 || _year > 2081)
+                if (! Ranges.Year.InRange(_year))
                 {
                     return new ValidationResult
-                        ("Year must be between 1700 and 2081");}
+                        ($"{Ranges.Year.Label} must be {Ranges.Year.Min} and {Ranges.Year.Max}");}
                 else
                 {
                     return ValidationResult.Success;
@@ -45,10 +45,10 @@ namespace SolarLunarName.Standard.Models
                     IsValid(object value, ValidationContext validationContext)
             {   
                 int _month = Convert.ToInt16(value); 
-                if (_month < 0 || _month > 13)
+                if (! Ranges.Month.InRange(_month))
                 {
                     return new ValidationResult
-                        ("Month must be between 0 and 13");}
+                        ($"{Ranges.Month.Label} must be {Ranges.Month.Min} and {Ranges.Month.Max}");}
                 else
                 {
                     return ValidationResult.Success;
@@ -62,10 +62,10 @@ namespace SolarLunarName.Standard.Models
                     IsValid(object value, ValidationContext validationContext)
             {   
                 int _day = Convert.ToInt16(value); 
-                if ( _day < 1 || _day > 31)
+                if (! Ranges.Day.InRange(_day))
                 {
                     return new ValidationResult
-                        ("Day must be between 1 and 31");}
+                        ($"{Ranges.Day.Label} must be {Ranges.Day.Min} and {Ranges.Day.Max}");}
                 else
                 {
                     return ValidationResult.Success;

@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace SolarLunarName.Standard.Models
+namespace SolarLunarName.SharedTypes.Models
 {
     public class MoonPhaseEntity
     {

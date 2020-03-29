@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace SolarLunarName.Standard.Models
+namespace SolarLunarName.SharedTypes.Models
 {
-    public class SolarLunarName: SolarLunarNameSimple
+    public class SolarLunarNameModel: SolarLunarNameSimple
     {   
         
-        public SolarLunarName(DateTime solarDateTime, int year, int lunarMonth, int lunarDay)
+        public SolarLunarNameModel(DateTime solarDateTime, int year, int lunarMonth, int lunarDay)
             :base(year, lunarMonth, lunarDay)
         {
         SolarDateTime = solarDateTime;
