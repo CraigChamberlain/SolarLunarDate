@@ -12,20 +12,24 @@ namespace SolarLunarName.SharedTypes.Models
         LunarDay = lunarDay;
         }
         
+        protected void ValidationHelper<Exp>(int value, Range range) where Exp : System.Exception, new()  {
+                if (! range.InRange(value))
+                {
+                    throw new Exp();
+                }
+        }
+
         private int _year;
+        
         public int Year { 
             get {
                 return _year ;
                 }
             set {
-                if (! Ranges.Year.InRange(value))
-                {
-                    throw new YearOutOfRangeException();
-                }
-                else
-                {
-                    _year = value;
-                }
+
+                ValidationHelper<YearOutOfRangeException>(value, Ranges.Year);
+                _year = value;
+
             } 
         }
         private int _lunarMonth;
@@ -34,14 +38,10 @@ namespace SolarLunarName.SharedTypes.Models
                 return _lunarMonth ;
                 }
             set {
-                if (! Ranges.Month.InRange(value))
-                {
-                    throw new MonthOutOfRangeException();
-                }
-                else
-                {
-                    _lunarMonth = value;
-                }
+
+                ValidationHelper<MonthOutOfRangeException>(value, Ranges.Month);
+                _lunarMonth = value;
+
             } 
         }
         private int _lunarDay;
@@ -50,16 +50,13 @@ namespace SolarLunarName.SharedTypes.Models
                 return _lunarDay ;
                 }
             set {
-                if (! Ranges.Day.InRange(value))
-                {
-                    throw new DayOutOfRangeException();
-                }
-                else
-                {
-                    _lunarDay = value;
-                }
+                
+                ValidationHelper<DayOutOfRangeException>(value, Ranges.Day);
+                _lunarDay = value;
+                
             } 
         }
+        
 
     }
 

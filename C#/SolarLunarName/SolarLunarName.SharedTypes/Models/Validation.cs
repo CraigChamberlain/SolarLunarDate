@@ -2,6 +2,7 @@
 using System;
 using SolarLunarName.SharedTypes.Constants;
 
+// This is unused.  It may be useful in an mvc application but its otherwise too hard to implement.
 namespace SolarLunarName.SharedTypes.Models
 {
     class ValidateDateTime:ValidationAttribute {

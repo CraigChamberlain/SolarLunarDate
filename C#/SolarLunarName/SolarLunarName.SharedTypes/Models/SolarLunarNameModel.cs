@@ -1,4 +1,6 @@
 ﻿using System;
+using SolarLunarName.SharedTypes.Constants;
+using SolarLunarName.SharedTypes.Exceptions;
 
 namespace SolarLunarName.SharedTypes.Models
 {
@@ -11,8 +13,20 @@ namespace SolarLunarName.SharedTypes.Models
         SolarDateTime = solarDateTime;
         }
 
-        public DateTime SolarDateTime { get; set; }
+        private DateTime _solarDateTime;
+        
+        public DateTime SolarDateTime {
 
+            get {
+                return _solarDateTime ;
+                }
+            set {
+
+                ValidationHelper<YearOutOfRangeException>(value.Year, Ranges.Year);
+                _solarDateTime = value;
+                
+            } 
+        }
     }
 
 
