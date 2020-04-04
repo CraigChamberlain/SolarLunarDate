@@ -69,7 +69,7 @@ let update remote message (model:Model) =
         let cmd = Cmd.ofAsync remote.getSolarLunarDate model.gregorianDate RecvSolarLunarDate Error
         model, cmd    
     | RecvSolarLunarDate solarLunarDate ->
-        { model with solarLunarDate = Some solarLunarDate }, Cmd.none
+        { model with solarLunarDate = Some solarLunarDate; solarLunarDateBuilder = {Year = Int32.Parse(solarLunarDate.Split('-').[0]); Month =  Int32.Parse(solarLunarDate.Split('-').[1]); Day = Int32.Parse(solarLunarDate.Split('-').[2])}}, Cmd.none
     | Error exn ->
         { model with error = Some exn.Message }, Cmd.none
     | ClearError ->
@@ -79,7 +79,7 @@ let update remote message (model:Model) =
         model, cmd
     | RecvGregorianCalendarDate gregorianCalendarDate ->
         match gregorianCalendarDate with
-        | Ok date -> { model with gregorianDate =  date}, Cmd.ofMsg ClearError
+        | Ok date -> { model with gregorianDate =  date; solarLunarDate = model.solarLunarDateBuilder |> (fun x -> sprintf "%d-%d-%d" x.Year x.Month x.Day) |> Some }, Cmd.ofMsg ClearError
         | Result.Error msg -> { model with error = Some msg }, Cmd.none
     | SetYear y ->
         { model with solarLunarDateBuilder = 
@@ -93,36 +93,42 @@ let update remote message (model:Model) =
 
 type Main = Template<"wwwroot/main.html">
 
-let strToIntDef s def =
+let strToIntDef (s:string) def =
     match Int32.TryParse s with
     | true, i -> i
     | false, _ -> def
 
 
 let homePage model dispatch =
-    let selectToDate = DatePickerComp.datePicker model.gregorianDate (fun d -> d |> SetDate |> dispatch)
+    let selectToDate1 = DatePickerComp.datePicker model.gregorianDate (fun d -> d |> SetDate |> dispatch)
+    let selectToDate2 = 
+                input [ 
+                    attr.``type`` "date"
+                    //attr.value (model.gregorianDate.ToString("yyyy-MM-dd"))
+                    attr.max "2081-01-01"
+                    attr.min "1700-12-31"
+                    bind.change.dateTime model.gregorianDate (fun d -> d |> SetDate |> dispatch)
+                ]
+        
     let solarLunarDatePicker = form [] [
         input [ attr.``type`` "number"
-                attr.max 2082
+                attr.max 2081
                 attr.min 1700
-                attr.value model.solarLunarDateBuilder.Year
-                bind.changeInt model.solarLunarDateBuilder.Year (fun y -> y |> SetYear |> dispatch)
+                bind.change.int model.solarLunarDateBuilder.Year (fun y -> y |> SetYear |> dispatch)
               ]
         label [] [text "Year"]
 
         input [ attr.``type`` "number"
                 attr.max 13
                 attr.min 0
-                attr.value model.solarLunarDateBuilder.Month  
-                bind.changeInt model.solarLunarDateBuilder.Month (fun m -> m |> SetMonth |> dispatch)
+                bind.change.int model.solarLunarDateBuilder.Month (fun m -> m |> SetMonth |> dispatch)
         ]
         label [] [text "Month"]
 
         input [ attr.``type`` "number"  
                 attr.max 30
                 attr.min 0
-                attr.value model.solarLunarDateBuilder.Day
-                bind.changeInt model.solarLunarDateBuilder.Day (fun d -> d |> SetDay |> dispatch)
+                bind.change.int model.solarLunarDateBuilder.Day (fun d -> d |> SetDay |> dispatch)
                 ]
         label [] [text "Day"]
 
@@ -134,7 +140,8 @@ let homePage model dispatch =
         
     Main
         .Home()
-        .GregorianDate(selectToDate)
+        .GregorianDate1(selectToDate1)
+        .GregorianDate2(selectToDate2)
         .GregorianDateString(model.gregorianDate.ToShortDateString())
         .SolarLunarDate(
             cond model.solarLunarDate <| function

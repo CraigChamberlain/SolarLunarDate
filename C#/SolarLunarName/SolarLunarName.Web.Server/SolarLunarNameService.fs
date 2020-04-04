@@ -1,5 +1,6 @@
 namespace SolarLunarName.Web.Server
 
+open System
 open System.IO
 open Microsoft.AspNetCore.Hosting
 open Bolero
@@ -11,11 +12,11 @@ open SolarLunarName.Standard.RestServices.LocalJson
 type SolarLunarDateService(ctx: IRemoteContext, env: IWebHostEnvironment) =
     inherit RemoteHandler<Client.Main.SolarLunarDateService>()
     
-    let client = MoonDataClient(@"../../../../../../../moon-data/api/new-moon-data");
+    let client = MoonDataClient(@"/home/craig/Documents/src/moon-data/api/new-moon-data");
     let di = SolarLunarName.Standard.ApplicationServices.DateInstantiator(client)
     let solarLunarName dateTime = di.GetSolarLunarName(dateTime)
     
-    let calClient = LunarCalendarClient(@"../../../../../../../moon-data/api/lunar-solar-calendar")
+    let calClient = LunarCalendarClient(@"/home/craig/Documents/src/moon-data/api/lunar-solar-calendar")
     let dp = SolarLunarName.Standard.ApplicationServices.SolarDateParser(calClient)
     let gregorianCalendarDate = dp.ConvertSolarLunarName 
 
@@ -23,8 +24,8 @@ type SolarLunarDateService(ctx: IRemoteContext, env: IWebHostEnvironment) =
         {
 
             getSolarLunarDate = fun dateTime -> async {
-                return solarLunarName dateTime |> string
-            }
+                return solarLunarName dateTime |> (fun x -> sprintf "%d-%d-%d" x.Year x.LunarMonth x.LunarDay)                 
+                }
             
             convertSolarLunarDate = 
 
