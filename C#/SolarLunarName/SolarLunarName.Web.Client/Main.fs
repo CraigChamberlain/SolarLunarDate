@@ -8,7 +8,7 @@ open Bolero.Json
 open Bolero.Remoting
 open Bolero.Remoting.Client
 open Bolero.Templating.Client
-
+open SolarLunarName.SharedTypes.Constants
 
 /// The Elmish application's model.
 type Model =
@@ -105,29 +105,29 @@ let homePage model dispatch =
                 input [ 
                     attr.``type`` "date"
                     //attr.value (model.gregorianDate.ToString("yyyy-MM-dd"))
-                    attr.max "2081-01-01"
-                    attr.min "1700-12-31"
+                    attr.max (sprintf "%d-12-31" Ranges.Year.Max)
+                    attr.min (sprintf "%d-01-01" Ranges.Year.Min)
                     bind.change.dateTime model.gregorianDate (fun d -> d |> SetDate |> dispatch)
                 ]
         
     let solarLunarDatePicker = form [] [
         input [ attr.``type`` "number"
-                attr.max 2081
-                attr.min 1700
+                attr.max Ranges.Year.Max
+                attr.min Ranges.Year.Min
                 bind.change.int model.solarLunarDateBuilder.Year (fun y -> y |> SetYear |> dispatch)
               ]
         label [] [text "Year"]
 
         input [ attr.``type`` "number"
-                attr.max 13
-                attr.min 0
+                attr.max Ranges.Month.Max
+                attr.min Ranges.Month.Min
                 bind.change.int model.solarLunarDateBuilder.Month (fun m -> m |> SetMonth |> dispatch)
         ]
         label [] [text "Month"]
 
         input [ attr.``type`` "number"  
-                attr.max 30
-                attr.min 0
+                attr.max Ranges.Day.Max
+                attr.min Ranges.Day.Min
                 bind.change.int model.solarLunarDateBuilder.Day (fun d -> d |> SetDay |> dispatch)
                 ]
         label [] [text "Day"]

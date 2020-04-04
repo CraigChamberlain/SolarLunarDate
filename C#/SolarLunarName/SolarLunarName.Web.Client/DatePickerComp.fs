@@ -4,6 +4,8 @@ open System
 open Bolero.Html
 open NodaTimePicker
 open Microsoft.AspNetCore.Components
+open NodaTime
+open SolarLunarName.SharedTypes.Constants
 
 // Note: NodaTime is accessed qualified, to avoid conflicts.
 
@@ -13,6 +15,8 @@ open Microsoft.AspNetCore.Components
 type NodaLocalDateDelegate = delegate of NodaTime.LocalDate -> unit
 
 let datePicker (selectedDate: DateTime) (handleSelected: DateTime -> unit) =
+    let max = Ranges.Year.Max |> sprintf "%d-12-31" |> DateTime.Parse |> LocalDate.FromDateTime
+    let min = Ranges.Year.Min |> sprintf "%d-01-01" |> DateTime.Parse |> LocalDate.FromDateTime
     let myHandler (d: NodaTime.LocalDate) = d.ToDateTimeUnspecified() |> handleSelected
     let myDelegate = new NodaLocalDateDelegate(myHandler)
     let OnSelected = new EventCallback<NodaTime.LocalDate>(null, myDelegate)
@@ -21,6 +25,8 @@ let datePicker (selectedDate: DateTime) (handleSelected: DateTime -> unit) =
         "SelectedDate" => NodaTime.LocalDate.FromDateTime selectedDate
         "ShowClear" => false
         "DisplayWeekNumber" => false
+        "MaxDate" => max                  
+        "MinDate" => min 
 
         // "FirstDayOfWeek" => NodaTime.IsoDayOfWeek.Monday // default: Monday
 
