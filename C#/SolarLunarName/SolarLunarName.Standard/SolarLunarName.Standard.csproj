@@ -4,28 +4,16 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <PackageId>SolarLunarName.Standard</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>Craig Chamberlain</Authors>
+    <Company>Craig Chamberlain IT</Company>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Assets\MoonPhase.sqlite" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Assets\MoonPhase.sqlite" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1">
       <ExcludeAssets></ExcludeAssets>
       <IncludeAssets>All</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="RestSharp" Version="106.6.2">
-      <ExcludeAssets></ExcludeAssets>
-      <IncludeAssets>All</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="sqlite-net-pcl" Version="1.5.231">
-      <IncludeAssets>All</IncludeAssets>
-      <ExcludeAssets></ExcludeAssets>
     </PackageReference>
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0">
     </PackageReference>
