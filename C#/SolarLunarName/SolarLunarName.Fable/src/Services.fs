@@ -16,6 +16,14 @@ type Month =
     FirstDay: System.DateTime
   }
 
+type SolarLunarDateBuilder =
+    {
+        Year: int
+        Month: int
+        Day: int
+             
+    }  
+
 let getYear year = promise {
     let! year = Fetch.get<Month array>(sprintf "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar-detailed/%d/" year)
 
@@ -39,9 +47,20 @@ let solarLunarName (gregorianDate:System.DateTime) (year: Month array) =
     
     sprintf "%d-%d-%d" gregorianDate.Year month.Month day
   
+let convertSolarLunarName (date:SolarLunarDateBuilder) (year: Month array) =
+    
+    let month = 
+        year
+        |> Array.find (fun month -> month.Month = date.Month )
 
-  
+    month.FirstDay.AddDays(date.Day - 1 |> float )
+    
 let getSolarLunarName (date:System.DateTime) =
   date.Year
   |> getYear 
   |> Promise.map (solarLunarName date)
+
+let getConvertedSolarLunarDate (date:SolarLunarDateBuilder) =
+  date.Year
+  |> getYear 
+  |> Promise.map (convertSolarLunarName date)

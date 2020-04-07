@@ -20,20 +20,13 @@ type Model =
         DatePickerState : DatePicker.Types.State
     }
 
-and SolarLunarDateBuilder =
-    {
-        Year: int
-        Month: int
-        Day: int
-             
-    }
 
 
 type Msg =
     | DatePickerChanged of DatePicker.Types.State * (DateTime option)
     | GetSolarLunarDate
     | RecvSolarLunarDate of string
-    | RecvGregorianCalendarDate of Result<DateTime, string>
+    | RecvGregorianCalendarDate of DateTime
     | Error of exn
     | ClearError
     | Submit
@@ -73,12 +66,10 @@ let private update msg model =
     | ClearError ->
         { model with error = None }, Cmd.none
     | Submit -> 
-        //let cmd = Cmd.ofAsync remote.convertSolarLunarDate model.solarLunarDateBuilder RecvGregorianCalendarDate Error
-        model, Cmd.none
-    | RecvGregorianCalendarDate gregorianCalendarDate ->
-        match gregorianCalendarDate with
-        | Ok date -> { model with gregorianDate =  date ; solarLunarDate = model.solarLunarDateBuilder |> (fun x -> sprintf "%d-%d-%d" x.Year x.Month x.Day) |> Some }, Cmd.ofMsg ClearError
-        | Result.Error msg -> { model with error = Some msg }, Cmd.none
+        let cmd = Cmd.OfPromise.either getConvertedSolarLunarDate model.solarLunarDateBuilder RecvGregorianCalendarDate Error
+        model, cmd
+    | RecvGregorianCalendarDate date ->
+        { model with gregorianDate =  date ; solarLunarDate = model.solarLunarDateBuilder |> (fun x -> sprintf "%d-%d-%d" x.Year x.Month x.Day) |> Some }, Cmd.ofMsg ClearError
     | SetYear y ->
         { model with solarLunarDateBuilder = 
                         { model.solarLunarDateBuilder with Year = y } }, Cmd.none
@@ -134,7 +125,7 @@ let solarLunarDatePicker model dispatch =
             [ Control.div [ ]
                 [ Button.button [ Button.Props 
                   [ HTMLAttr.Type "button"
-                    OnSubmit (fun _ -> dispatch Submit)
+                    OnClick (fun _ -> dispatch Submit)
                   ] 
                 ] [ str "Attempt to Parse Solar Lunar Date" ]]
             ]
