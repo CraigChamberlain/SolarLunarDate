@@ -69,7 +69,11 @@ let private update msg model =
         let cmd = Cmd.OfPromise.either getConvertedSolarLunarDate model.solarLunarDateBuilder RecvGregorianCalendarDate Error
         model, cmd
     | RecvGregorianCalendarDate date ->
-        { model with gregorianDate =  date ; solarLunarDate = model.solarLunarDateBuilder |> (fun x -> sprintf "%d-%d-%d" x.Year x.Month x.Day) |> Some }, Cmd.ofMsg ClearError
+        { model with 
+            gregorianDate =  date ; 
+            solarLunarDate = model.solarLunarDateBuilder |> (fun x -> sprintf "%d-%d-%d" x.Year x.Month x.Day) |> Some 
+            DatePickerState = { model.DatePickerState with ReferenceDate = date }
+            }, Cmd.ofMsg ClearError
     | SetYear y ->
         { model with solarLunarDateBuilder = 
                         { model.solarLunarDateBuilder with Year = y } }, Cmd.none
