@@ -260,3 +260,5 @@ paket-files/
 __pycache__/
 *.pyc
 /SolarLunarName/SolarLunarName.CLI/App.config
+
+.ionide
