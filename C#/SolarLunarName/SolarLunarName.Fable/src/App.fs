@@ -85,7 +85,7 @@ let private update msg model =
                         { model.solarLunarDateBuilder with Day = d } }, Cmd.none
 
 // Configuration passed to the components
-let pickerConfig: DatePicker.Types.Config<'Msg>  = 
+let pickerConfig: DatePicker.Types.Config<Msg>  = 
         { OnChange = DatePickerChanged
           Local = Date.Local.englishUK
           DatePickerStyle = [ Position PositionOptions.Absolute
