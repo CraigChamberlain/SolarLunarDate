@@ -1,6 +1,7 @@
 module App.Services
 
 open Thoth.Fetch
+open Thoth.Json
 
 type Phase = 
     { Phase: int
@@ -24,12 +25,12 @@ type SolarLunarDateBuilder =
              
     }  
 
-let getYear year = promise {
-    let! year = Fetch.get<Month array>(sprintf "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar-detailed/%d/" year)
+let getYear (year : int)  = 
+  promise {
+    let url = sprintf "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar-detailed/%d/" year
+    return! Fetch.get<_, Month array>(url)
+  }
 
-    return year
-        
-}
 
 let normalise (date:System.DateTime) =
   System.DateTime(date.Year, date.Month, date.Day)
