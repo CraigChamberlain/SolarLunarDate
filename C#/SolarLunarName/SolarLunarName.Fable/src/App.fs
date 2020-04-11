@@ -8,6 +8,7 @@ open Fulma.Elmish
 open Fable.FontAwesome
 open System
 open App.Services
+open App.Types
 
 
 /// The Elmish application's model.
@@ -19,8 +20,6 @@ type Model =
         solarLunarDateBuilder: SolarLunarDateBuilder
         DatePickerState : DatePicker.Types.State
     }
-
-
 
 type Msg =
     | DatePickerChanged of DatePicker.Types.State * (DateTime option)
