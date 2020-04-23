@@ -1,26 +1,31 @@
 $fa-font-path: "~@fortawesome/fontawesome-free/webfonts/";
+
 @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "~@fortawesome/fontawesome-free/scss/regular.scss";
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
+$yellow: #ff9c01;
+$family-primary: 'Montserrat', sans-serif;
 @import '~bulma/bulma.sass';
 
 @import "~bulma-calendar/calendar.sass";
 
 
 
-.title {
-    font-family: 'Montserrat', sans-serif;
-}
-body {
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Monoton', cursive;
+    &.title{
+        font-weight: normal;
+    }
+}
+
+body {
     background-image: url(/assets/background.jpg);
     background-size: cover;
     height: 100vh;
     width: 100vw;
     overflow:hidden;
-
 }
 .circle-container{
     position: fixed;
@@ -50,6 +55,40 @@ body {
 .semi-circle.light {
     border-top-right-radius: 80vh;
     border-bottom-right-radius: 80vh;
-    background-color: yellow;
-	background: linear-gradient( to right, rgba(255, 156, 1, 0.1), rgba(238, 217, 47, .7 ));
+    background: linear-gradient( to right, rgba(255, 156, 1, 0.1), rgba(238, 217, 47, .7 ));
+}
+
+.panel-block{
+
+    background-color: white;
+    justify-content: center;
+
+}
+
+.gregorian .panel-heading{
+
+    background-color: $yellow;
+
+}
+.lunisolar .panel-heading{
+    color: white;
+    background-color: $dark;
+
+}
+.result .panel-heading{
+    color: white;
+    background-color: $red;
+
+}
+
+.button, dt {
+    background-color: $grey-light ;
+}
+dd {
+    margin-bottom: 1em;
+}
+
+dd, dt {
+    border: 1px solid $grey-light;
+    padding: 2px 5px;
 }
