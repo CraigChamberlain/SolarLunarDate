@@ -23,9 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 body {
     background-image: url(/assets/background.jpg);
     background-size: cover;
-    height: 100vh;
-    width: 100vw;
-    overflow:hidden;
+
 }
 .circle-container{
     position: fixed;
@@ -36,7 +34,10 @@ body {
 	align-items: center;
 	top:0;
 	left:0;
-	background: radial-gradient(circle, rgba(0,0,0,.1) 60%, rgb(0, 0, 0) );
+    background: radial-gradient(circle, rgba(0,0,0,.1) 60%, rgb(0, 0, 0) );
+    height: 100vh;
+    width: 100vw;
+    overflow:hidden;
 }
 .circle{
     transform: rotate(20deg);
@@ -79,6 +80,11 @@ body {
     color: white;
     background-color: $red;
 
+}
+
+.control {
+    display: flex;
+    justify-content: center;
 }
 
 .button, dt {
