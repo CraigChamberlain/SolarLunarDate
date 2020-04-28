@@ -145,35 +145,52 @@ let private view model dispatch =
     Hero.hero [ Hero.IsFullHeight ]
         [ Hero.body [ ]
             [ Container.container [ ]
-                [ Columns.columns [ Columns.CustomClass "has-text-centered" ]
-                    [ Column.column [ Column.Width(Screen.All, Column.IsOneThird)
-                                      Column.Offset(Screen.All, Column.IsOneThird) ]
-                        [ Image.image [ Image.Is128x128
-                                        Image.Props [ Style [ Margin "auto"] ] ]
-                            [ img [ Src "assets/fulma_logo.svg" ] ]
+                  [ Heading.h1 [ Heading.Modifiers [ 
+                                    Modifier.TextColor Color.IsWhiteTer 
+                                    Modifier.TextAlignment (Screen.All, TextAlignment.Centered)
+                                    ] ] [str "Lunisolar / Gregorian"]
+                    Heading.h1 [ Heading.Modifiers [ 
+                                    Modifier.TextColor Color.IsWhiteTer 
+                                    Modifier.TextAlignment (Screen.All, TextAlignment.Centered)
+                                    ] ] [str "Date Converter"]
+                    Columns.columns [ Columns.IsVCentered ]
+                      [ 
+                        Column.column  [ Column.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Centered)]] [
+                           Panel.panel [ Panel.CustomClass "lunisolar" ]
+                              [ Panel.heading [ ] [ str "From Lunisolar Date:"]
+                                Panel.Block.div [ ]
+                                  [ solarLunarDatePicker model dispatch ]]]
 
-                          Field.div [] 
-                            [ Heading.h3 [ Heading.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Left)] ] [str "Gregorian Date:"]
-                              root model dispatch
-                            ]
-                          
-                          Field.div [Field.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Left)]]
-                            [  
-                               Heading.h3 [] [str "Lunisolar Date:"]
-                               Text.p [] 
-                                [  model.solarLunarDate
-                                   |> Option.defaultValue ""
-                                   |>  str 
-                                ]
-                            ]
-                          Field.div []  
-                            [  
-                               Heading.h3 [ Heading.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Left)]] [str "Convert Lunisolar Date to Gregorian Calendar:"]
-                               solarLunarDatePicker model dispatch
-                            ]
+                        Column.column  [ Column.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Centered)]] [
+                           Panel.panel [ Panel.CustomClass "gregorian" ]
+                              [ Panel.heading [ ] [ str "From Gregorian Date:"]
+                                Panel.Block.div [ ] 
+                                  [ root model dispatch ]]]
 
-                        ] ] ] ] ]
-                                    
+                      ]
+                    Columns.columns [Columns.IsCentered ]
+                      [ 
+                        Column.column  [  Column.Width (Screen.All, Column.Is3) 
+                                          Column.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Centered)]] [  
+                          Panel.panel [ Panel.CustomClass "result" ]
+                                    [ Panel.heading [ ] [ str "Result"]
+                                      Panel.Block.div [ ] 
+                                        [
+                                          dl [][
+                                              dt [] [str "Gregorian Date:"]
+                                              dd [] [ model.gregorianDate.ToString("D") |> str ]
+                                              dt [] [str "Lunisolar Date:"]
+                                              dd [] [ model.solarLunarDate
+                                                       |> Option.defaultValue ""
+                                                       |>  str
+                                                    ]
+
+                                          ]
+                                         ] 
+                                    ]]]
+                      ]]]
+                
+                
 
 open Elmish.Debug
 open Elmish.HMR
