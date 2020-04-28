@@ -1,16 +1,20 @@
 ---
 ---
 
-.hero {
+.hero, .footer  {
+    background-color: black;
     background-image: url({{'/assets/images/background.jpg' | relative_url }});
     background-size: cover;
+}
+.hero {
     clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 0% 100%);
 }
-
+.hero h1{
+    font-family: 'Monoton', cursive;
+    font-weight: normal;
+}
 .footer {
     position: relative;
-    background-image: url({{'/assets/images/background.jpg' | relative_url }});
-    background-size: cover;
     clip-path: polygon( 0 30%, 100% 0, 100% 100%, 0 100%);
     color: white;
 }
