@@ -1,0 +1,26 @@
+---
+---
+
+.hero {
+    background-image: url({{'/assets/images/background.jpg' | relative_url }});
+    background-size: cover;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 0% 100%);
+}
+
+.footer {
+    position: relative;
+    background-image: url({{'/assets/images/background.jpg' | relative_url }});
+    background-size: cover;
+    clip-path: polygon( 0 30%, 100% 0, 100% 100%, 0 100%);
+    color: white;
+}
+.footer a,.footer a:active,.footer a:visited{
+    color: white;
+    text-decoration: underline;
+}
+.footer .content
+{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}

@@ -1,0 +1,11 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-end">
+        {% for page in site.html_pages%}
+            <div class="navbar-item">
+                <a href="{{ page.url | relative_url }}">
+                    <strong>{{ page.title }}</strong>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</nav>
