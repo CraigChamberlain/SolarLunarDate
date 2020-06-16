@@ -1,11 +1,13 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-start">
+<nav class="navbar section" role="navigation" aria-label="main navigation">
+    <div class="navbar-start container">
         {% for page in site.html_pages%}
+        {% if page.title %}
             <div class="navbar-item">
                 <a href="{{ page.url | relative_url }}" class="has-text-dark">
                     <strong>{{ page.title }}</strong>
                 </a>
             </div>
+        {% endif %}
         {% endfor %}
             <div class="navbar-item">
                 <a href="{{ 'tool' | relative_url }}" class="has-text-dark">

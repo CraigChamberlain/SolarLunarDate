@@ -17,14 +17,12 @@
     position: relative;
     clip-path: polygon( 0 30%, 100% 0, 100% 100%, 0 100%);
     color: white;
+    padding: 4rem 1.5rem 1rem;
 }
 .footer a,.footer a:active,.footer a:visited{
     color: white;
     text-decoration: underline;
 }
-.footer .content
-{
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
+.icons li {
+    display: inline;
 }
