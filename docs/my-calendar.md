@@ -76,4 +76,11 @@ questions:
 
         ```{SolarYear}-{FullmoonsOfYTD}-{DaysOfCurrentMoon}-{Tide}  
         e.g 2018-10-12-1```
+    - q: 'The calendar in practice:'
+      a: |
+        - [A basic visualisation in a familar calendar layout](https://craigchamberlain.github.io/SolarLunarCalendar/)
+        - [Convert to and from the calendar online](/SolarLunarDate/tool)
+        - [Explore an API](https://craigchamberlain.github.io/moon-data/)
+        - [Convert dates and query the calendar with a powershell module](https://www.powershellgallery.com/packages/SolarLunarName/)
+
 ---
