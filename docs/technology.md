@@ -5,7 +5,7 @@ title: Technology
 questions: 
     - q: What technology is used in the software component of this project?
       a: |
-        Basic algorithms may be ported in several technologies but will initially be written in F# and C# for .NET Core & consumed by a Powershell CLI, and a Fable app.
+        Basic algorithms may be ported in several technologies but will initially be written in F# and C# for .NET Core & consumed by a Powershell CLI, and a Fable app.  Sourcecode is currently hosted on this [github repo](https://github.com/CraigChamberlain/SolarLunarDate)
     - q: 'External APIs in use:'
       a: |
         -  [ADMIRALTY API](https://admiraltyapi.portal.azure-api.net/) 
