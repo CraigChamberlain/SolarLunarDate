@@ -14,9 +14,9 @@ questions:
       a: |
         ![Figure 1.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=d1rjgmgOwa)
 
-        There are between 12 and 13 lunar months in a solar year.  Typically in a lunisolar calendar, this means that to preserve complete year and month cycle, extra months must be added on particular years, in the way leep days are added to years in the Gregorian Calendar.
+        There are generally 12 complete lunar cycles in a solar year with one or, more frequently, two partial cycles.  Typically in a lunisolar calendar, this means that to preserve complete lunar cycles, year ends must be approximated to the end of a lunar cycle.  If a lunisolar year typically has 12 lunar months then extra months must be added on particular years to make up for lost days, in the way leep days are added to years in the Gregorian Calendar.
 
-        However this forces the year to vary considerably in length and requires complex patterns to decide which year to add a month.  This calendar will favour year and split the month that falls over the end of one year and the start of the following.
+        However this forces the year to vary considerably in length and requires complex patterns to decide which year to add a month.  This calendar will favour the complete solar year and split the months that fall over the start and end of a year.
 
         This is not completely unpresidented and is somewhat related to the concept of uncounted time.  [Some Coast Salish peoples used a calendar of this kind. For instance, the Chehalis began their count of lunar months from the arrival of spawning chinook salmon (in Gregorian calendar October), and counted 10 months, leaving an uncounted period until the next chinook salmon run.[3]](https://en.wikipedia.org/wiki/Lunisolar_calendar#With_uncounted_time)
 
