@@ -2,13 +2,13 @@
 layout: q-n-a
 title: FAQ
 questions: 
-    - q: 'Why is the Moon Involved in the Naming of a Sculpture?'
+    - q: 'What pushed you to consider a new lunar calendar?'
       a: |
-        The moon, as many will know, is linked to the tides on earth.  It is the orbital relationship of the earth, the moon and also the sun which sum together to create the rising and falling of our oceans.  
+        I started making sculptures from casts of sand ripples, that can be found on beaches at low tide.  You can see a close up of the surface of one in the banner of this page just above.
 
-        I started making sculptures from casts taken from the surface of beaches as the tides retreat to reveal ripples in the sand.
+        This led to an interest in the physics of the tides.  The moon, as many will know, is linked to the tides on earth.  It is the orbital relationship of the earth, the moon and also the sun which sum together to create the rising and falling of our oceans.
 
-        This led to an interest in the physics of the tides and wanted to pull in other significant ideas related to the recording of time and their cosmological significance.
+        Placing these impressions in an alternate timeline seemed very compatable with what I was trying to achieve with the sculptures so I started naming them according to a system derived from the lunar cycle.
 
     - q: 'About Calendars, the Sun and the Moon:'
       a: |
