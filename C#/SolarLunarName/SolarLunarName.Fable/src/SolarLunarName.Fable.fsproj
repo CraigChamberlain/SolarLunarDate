@@ -2,7 +2,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-  <ItemGroup>
+  <ItemGroup>    
+    <Compile Include="Types.fs" />
     <Compile Include="Services.fs" />
     <Compile Include="App.fs" />
   </ItemGroup>

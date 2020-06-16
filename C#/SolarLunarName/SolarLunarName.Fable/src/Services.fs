@@ -1,29 +1,7 @@
 module App.Services
 
 open Thoth.Fetch
-open Thoth.Json
-
-type Phase = 
-    { Phase: int
-      Days: int
-      DateTime: System.DateTime
-      FirstDay: System.DateTime
-      LastDay: System.DateTime }
-
-type Month = 
-  { Phases: Phase array
-    Month: int
-    Days: int
-    FirstDay: System.DateTime
-  }
-
-type SolarLunarDateBuilder =
-    {
-        Year: int
-        Month: int
-        Day: int
-             
-    }  
+open App.Types
 
 let getYear (year : int)  = 
   promise {

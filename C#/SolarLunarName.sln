@@ -8,9 +8,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolarLunarName.PoSH", "SolarLunarName\SolarLunarName.PoSH\SolarLunarName.PoSH.csproj", "{A73FFBD5-A715-414C-AF46-DB37E610546C}"
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "SolarLunarName.Web.Server", "SolarLunarName\SolarLunarName.Web.Server\SolarLunarName.Web.Server.fsproj", "{4E2AA925-4694-4593-ADBC-F349D269587A}"
-EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "SolarLunarName.Web.Client", "SolarLunarName\SolarLunarName.Web.Client\SolarLunarName.Web.Client.fsproj", "{1481BBD6-A6DA-4912-A03A-134880D14701}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolarLunarName.Standard.Tests", "SolarLunarName\SolarLunarName.Standard.Tests\SolarLunarName.Standard.Tests.csproj", "{F26BD804-8DF3-4647-A15C-7BE30252139B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolarLunarName.SharedTypes", "SolarLunarName\SolarLunarName.SharedTypes\SolarLunarName.SharedTypes.csproj", "{26F845B1-E9D6-433A-B2A1-C2E38F59DBFE}"
