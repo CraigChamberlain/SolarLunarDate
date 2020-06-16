@@ -14,7 +14,7 @@ questions:
       a: |
         ![Figure 1.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=d1rjgmgOwa)
 
-        There are generally 12 complete lunar cycles in a solar year with one or, more frequently, two partial cycles.  Typically in a lunisolar calendar, this means that to preserve complete lunar cycles, year ends must be approximated to the end of a lunar cycle.  If a lunisolar year typically has 12 lunar months then extra months must be added on particular years to make up for lost days, in the way leep days are added to years in the Gregorian Calendar.
+        12 complete lunar cycles have 354.36 days, 10.88 days less than the solar year.  Depending on the age of the moon at the start of a solar year it may have 11 or 12 whole months and one or two partial cycles.  Typically in a lunisolar calendar, this means that to preserve complete lunar cycles, year ends must be approximated to the end of a lunar cycle.  If a lunisolar year typically has 12 lunar months then extra months must be added on particular years to make up for lost days, in the way leep days are added to years in the Gregorian Calendar.
 
         However this forces the year to vary considerably in length and requires complex patterns to decide which year to add a month.  This calendar will favour the complete solar year and split the months that fall over the start and end of a year.
 
