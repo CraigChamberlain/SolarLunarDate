@@ -96,7 +96,8 @@ let private update msg model =
               GregorianDate =  date ;
               SolarLunarDate = model.SolarLunarDateBuilder |> (fun x -> sprintf "%d-%d-%d" x.Year x.Month x.Day) |> Some
               DatePickerState = { model.DatePickerState with ReferenceDate = date }
-              }, Cmd.ofMsg ClearError
+              Error = None
+              }, Cmd.ofMsg GetSolarLunarDate
         | Error message -> 
            { model with
                 AwaitingRequest = false
