@@ -30,9 +30,11 @@ let convertSolarLunarName (date:SolarLunarDateBuilder) (year: Month array) =
     
     let month = 
         year
-        |> Array.find (fun month -> month.Month = date.Month )
+        |> Array.tryFind (fun month -> month.Month = date.Month )
+    match month with 
+    | Some month -> month.FirstDay.AddDays(date.Day - 1 |> float ) |> Ok
+    | None -> Error "Month not found"
 
-    month.FirstDay.AddDays(date.Day - 1 |> float )
     
 let getSolarLunarName (date:System.DateTime) =
   date.Year

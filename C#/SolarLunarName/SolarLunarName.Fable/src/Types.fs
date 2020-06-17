@@ -1,7 +1,5 @@
 module App.Types
 
-open Fable.Validation.Core
-
 type Phase = 
     { Phase: int
       Days: int
@@ -23,9 +21,38 @@ type SolarLunarDateBuilder =
         Day: int          
     }  
 
- let validateYear (year:int)= 
-      fast <| fun t ->
-          t.Test "year" year
-                    |> t.Gte 1700 "should greater then {min}"
-                    |> t.Lte 2081 "shoudld less then {max}"
-                    |> t.End 
+module Validation =
+
+  type Item = string list option
+  type ValidationErrors =
+        {
+          Year :  Item
+          Month : Item
+          Day : Item
+        } 
+        
+  let itemHasErrors (item:Item) =
+          item <> Some [] &&
+          item <> None
+    
+  let setHasErrors validationErrors =
+          itemHasErrors validationErrors.Year ||
+          itemHasErrors validationErrors.Month ||
+          itemHasErrors validationErrors.Day
+
+  let UncheckedSet = { Year = None; Month = None; Day = None}
+
+  let validateYear year = 
+      [ year < 1700 || year > 2081, "Year must be between 1700 and 2081"]
+      |> List.filter fst
+      |> List.map snd
+
+  let validateMonth month = 
+        [ month < 0 || month > 13, "Month must be between 0 and 13"]
+        |> List.filter fst
+        |> List.map snd
+
+  let validateDay day = 
+        [ day < 1 || day > 30, "Day must be between 1 and 30"]
+        |> List.filter fst
+        |> List.map snd

@@ -9,40 +9,50 @@ open Fable.FontAwesome
 open System
 open App.Services
 open App.Types
+open App.Types.Validation
 
 
 /// The Elmish application's model.
 type Model =
     {
-        gregorianDate : DateTime
-        solarLunarDate: string option
-        error: string option
-        solarLunarDateBuilder: SolarLunarDateBuilder
+        GregorianDate : DateTime
+        SolarLunarDate: string option
+        Error: string option
+        SolarLunarDateBuilder: SolarLunarDateBuilder
         DatePickerState : DatePicker.Types.State
+        ValidationErrors : ValidationErrors
+        ModalState: bool
+        AwaitingRequest: bool
     }
 
 type Msg =
     | DatePickerChanged of DatePicker.Types.State * (DateTime option)
     | GetSolarLunarDate
     | RecvSolarLunarDate of string
-    | RecvGregorianCalendarDate of DateTime
-    | Error of exn
+    | RecvGregorianCalendarDate of Result<DateTime,string>
+    | ErrorMessage of exn
     | ClearError
     | Submit
     | SetYear of int
     | SetMonth of int
     | SetDay of int
+    | ValidateYear
+    | ValidateMonth
+    | ValidateDay
+    | ToggleModal
 
 
 let init _ = {
-                gregorianDate = DateTime.Now
-                solarLunarDate = None
-                error = None
-                solarLunarDateBuilder = { Year = DateTime.Now.Year; Month = 0; Day = 1; }
+                GregorianDate = DateTime.Now
+                SolarLunarDate = None
+                Error = None
+                SolarLunarDateBuilder = { Year = DateTime.Now.Year; Month = 0; Day = 1; }
                 DatePickerState =
                   { DatePicker.Types.defaultState with AutoClose = true; ShowDeleteButton = true }
+                ValidationErrors = Validation.UncheckedSet
+                ModalState = false
+                AwaitingRequest = false
               }, Cmd.ofMsg GetSolarLunarDate
-
 
 let private update msg model =
     match msg with
@@ -51,37 +61,70 @@ let private update msg model =
         match date with
         | Some d -> // Store the new state and the selected date
                 { model with DatePickerState = newState
-                             gregorianDate = d }
+                             GregorianDate = d }
         | None ->
                  { model with DatePickerState = newState}
         , Cmd.ofMsg GetSolarLunarDate
     | GetSolarLunarDate ->
-        let cmd = Cmd.OfPromise.either getSolarLunarName model.gregorianDate RecvSolarLunarDate Error
-        model, cmd
+        let cmd = Cmd.OfPromise.either getSolarLunarName model.GregorianDate RecvSolarLunarDate ErrorMessage
+        { model with AwaitingRequest = true }, cmd
     | RecvSolarLunarDate solarLunarDate ->
-        { model with solarLunarDate = Some solarLunarDate; solarLunarDateBuilder = {Year = Int32.Parse(solarLunarDate.Split('-').[0]); Month =  Int32.Parse(solarLunarDate.Split('-').[1]); Day = Int32.Parse(solarLunarDate.Split('-').[2])}}, Cmd.none
-    | Error exn ->
-        { model with error = Some exn.Message }, Cmd.none
+        { model with 
+            AwaitingRequest = false
+            SolarLunarDate = Some solarLunarDate; 
+            SolarLunarDateBuilder = { 
+                Year = Int32.Parse(solarLunarDate.Split('-').[0]); 
+                Month =  Int32.Parse(solarLunarDate.Split('-').[1]); 
+                Day = Int32.Parse(solarLunarDate.Split('-').[2])
+            }
+        }, Cmd.ofMsg ClearError
+    | ErrorMessage exn ->
+        { model with 
+            Error = Some exn.Message 
+            AwaitingRequest = false
+        }, Cmd.ofMsg ToggleModal
     | ClearError ->
-        { model with error = None }, Cmd.none
+        { model with Error = None }, Cmd.none
     | Submit ->
-        let cmd = Cmd.OfPromise.either getConvertedSolarLunarDate model.solarLunarDateBuilder RecvGregorianCalendarDate Error
-        model, cmd
+        let cmd = Cmd.OfPromise.either getConvertedSolarLunarDate model.SolarLunarDateBuilder RecvGregorianCalendarDate ErrorMessage
+        { model with AwaitingRequest = true }, cmd
     | RecvGregorianCalendarDate date ->
-        { model with
-            gregorianDate =  date ;
-            solarLunarDate = model.solarLunarDateBuilder |> (fun x -> sprintf "%d-%d-%d" x.Year x.Month x.Day) |> Some
-            DatePickerState = { model.DatePickerState with ReferenceDate = date }
-            }, Cmd.ofMsg ClearError
+        match date with
+        | Ok date ->
+          { model with
+              AwaitingRequest = false
+              GregorianDate =  date ;
+              SolarLunarDate = model.SolarLunarDateBuilder |> (fun x -> sprintf "%d-%d-%d" x.Year x.Month x.Day) |> Some
+              DatePickerState = { model.DatePickerState with ReferenceDate = date }
+              }, Cmd.ofMsg ClearError
+        | Error message -> 
+           { model with
+                AwaitingRequest = false
+                Error = Some message }, Cmd.none
+ 
     | SetYear y ->
-        { model with solarLunarDateBuilder =
-                        { model.solarLunarDateBuilder with Year = y } }, Cmd.none
+        { model with SolarLunarDateBuilder =
+                        { model.SolarLunarDateBuilder with Year = y } }, Cmd.ofMsg ValidateYear
     | SetMonth m ->
-        { model with solarLunarDateBuilder =
-                        { model.solarLunarDateBuilder with Month = m } }, Cmd.none
+        { model with SolarLunarDateBuilder =
+                        { model.SolarLunarDateBuilder with Month = m } }, Cmd.ofMsg ValidateMonth
     | SetDay d ->
-        { model with solarLunarDateBuilder =
-                        { model.solarLunarDateBuilder with Day = d } }, Cmd.none
+        { model with SolarLunarDateBuilder =
+                        { model.SolarLunarDateBuilder with Day = d } }, Cmd.ofMsg ValidateDay
+    | ValidateYear ->        
+        let yearErrors = validateYear model.SolarLunarDateBuilder.Year
+        let errors = { model.ValidationErrors with Year = Some yearErrors }
+        { model with ValidationErrors = errors  }, Cmd.none
+    | ValidateMonth ->        
+        let monthErrors = validateMonth model.SolarLunarDateBuilder.Month
+        let errors = { model.ValidationErrors with Month = Some monthErrors }
+        { model with ValidationErrors = errors  }, Cmd.none
+    | ValidateDay ->
+        let dayErrors = validateDay model.SolarLunarDateBuilder.Day
+        let errors = { model.ValidationErrors with Day = Some dayErrors }
+        { model with ValidationErrors = errors  }, Cmd.none
+    | ToggleModal ->
+        { model with ModalState = not model.ModalState }, Cmd.none
 
 // Configuration passed to the components
 let pickerConfig: DatePicker.Types.Config<Msg>  =
@@ -89,56 +132,102 @@ let pickerConfig: DatePicker.Types.Config<Msg>  =
           Local = Date.Local.englishUK
           DatePickerStyle = [ Position PositionOptions.Absolute
                               ZIndex 100
-                              MaxWidth "450px" ] }
+                              MaxWidth "450px" ] 
+             
+         }
 
 let root model dispatch =
-    DatePicker.View.root pickerConfig model.DatePickerState (Some model.gregorianDate) dispatch
+    DatePicker.View.root pickerConfig model.DatePickerState (Some model.GregorianDate) dispatch
 
+let solarLunarDatePickerItem dispatch title (value:int) errors msg = 
+  Field.div []
+        [ Label.label [] [str title]
+          Control.div [] [
+            Input.number [ 
+              Input.Props
+                [ HTMLAttr.Value value;
+                  OnChange (fun y -> y.Value |> int |> msg |> dispatch)
+              ] 
+              match errors with
+                  | Some [] -> Input.Color IsSuccess
+                  | Some _ -> Input.Color IsDanger
+                  | None -> () 
+               ]
+          ]
+          match errors with
+              | Some [] ->
+                  Help.help  [ Help.Color IsSuccess ] [ sprintf "This %s is valid" title |> str ]
+              | Some errorList ->
+                  let errorListHtml = ul [] (errorList |> List.map (fun e -> li [ ] [ str e ]) )
+                  Help.help  [ Help.Color IsDanger ] [errorListHtml]
+              | _ -> ()  
+          ]
 
 let solarLunarDatePicker model dispatch =
   form [] [
     Field.div[Field.IsGrouped][
-      Field.div []
-        [ Label.label [] [str "Year"]
-          Control.div [] [
-            Input.number [ Input.Props
-              [ Max 2081;
-                Min 1700 ;
-                HTMLAttr.Value model.solarLunarDateBuilder.Year;
-                OnChange (fun y -> y.Value |> int |> SetYear |> dispatch)
-             ] ]
-          ]]
-      Field.div []
-        [ Label.label [] [str "Month"]
-          Control.div [] [
-            Input.number [ Input.Props
-              [ Max 13;
-                Min 0 ;
-                HTMLAttr.Value model.solarLunarDateBuilder.Month;
-                OnChange (fun y -> y.Value |> int |> SetMonth |> dispatch)
-             ] ]
-           ]]
-      Field.div []
-        [ Label.label [] [str "Day"]
-          Control.div [] [
-            Input.number [ Input.Props
-              [ Max 30;
-                Min 1 ;
-                HTMLAttr.Value model.solarLunarDateBuilder.Day;
-                OnChange (fun y -> y.Value |> int |> SetDay |> dispatch)
-             ] ]
-           ]]]
+      let solarLunarDatePickerItem' = solarLunarDatePickerItem dispatch
+      solarLunarDatePickerItem'  "Year" model.SolarLunarDateBuilder.Year model.ValidationErrors.Year SetYear
+      solarLunarDatePickerItem'  "Month" model.SolarLunarDateBuilder.Month model.ValidationErrors.Month SetMonth
+      solarLunarDatePickerItem'  "Day" model.SolarLunarDateBuilder.Day model.ValidationErrors.Day SetDay
+    ]
     Field.div [ ]
             [ Control.div [ ]
                 [ Button.button [ Button.Props
                   [ HTMLAttr.Type "button"
                     OnClick (fun _ -> dispatch Submit)
+                    Disabled <| Validation.setHasErrors model.ValidationErrors
                   ]
                 ] [ str "Attempt to Parse Solar Lunar Date" ]]
             ]
 
 
      ]
+
+let loading = 
+  div [Class "loading" ] [ 
+    div [Class "lds-ring" ] [ 
+      div [] [] 
+      div [] []
+      div [] []
+      div [] []
+      ]
+    ]
+
+let result model =  
+   Panel.panel [ Panel.CustomClass "result" ]
+              [ Panel.heading [ ] [ str "Result"]
+                Panel.Block.div [ ]
+                  [
+
+                    if model.AwaitingRequest then loading
+                    match model.Error with 
+                    | None -> 
+                        dl [][
+                            dt [] [str "Gregorian Date:"]
+                            dd [] [ model.GregorianDate.ToString("D") |> str ]
+                            dt [] [str "Lunisolar Date:"]
+                            dd [] [ model.SolarLunarDate
+                                     |> Option.defaultValue ""
+                                     |>  str
+                                  ]
+
+                        ]
+                    | Some error -> str error 
+                    
+                   ]
+              ]
+
+
+
+let basicModal  model dispatch =
+    Modal.modal [ Modal.IsActive model.ModalState ]
+        [ Modal.background [ Props [ OnClick (fun _ -> dispatch ToggleModal) ] ] [ ]
+          Modal.content [ ]
+            [ Box.box' [ ] [result model] ]
+          Modal.close [ Modal.Close.Size IsLarge
+                        Modal.Close.OnClick (fun _ -> dispatch ToggleModal) ] [ ] ]
+
 
 
 let private view model dispatch =
@@ -174,22 +263,10 @@ let private view model dispatch =
                       [
                         Column.column  [  Column.Width (Screen.All, Column.Is3)
                                           Column.Modifiers [ Modifier.TextAlignment (Screen.All, TextAlignment.Centered)]] [
-                          Panel.panel [ Panel.CustomClass "result" ]
-                                    [ Panel.heading [ ] [ str "Result"]
-                                      Panel.Block.div [ ]
-                                        [
-                                          dl [][
-                                              dt [] [str "Gregorian Date:"]
-                                              dd [] [ model.gregorianDate.ToString("D") |> str ]
-                                              dt [] [str "Lunisolar Date:"]
-                                              dd [] [ model.solarLunarDate
-                                                       |> Option.defaultValue ""
-                                                       |>  str
-                                                    ]
-
-                                          ]
-                                         ]
-                                    ]]]
+                        result model
+                        div [ ]
+                             [ basicModal model dispatch ]
+                        ]]
                       ]]]
 
 
