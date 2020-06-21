@@ -137,6 +137,7 @@ let pickerConfig: DatePicker.Types.Config<Msg>  =
              
          }
 
+
 let root model dispatch =
     DatePicker.View.root pickerConfig model.DatePickerState (Some model.GregorianDate) dispatch
 
@@ -165,6 +166,7 @@ let solarLunarDatePickerItem dispatch title (value:int) errors msg =
           ]
 
 let solarLunarDatePicker model dispatch =
+
   form [] [
     Field.div[Field.IsGrouped][
       let solarLunarDatePickerItem' = solarLunarDatePickerItem dispatch
@@ -229,11 +231,28 @@ let basicModal  model dispatch =
           Modal.close [ Modal.Close.Size IsLarge
                         Modal.Close.OnClick (fun _ -> dispatch ToggleModal) ] [ ] ]
 
+let nav =
+    Navbar.navbar [ 
+      Navbar.IsFixedTop
+      ]
+        [ Container.container [ ]
+            [ Navbar.Start.div [ ]
+                [ Navbar.Brand.div [ ]
+                   [ Navbar.Item.a [
+                      Navbar.Item.Option.Props [ 
+                        OnClick (fun _ -> Browser.Dom.window.history.back() )  
+                        ]
+                   ]
+                    [  str "Back" ]
 
+            ]]]]
 
 let private view model dispatch =
+  div [][
+    nav
     Hero.hero [ Hero.IsFullHeight ]
-        [ Hero.body [ ]
+        [ 
+          Hero.body [ ]
             [ Container.container [ ]
                   [ Heading.h1 [ Heading.Modifiers [
                                     Modifier.TextSize (Screen.Mobile, TextSize.Is4)
@@ -268,7 +287,7 @@ let private view model dispatch =
                         div [ ]
                              [ basicModal model dispatch ]
                         ]]
-                      ]]]
+                      ]]]]
 
 
 
