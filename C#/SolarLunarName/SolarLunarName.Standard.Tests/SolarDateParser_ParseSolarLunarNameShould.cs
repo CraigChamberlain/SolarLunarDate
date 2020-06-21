@@ -11,7 +11,7 @@ namespace SolarLunarName.Standard.Tests
 
         public SolarDateParser_ParseSolarLunarNameShould(){
 
-            dp = new SolarDateParser(new LunarCalendarClient(@"../../../../../../../moon-data/api/lunar-solar-calendar"));
+            dp = new SolarDateParser(new LunarCalendarClient(Paths.calendarApi));
 
         }
         

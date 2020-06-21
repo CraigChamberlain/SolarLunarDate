@@ -12,7 +12,7 @@ namespace SolarLunarName.Standard.Tests
         private readonly CalendarDataService _calendarDataService;
 
         public CalendarDataService_GetSolarLunarYearShould(){
-            var client = new Standard.RestServices.LocalJson.LunarCalendarClient(@"../../../../../../../moon-data/api/lunar-solar-calendar");
+            var client = new Standard.RestServices.LocalJson.LunarCalendarClient(Paths.calendarApi);
             _calendarDataService = new CalendarDataService(client);
         }
 
