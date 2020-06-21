@@ -2,13 +2,13 @@
 layout: q-n-a
 title: FAQ
 questions: 
-    - q: 'Why is the Moon Involved in the Naming of a Sculpture?'
+    - q: 'What pushed you to consider a new lunar calendar?'
       a: |
-        The moon, as many will know, is linked to the tides on earth.  It is the orbital relationship of the earth, the moon and also the sun which sum together to create the rising and falling of our oceans.  
+        I started making sculptures from casts of sand ripples, that can be found on beaches at low tide.  You can see a close up of the surface of one in the banner of this page just above.
 
-        My sculptures are taken from the surface of beaches as the tides retreat to reveal ripples in the sand.
+        This led to an interest in the physics of the tides.  The moon, as many will know, is linked to the tides on earth.  It is the orbital relationship of the earth, the moon and also the sun which sum together to create the rising and falling of our oceans.
 
-        I became interested in the physics of the tides and wanted to pull in other significant ideas related to the recording of time and their cosmological significance.
+        Placing these impressions in an alternate timeline seemed very compatable with what I was trying to achieve with the sculptures so I started naming them according to a system derived from the lunar cycle.
 
     - q: 'About Calendars, the Sun and the Moon:'
       a: |
@@ -16,11 +16,11 @@ questions:
 
         However, there are many other calendars and systems of measuring the passage of time.  An astronomer may be more concerned with the rotation of the earth in relation to the stars than the sun, which the earth orbits, and divide their time into ['sidereal days'](https://en.wikipedia.org/wiki/Solar_time).
 
-        The Islamic calendar or [Hijra calendar](https://en.wikipedia.org/wiki/Islamic_calendar) is a lunar calendar.  A Hijra year consists of 12 lunar or synodic months each 29 or 30 days long - an intiger approximation for irrational period which can be closer approximated as 29.53 solar days.  Most interestingly, many versions of the Hijra calendar may only be predicted into the future. The exact end of a month and the start of a new are actually revealed by [observation of the new moon](https://en.wikipedia.org/wiki/Islamic_calendar#Astronomical_considerations) by clerics.
+        The Islamic calendar or [Hijra calendar](https://en.wikipedia.org/wiki/Islamic_calendar) is a lunar calendar.  A Hijra year consists of 12 lunar months each 29 or 30 days long - an intiger approximation for irrational period which can be closer approximated as 29.53 solar days.  Most interestingly, many versions of the Hijra calendar may only be predicted into the future. The exact end of a month and the start of a new are actually revealed by [observation of the new moon](https://en.wikipedia.org/wiki/Islamic_calendar#Astronomical_considerations) by clerics.
 
         <a title="Mostafameraji [CC BY 4.0 (https://creativecommons.org/licenses/by/4.0)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:%D8%A7%D8%B3%D8%AA%D9%87%D9%84%D8%A7%D9%84_%D9%85%D8%A7%D9%87_%D8%B1%D9%85%D8%B6%D8%A7%D9%86_%D8%AF%D8%B1_%D8%B4%D9%87%D8%B1_%D9%82%D9%85%D8%8C_%D8%B9%DA%A9%D8%A7%D8%B3_%D9%85%D8%B5%D8%B7%D9%81%DB%8C_%D9%85%D8%B9%D8%B1%D8%A7%D8%AC%DB%8C%D8%8C_%D8%A8%D9%84%D9%86%D8%AF%DB%8C_%D9%87%D8%A7%DB%8C_%D8%A8%D9%88%D8%B3%D8%AA%D8%A7%D9%86_%D8%B9%D9%84%D9%88%DB%8C_%D9%82%D9%85_12.jpg" target="_blank"><img width="512" alt="استهلال ماه رمضان در شهر قم، عکاس مصطفی معراجی، بلندی های بوستان علوی قم 12" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/%D8%A7%D8%B3%D8%AA%D9%87%D9%84%D8%A7%D9%84_%D9%85%D8%A7%D9%87_%D8%B1%D9%85%D8%B6%D8%A7%D9%86_%D8%AF%D8%B1_%D8%B4%D9%87%D8%B1_%D9%82%D9%85%D8%8C_%D8%B9%DA%A9%D8%A7%D8%B3_%D9%85%D8%B5%D8%B7%D9%81%DB%8C_%D9%85%D8%B9%D8%B1%D8%A7%D8%AC%DB%8C%D8%8C_%D8%A8%D9%84%D9%86%D8%AF%DB%8C_%D9%87%D8%A7%DB%8C_%D8%A8%D9%88%D8%B3%D8%AA%D8%A7%D9%86_%D8%B9%D9%84%D9%88%DB%8C_%D9%82%D9%85_12.jpg/512px-%D8%A7%D8%B3%D8%AA%D9%87%D9%84%D8%A7%D9%84_%D9%85%D8%A7%D9%87_%D8%B1%D9%85%D8%B6%D8%A7%D9%86_%D8%AF%D8%B1_%D8%B4%D9%87%D8%B1_%D9%82%D9%85%D8%8C_%D8%B9%DA%A9%D8%A7%D8%B3_%D9%85%D8%B5%D8%B7%D9%81%DB%8C_%D9%85%D8%B9%D8%B1%D8%A7%D8%AC%DB%8C%D8%8C_%D8%A8%D9%84%D9%86%D8%AF%DB%8C_%D9%87%D8%A7%DB%8C_%D8%A8%D9%88%D8%B3%D8%AA%D8%A7%D9%86_%D8%B9%D9%84%D9%88%DB%8C_%D9%82%D9%85_12.jpg"></a>
 
-        Although, the two calendars above are charactorised as Solar and Lunar respectively, both remain influenced by the sun and the moon.  For example in the Gregorian calendar the months are between 29 and 31 days, very close to the synodic month of ~29.53 days.  [Indeed the word "month" shares a common root with the word "moon".](https://www.etymonline.com/word/Month) Similarly, although the year and the month of the Hijra are defined by the moon, the day is dictated by the rising and setting of the sun.
+        Although, the two calendars above are charactorised as Solar and Lunar respectively, both remain influenced by the sun and the moon.  For example in the Gregorian calendar the months are between 29 and 31 days, very close to the lunar month of ~29.53 days.  [Indeed the word "month" shares a common root with the word "moon".](https://www.etymonline.com/word/Month) Similarly, although the year and the month of the Hijra are defined by the moon, the day is dictated by the rising and setting of the sun.
 
         There is a third class of calendar, the [Lunisolar calendars](https://en.wikipedia.org/wiki/Lunisolar_calendar), of which there are a great many sophisticated examples throughout the world and throughout history.
 

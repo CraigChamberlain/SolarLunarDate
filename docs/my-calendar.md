@@ -14,15 +14,33 @@ questions:
       a: |
         ![Figure 1.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=d1rjgmgOwa)
 
-        There are between 12 and 13 lunar months in a solar year.  Typically in a lunisolar calendar, this means that to preserve complete year and month cycle, extra months must be added on particular years, in the way leep days are added to years in the Gregorian Calendar.
+        12 complete lunar months have 354.36 days, 10.88 days less than the solar year.  Depending on the age of the moon at the start of a solar year it may have 11 or 12 whole months and one or two partial month.  Typically in a lunisolar calendar, this means that to preserve complete lunar month, year ends must be approximated to the end of a lunar month.  If a lunisolar year typically has 12 lunar months then extra months must be added on particular years to make up for lost days, in the way leep days are added to years in the Gregorian Calendar.
 
-        However this forces the year to vary considerably in length and requires complex patterns to decide which year to add a month.  This calendar will favour year and split the month that falls over the end of one year and the start of the following.
+        However this forces the year to vary considerably in length and requires complex patterns to decide which year to add a month.  This calendar will favour the complete solar year and split the months that fall over the start and end of a year.
 
         This is not completely unpresidented and is somewhat related to the concept of uncounted time.  [Some Coast Salish peoples used a calendar of this kind. For instance, the Chehalis began their count of lunar months from the arrival of spawning chinook salmon (in Gregorian calendar October), and counted 10 months, leaving an uncounted period until the next chinook salmon run.[3]](https://en.wikipedia.org/wiki/Lunisolar_calendar#With_uncounted_time)
 
         Therefore, months will begin on the day of the new moon or the start of a new year.  Months will end on the day before the new moon or the end of the year.
 
-        ![Figure 2.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=bUzavqqsE)
+        There are 4 cases of how lunar months may intersect a given solar year. In all cases there are 13 or 14 resulting months.  As lunar month lengths vary somewhat the figures given for age of the moon in each case are based on a simplified model and may be out by a day or so in some years.
+        
+        When the age of the moon approximates to 0 days on the start of the year:
+
+        ![Figure 2.2](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=bUzavqqsE)
+
+        When the age of the moon approximates to between 1 and 10 days inclusive on the start of the year:
+
+        ![Figure 2.1](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=427.2&height=214.08&select=ag1mmNc0S)
+        
+        When the age of the moon approximates to between 11 and 19 days on the start of the year, or the last day of the last lunar month is also the last day of the year:
+
+        ![Figure 2.3](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=427.2&height=214.08&select=aKSCDJb1I)
+
+        When the age of the moon approximates to between 20 days and two days before the end of the month inclusive on the start of the year:
+
+        ![Figure 2.3](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=427.2&height=214.08&select=a2YzVlfzRu)
+
+        
 
     - q: 'Identifying the Date of the New Moon:'
       a: | 
@@ -32,7 +50,7 @@ questions:
         Months will be named 0-13.  I chose 0 as the first month as it will only be a complete month in exceptional circumstances.  It would be fun to name the final month X for the same reasons.  However, I will stick with integers as I also like the reference to [the indexing of sequences which begins at 0 in computing and mathematics](https://en.wikipedia.org/wiki/Zero-based_numbering).
     - q: 'Length of Month:'
       a: |
-        The Synodal month is not a whole number of days.  Therefore the calendar months will have varialble lenghts.
+        The Lunar month is not a whole number of days.  Therefore the calendar months will have varialble lengths.
 
         ![Figure 3.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=400&select=d9InyNA1qXpage0)
 
@@ -58,4 +76,11 @@ questions:
 
         ```{SolarYear}-{FullmoonsOfYTD}-{DaysOfCurrentMoon}-{Tide}  
         e.g 2018-10-12-1```
+    - q: 'The calendar in practice:'
+      a: |
+        - [A basic visualisation in a familar calendar layout](https://craigchamberlain.github.io/SolarLunarCalendar/)
+        - [Convert to and from the calendar online](/SolarLunarDate/tool)
+        - [Explore an API](https://craigchamberlain.github.io/moon-data/)
+        - [Convert dates and query the calendar with a powershell module](https://www.powershellgallery.com/packages/SolarLunarName/)
+
 ---
