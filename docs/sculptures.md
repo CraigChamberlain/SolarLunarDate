@@ -19,7 +19,13 @@ gallery:
 <ul class="gallery 2x2 columns is-multiline is-vcentered">
 {% for work in page.gallery %}
   <li class="column is-half">
-    <img src="{{'/assets/images/' | append: work.image | relative_url }}"/>
+    <picture>
+      {% assign url = '/assets/images/' | append: work.image | replace: '.jpg', '' | append: '_700'  | relative_url %}
+      <source srcset="{{ url }}.webp" type="image/webp">
+      <source srcset="{{ url }}.jpg" type="image/jpeg"> 
+      <img src="{{ url }}.jpg"/>
+    </picture>
+    
     <h3>{{ work.name }}</h3>
   </li>
 {% endfor%}
@@ -27,19 +33,22 @@ gallery:
 </section>
 <section class="section" id="exhibitions">
 <h2 class="title">Exhibitions</h2>
-
-<img src="{{'/assets/images/IMG_1254.jpg' | relative_url }}" alt="Artist at Exhibition"/>
+<picture>
+  <source srcset="{{'/assets/images/IMG_1254_3x2_1800.webp' | relative_url }}" type="image/webp">
+  <source srcset="{{'/assets/images/IMG_1254_3x2_1800.jpg' | relative_url }}"> 
+  <img src="{{'/assets/images/IMG_1254_3x2_1800.jpg' | relative_url }}" alt="Artist at Exhibition"/>
+</picture>
 
 <ol>
   <li>
-    <a href="{{'/assets/images/20130405CrownGalleryCarlisle-CumberlandNews-Friday5thApri2003.jpg' | relative_url }}" target="_blank"><h3>Time and Tide @ Crown Gallery, Carlisle - 06/04/2013-15/05/2013 </h3></a>
+    <a href="{{'/assets/images/20130405CrownGalleryCarlisle-CumberlandNews-Friday5thApri2003_3x2_1800.jpg' | relative_url }}" target="_blank"><h3>Time and Tide @ Crown Gallery, Carlisle - 06/04/2013-15/05/2013 </h3></a>
     <p>
       Group Exhibition with <a href="https://www.diasfineart.co.uk/" target="_blank">Joe Dias</a>
     </p>
   </li>
 
   <li>
-    <a href="{{'/assets/images/posterII.jpg ' | relative_url}}" target="_blank">
+    <a href="{{'/assets/images/posterII_3x2_1800.jpg ' | relative_url}}" target="_blank">
       <h3>U-Hang @ Art Gene, Barrow in Furness - 04/2014 </h3>
     </a>
     <p>
