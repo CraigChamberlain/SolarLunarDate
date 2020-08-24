@@ -4,7 +4,7 @@ title: FAQ
 questions: 
     - q: 'What pushed you to consider a new lunar calendar?'
       a: |
-        I started making sculptures from casts of sand ripples, that can be found on beaches at low tide.  You can see a close up of the surface of one in the banner of this page just above.
+        I started making <a href="/SolarLunarDate/sculptures">sculptures</a> from casts of sand ripples, that can be found on beaches at low tide.  You can see a close up of the surface of one in the banner of this page just above.
 
         This led to an interest in the physics of the tides.  The moon, as many will know, is linked to the tides on earth.  It is the orbital relationship of the earth, the moon and also the sun which sum together to create the rising and falling of our oceans.
 
