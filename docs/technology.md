@@ -1,7 +1,7 @@
 ---
 layout: q-n-a
 title: Technology
-
+redirect_from: technology.html
 questions: 
     - q: What technology is used in the software component of this project?
       a: |

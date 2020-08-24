@@ -1,6 +1,7 @@
 ---
 layout: q-n-a
 title: Sculptures
+redirect_from: sculptures.html
 gallery: 
   - name: "Lead Oblong, Allonby, 2010 (2/2)"
     image: 10_BC-01-c.jpg

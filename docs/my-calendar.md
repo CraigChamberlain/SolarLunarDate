@@ -1,6 +1,7 @@
 ---
 layout: q-n-a
 title: My Calendar
+redirect_from: my-calendar.html
 questions: 
     - q: 'This Calendar will use Coordinated Universal Time (UTC):'
       a: |
