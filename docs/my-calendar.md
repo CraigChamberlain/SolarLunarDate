@@ -45,7 +45,7 @@ questions:
 
     - q: 'Identifying the Date of the New Moon:'
       a: | 
-        The new moon will be identified by api lookup or calculation.  It will not depend on observation. 
+        The new moon will be identified by API lookup or calculation.  It will not depend on observation. 
     - q: 'The Naming of Months:'
       a: |
         Months will be named 0-13.  I chose 0 as the first month as it will only be a complete month in exceptional circumstances.  It would be fun to name the final month X for the same reasons.  However, I will stick with integers as I also like the reference to [the indexing of sequences which begins at 0 in computing and mathematics](https://en.wikipedia.org/wiki/Zero-based_numbering).
@@ -66,7 +66,7 @@ questions:
         e.g 2018-10-12```
 
 
-        It would be good to have a version that made more of the Phase of the Moon, this would make it more universal, and limit the problems associated with crushing timezone.
+        It would be good to have a version that made more of the Phase of the Moon, this would make it more universal, and limit the problems associated with crushing time zone.
 
         ```{SolarYear}-{FullMoonsOfYTD}-{Phase of Moon in 1/8ths of Moon}  
         e.g 2018-10-1/2```
@@ -82,6 +82,6 @@ questions:
         - [A basic visualisation in a familiar calendar layout](https://craigchamberlain.github.io/SolarLunarCalendar/)
         - [Convert to and from the calendar online](/SolarLunarDate/tool)
         - [Explore an API](https://craigchamberlain.github.io/moon-data/)
-        - [Convert dates and query the calendar with a powershell module](https://www.powershellgallery.com/packages/SolarLunarName/)
+        - [Convert dates and query the calendar with a PowerShell module](https://www.powershellgallery.com/packages/SolarLunarName/)
 
 ---
