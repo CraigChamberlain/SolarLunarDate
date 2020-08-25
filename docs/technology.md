@@ -14,7 +14,7 @@ questions:
 
         -  [The United States Naval Observatory (USNO)](https://aa.usno.navy.mil/data/docs/api.php#phase)
         
-           Appears to be off-line for maintainence but have permission to serve data processed from this source.
+           Appears to be off-line for maintenance but have permission to serve data processed from this source.
            [Example response](/USNO/ExampleYear.json){:target="_blank"}
 
 ---

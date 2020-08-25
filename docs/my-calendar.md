@@ -5,21 +5,21 @@ redirect_from: my-calendar.html
 questions: 
     - q: 'This Calendar will use Coordinated Universal Time (UTC):'
       a: |
-        The moon has the same phase apparent to the earth irispective of time zone.  Initially, my calendar will not count hours.  A local component and a subdivision of the day may be introduced at a later date.  Particularly when if another element of locality, tides is added.
+        The moon has the same phase apparent to the earth irrespective of time zone.  Initially, my calendar will not count hours.  A local component and a subdivision of the day may be introduced at a later date.  For example tides may bisect a day but depend very largely locality as do, sunrises and sunsets.
     - q: 'The Measurement of Years:'
       a: |
-        The earth completes a circuit of the sun roughly, every 365.25 days.  Any given point in this cycle could be called the start/end of a year although there are four natural points to choose from, namely the [solstices](https://en.wikipedia.org/wiki/Solstice) and [equinoxes](https://en.wikipedia.org/wiki/Equinox).  For example in the Gregorian calendar, the new year is related but not identical to the winter solsice which is usually the 21st or 22nd of December, the shortest day of the year as experienced in the Northern Hemisphere (N.B this same event would be observed as the summer solstice in the Southern Hemisphere).
+        The earth completes a circuit of the sun roughly, every 365.25 days.  Any given point in this cycle could be called the start/end of a year although there are four natural points to choose from, namely the [solstices](https://en.wikipedia.org/wiki/Solstice) and [equinoxes](https://en.wikipedia.org/wiki/Equinox).  For example in the Gregorian calendar, the new year is related but not identical to the winter solstice which is usually the 21st or 22nd of December, the shortest day of the year as experienced in the Northern Hemisphere (N.B this same event would be observed as the summer solstice in the Southern Hemisphere).
 
-        This calander could have taken the dates of one of these astronmical events as the start of its year.  However, I have decided to count my years in the Common Era and begin the year on the 1st of Janurary in the Gregorian Calendar.  This will make the calendar simpler to implement and simpler to understand, as a map onto the Gegorian Calendar.  I may make a "strict mode" at a later date, which would be largely in phase but not sync with the Gregorian Calendar.
+        This calender could have taken the dates of one of these astronomical events as the start of its year.  However, I have decided to count my years in the Common Era and begin the year on the 1st of January in the Gregorian Calendar.  This will make the calendar simpler to implement and simpler to understand, as a map onto the Gregorian Calendar.  I may make a "strict mode" at a later date, which would be largely in phase but not sync with the Gregorian Calendar.
     - q: 'The Measurement of Months:'
       a: |
         ![Figure 1.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=d1rjgmgOwa)
 
-        12 complete lunar months have 354.36 days, 10.88 days less than the solar year.  Depending on the age of the moon at the start of a solar year it may have 11 or 12 whole months and one or two partial month.  Typically in a lunisolar calendar, this means that to preserve complete lunar month, year ends must be approximated to the end of a lunar month.  If a lunisolar year typically has 12 lunar months then extra months must be added on particular years to make up for lost days, in the way leep days are added to years in the Gregorian Calendar.
+        12 complete lunar months have 354.36 days, 10.88 days less than the solar year.  Depending on the age of the moon at the start of a solar year it may have 11 or 12 whole months and one or two partial month.  Typically in a lunisolar calendar, this means that to preserve complete lunar month, year ends must be approximated to the end of a lunar month.  If a lunisolar year typically has 12 lunar months then extra months must be added on particular years to make up for lost days, in the way leap days are added to years in the Gregorian Calendar.
 
         However this forces the year to vary considerably in length and requires complex patterns to decide which year to add a month.  This calendar will favour the complete solar year and split the months that fall over the start and end of a year.
 
-        This is not completely unpresidented and is somewhat related to the concept of uncounted time.  [Some Coast Salish peoples used a calendar of this kind. For instance, the Chehalis began their count of lunar months from the arrival of spawning chinook salmon (in Gregorian calendar October), and counted 10 months, leaving an uncounted period until the next chinook salmon run.[3]](https://en.wikipedia.org/wiki/Lunisolar_calendar#With_uncounted_time)
+        This is not completely unprecedented and is somewhat related to the concept of uncounted time.  [Some Coast Salish peoples used a calendar of this kind. For instance, the Chehalis began their count of lunar months from the arrival of spawning chinook salmon (in Gregorian calendar October), and counted 10 months, leaving an uncounted period until the next chinook salmon run.](https://en.wikipedia.org/wiki/Lunisolar_calendar#With_uncounted_time)
 
         Therefore, months will begin on the day of the new moon or the start of a new year.  Months will end on the day before the new moon or the end of the year.
 
@@ -51,35 +51,35 @@ questions:
         Months will be named 0-13.  I chose 0 as the first month as it will only be a complete month in exceptional circumstances.  It would be fun to name the final month X for the same reasons.  However, I will stick with integers as I also like the reference to [the indexing of sequences which begins at 0 in computing and mathematics](https://en.wikipedia.org/wiki/Zero-based_numbering).
     - q: 'Length of Month:'
       a: |
-        The Lunar month is not a whole number of days.  Therefore the calendar months will have varialble lengths.
+        The Lunar month is not a whole number of days.  Therefore the calendar months will have variable lengths.
 
         ![Figure 3.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=400&select=d9InyNA1qXpage0)
 
         Each month will have have 29-30 days.
     - q: 'Displaying Dates:'
       a: |
-        A date in this calendar will typically have a Year, a Month, a Day and a UTC Gregian DateTime.
+        A date in this calendar will typically have a Year, a Month, a Day and a UTC Gregorian DateTime.
 
         I would like to have variations that include the phase of the moon 
 
-        ```{SolarYear}-{FullmoonsOfYTD}-{DaysOfCurrentMoon} 
+        ```{SolarYear}-{FullMoonsOfYTD}-{DaysOfCurrentMoon} 
         e.g 2018-10-12```
 
 
-        It would be good to have a verison that made more of the Phase of the Moon, this would make it more universal, and limit the problems assosiated with crushing timezone.
+        It would be good to have a version that made more of the Phase of the Moon, this would make it more universal, and limit the problems associated with crushing timezone.
 
-        ```{SolarYear}-{FullmoonsOfYTD}-{Phase of Moon in 1/8ths of Moon}  
+        ```{SolarYear}-{FullMoonsOfYTD}-{Phase of Moon in 1/8ths of Moon}  
         e.g 2018-10-1/2```
 
-        Finally I would really like to include some notion of geographic location, particualy tide which is experience hetrogeniously accross on the surphase of the earth.
+        Finally I would really like to include some notion of geographic location, particularly tide which is experience heterogeneously across on the surface of the earth.
 
         This may be displayed as follows but would perhaps include co-ordinates in the object.
 
-        ```{SolarYear}-{FullmoonsOfYTD}-{DaysOfCurrentMoon}-{Tide}  
+        ```{SolarYear}-{FullMoonsOfYTD}-{DaysOfCurrentMoon}-{Tide}  
         e.g 2018-10-12-1```
     - q: 'The calendar in practice:'
       a: |
-        - [A basic visualisation in a familar calendar layout](https://craigchamberlain.github.io/SolarLunarCalendar/)
+        - [A basic visualisation in a familiar calendar layout](https://craigchamberlain.github.io/SolarLunarCalendar/)
         - [Convert to and from the calendar online](/SolarLunarDate/tool)
         - [Explore an API](https://craigchamberlain.github.io/moon-data/)
         - [Convert dates and query the calendar with a powershell module](https://www.powershellgallery.com/packages/SolarLunarName/)
