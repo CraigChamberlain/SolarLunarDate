@@ -25,19 +25,19 @@ questions:
 
         There are 4 cases of how lunar months may intersect a given solar year. In all cases there are 13 or 14 resulting months.  As lunar month lengths vary somewhat the figures given for age of the moon in each case are based on a simplified model and may be out by a day or so in some years.
         
-        When the age of the moon approximates to 0 days on the start of the year:
+        When the first day of the year is the day of a new moon:
 
         ![Figure 2.2](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=bUzavqqsE)
 
-        When the age of the moon approximates to between 1 and 10 days inclusive on the start of the year:
+        When the first month is incomplete but long enough to mean only 11 whole months are possible and a further incomplete month at the end:
 
         ![Figure 2.1](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=427.2&height=214.08&select=ag1mmNc0S)
         
-        When the age of the moon approximates to between 11 and 19 days on the start of the year, or the last day of the last lunar month is also the last day of the year:
+        When the last day of the last lunar month of the year is also the last day of the year:
 
         ![Figure 2.3](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=427.2&height=214.08&select=aKSCDJb1I)
 
-        When the age of the moon approximates to between 20 days and ~28 days (or two days before the end of the month) on the start of the year:
+        When the first month is incomplete but short enough to mean 12 whole months are possible and a further incomplete month at the end:
 
         ![Figure 2.3](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=427.2&height=214.08&select=a2YzVlfzRu)
 
