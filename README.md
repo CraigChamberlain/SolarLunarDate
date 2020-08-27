@@ -7,7 +7,7 @@ _Utility to help name Beach Cast sculpture on a Solar/Lunar Calendar_
 I have a written up the justification and specification of the SolarLunarCalendar [here.](https://craigchamberlain.github.io/SolarLunarDate/)
 
 ## Example Calendar
-There is also a simple diagramatic representation of each Calendar year from 1700 - 2082 [here.](https://craigchamberlain.github.io/SolarLunarCalendar)
+There is also a simple diagrammatic representation of each Calendar year from 1700 - 2082 [here.](https://craigchamberlain.github.io/SolarLunarCalendar)
 
 ## About this Utility
 The utility is currently largely contained in a .Net Standard Class Library - 
@@ -19,7 +19,7 @@ It is available on the [PowerShell Gallery](https://www.powershellgallery.com/pa
 
     Install-Module -Name SolarLunarName 
 
-There is also a Fable [web application](https://craigchamberlain.github.io/SolarLunarDate/tool/) in development. I began a Xamarin Application but is not seeing active development at the momement.
+There is also a Fable [web application](https://craigchamberlain.github.io/SolarLunarDate/tool/) in development. I began a Xamarin Application but is not seeing active development at the moment.
 
-## Solar Lunar Data api
-Finally I have public api for moon data and my calendar implementation [here.](https://github.com/CraigChamberlain/moon-data)
+## Solar Lunar Data API
+Finally I have public API for moon data and my calendar implementation [here.](https://github.com/CraigChamberlain/moon-data)
