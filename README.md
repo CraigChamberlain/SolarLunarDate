@@ -19,7 +19,7 @@ It is available on the [PowerShell Gallery](https://www.powershellgallery.com/pa
 
     Install-Module -Name SolarLunarName 
 
-There is also an Bolero/Blazor webpage in the early stages of development and I began a Xamarin Application initially but is not seeing active development at the momement.
+There is also a Fable [web application](https://craigchamberlain.github.io/SolarLunarDate/tool/) in development. I began a Xamarin Application but is not seeing active development at the momement.
 
 ## Solar Lunar Data api
 Finally I have public api for moon data and my calendar implementation [here.](https://github.com/CraigChamberlain/moon-data)
