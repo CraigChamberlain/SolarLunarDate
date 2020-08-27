@@ -12,7 +12,7 @@ questions:
 
     - q: 'About Calendars, the Sun and the Moon:'
       a: |
-        The most widely used Calendar system in the world, the Gregorian calendar, is a solar calendar.  This means that for most people the sun's relationship with the earth dictates time as they measure and record it.  For example the period of the earth's orbit around the sun dictates the 'solar year' more commonly the 'year' and the complete rotation of the earth the 'solar day' or simply 'day'.
+        The most widely used Calendar system in the world, the Gregorian calendar, is a solar calendar.  This means that for most people the sun's relationship with the earth dictates time as they measure and record it.  For example, the period of the earth's orbit around the sun dictates the 'solar year' more commonly the 'year' and the complete rotation of the earth the 'solar day' or simply 'day'.
 
         However, there are many other calendars and systems of measuring the passage of time.  An astronomer may be more concerned with the rotation of the earth in relation to the stars than the sun, which the earth orbits, and divide their time into ['sidereal days'](https://en.wikipedia.org/wiki/Solar_time).
 
@@ -26,9 +26,9 @@ questions:
 
         These calendars promise to fix seasons and festivals in a locked, repeating cycle, unlike a the Hijra lunar calendar, in which the year is shorter than the solar year and a festival may fall in summer or winter.  In addition, months can be marked in the passage of moons in a satisfying and practical manner.
 
-    - q: 'If Lunisolar calendars have been prevalent throughout the globe and history, why do should I attempt to make a new one?'
+    - q: 'If Lunisolar calendars have been prevalent throughout the globe and history, why should I attempt to make a new one?'
       a: |
-        Initially I started to do this as I was simply curious to do so. If I had not set out to design a calendar I would not have even considered the other existing lunisolar calendars.  Therefore, it is not because I have any reason to think my calendar will surpass the existing calendars in accuracy or symbolic meaning.
+        Initially I was simply curious. If I had not set out to design a calendar I would not have even considered the other existing lunisolar calendars.  Therefore, it is not because I have any reason to think my calendar will surpass the existing calendars in accuracy or symbolic meaning.
     - q: 'Why having discovered mature alternative calendars do I still think a new one is worth pursuing?'
       a: |
         The other existing calendars are rather complex and had to be, they had to preserve the concept of time into the past and future with great accuracy.  Agriculture, astronomy and religious traditions demanded continuity through the ages.

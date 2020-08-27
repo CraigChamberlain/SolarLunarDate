@@ -5,7 +5,7 @@ redirect_from: my-calendar.html
 questions: 
     - q: 'This Calendar will use Coordinated Universal Time (UTC):'
       a: |
-        The moon has the same phase apparent to the earth irrespective of time zone.  Initially, my calendar will not count hours.  A local component and a subdivision of the day may be introduced at a later date.  For example tides may bisect a day but depend very largely locality as do, sunrises and sunsets.
+        The moon has the same phase apparent to the earth irrespective of time zone.  Initially, my calendar will not count hours.  A local component and a subdivision of the day may be introduced at a later date.  For example tides may bisect a day but depend very largely on locality as do, sunrises and sunsets.
     - q: 'The Measurement of Years:'
       a: |
         The earth completes a circuit of the sun roughly, every 365.25 days.  Any given point in this cycle could be called the start/end of a year although there are four natural points to choose from, namely the [solstices](https://en.wikipedia.org/wiki/Solstice) and [equinoxes](https://en.wikipedia.org/wiki/Equinox).  For example in the Gregorian calendar, the new year is related but not identical to the winter solstice which is usually the 21st or 22nd of December, the shortest day of the year as experienced in the Northern Hemisphere (N.B this same event would be observed as the summer solstice in the Southern Hemisphere).
@@ -15,9 +15,9 @@ questions:
       a: |
         ![Figure 1.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=d1rjgmgOwa)
 
-        12 complete lunar months have 354.36 days, 10.88 days less than the solar year.  Depending on the age of the moon at the start of a solar year it may have 11 or 12 whole months and one or two partial month.  Typically in a lunisolar calendar, this means that to preserve complete lunar month, year ends must be approximated to the end of a lunar month.  If a lunisolar year typically has 12 lunar months then extra months must be added on particular years to make up for lost days, in the way leap days are added to years in the Gregorian Calendar.
+        12 complete lunar months have 354.36 days, 10.88 days less than the solar year.  Depending on the age of the moon at the start of a solar year it may have 11 or 12 whole months and one or two partial months.  Typically in a lunisolar calendar, this means that to preserve complete a lunar month, year ends must be approximated to the end of a lunar month.  If a lunisolar year typically has 12 lunar months then extra months must be added on particular years to make up for lost days, in the way leap days are added to years in the Gregorian Calendar.
 
-        However this forces the year to vary considerably in length and requires complex patterns to decide which year to add a month.  This calendar will favour the complete solar year and split the months that fall over the start and end of a year.
+        However this forces the year to vary considerably in length and requires complex patterns to decide in which year to add a month.  This calendar will favour the complete solar year and split the months that fall over the start and end of a year.
 
         This is not completely unprecedented and is somewhat related to the concept of uncounted time.  [Some Coast Salish peoples used a calendar of this kind. For instance, the Chehalis began their count of lunar months from the arrival of spawning chinook salmon (in Gregorian calendar October), and counted 10 months, leaving an uncounted period until the next chinook salmon run.](https://en.wikipedia.org/wiki/Lunisolar_calendar#With_uncounted_time)
 
@@ -37,7 +37,7 @@ questions:
 
         ![Figure 2.3](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=427.2&height=214.08&select=aKSCDJb1I)
 
-        When the age of the moon approximates to between 20 days and two days before the end of the month inclusive on the start of the year:
+        When the age of the moon approximates to between 20 days and ~28 days (or two days before the end of the month) on the start of the year:
 
         ![Figure 2.3](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=427.2&height=214.08&select=a2YzVlfzRu)
 
@@ -71,7 +71,7 @@ questions:
         ```{SolarYear}-{FullMoonsOfYTD}-{Phase of Moon in 1/8ths of Moon}  
         e.g 2018-10-1/2```
 
-        Finally I would really like to include some notion of geographic location, particularly tide which is experience heterogeneously across on the surface of the earth.
+        Finally I would really like to include some notion of geographic location, particularly tide which is experienced heterogeneously across the surface of the earth.
 
         This may be displayed as follows but would perhaps include co-ordinates in the object.
 
