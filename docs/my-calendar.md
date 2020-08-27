@@ -15,7 +15,7 @@ questions:
       a: |
         ![Figure 1.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=d1rjgmgOwa)
 
-        12 complete lunar months have 354.36 days, 10.88 days less than the solar year.  Depending on the age of the moon at the start of a solar year it may have 11 or 12 whole months and one or two partial months.  Typically in a lunisolar calendar, this means that to preserve complete a lunar month, year ends must be approximated to the end of a lunar month.  If a lunisolar year typically has 12 lunar months then extra months must be added on particular years to make up for lost days, in the way leap days are added to years in the Gregorian Calendar.
+        12 complete lunar months have 354.36 days, 10.88 days less than the solar year.  Depending on the age of the moon at the start of a solar year, the solar year may have 11 or 12 whole lunar months and one or two partial months.  In many lunisolar calendars, this means that the lunisolar year is approximated to a whole number of lunar months, mostly resulting in a shorter, but occasionally a longer, year than the solar year.  If a lunisolar year typically has 12 whole lunar months then extra months must be added on special longer years to make up for lost days, in the way leap days are added to years in the Gregorian Calendar.
 
         However this forces the year to vary considerably in length and requires complex patterns to decide in which year to add a month.  This calendar will favour the complete solar year and split the months that fall over the start and end of a year.
 
@@ -25,7 +25,7 @@ questions:
 
         There are 4 cases of how lunar months may intersect a given solar year. In all cases there are 13 or 14 resulting months.  As lunar month lengths vary somewhat the figures given for age of the moon in each case are based on a simplified model and may be out by a day or so in some years.
         
-        When the first day of the year is the day of a new moon:
+        When the first day of the year is the first day of a new moon:
 
         ![Figure 2.2](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=bUzavqqsE)
 
