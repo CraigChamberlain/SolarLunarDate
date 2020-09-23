@@ -25,7 +25,7 @@ namespace SolarLunarName.Standard.Tests
                 && remoteName.Year == year
                 && remoteName.SolarDateTime == UtcDateTime;
 
-            Assert.True(result, "Should return expected data.");
+            Assert.True(result, "Should return expected data. " + remoteName.LunarDay );
 
         }
 
@@ -33,6 +33,16 @@ namespace SolarLunarName.Standard.Tests
         public void GetSolarLunarNameShould_InputIs08052019_Return201954()
         {   
             TestTemplate(2019, 5, 8, 5, 5);
+        }
+        [Fact]
+        public void GetSolarLunarNameShould_InputIs16092020_Return2020298()
+        {   
+            TestTemplate(2020, 9, 16, 8, 29);
+        }
+        [Fact]
+        public void GetSolarLunarNameShould_InputIs17092020_Return202019()
+        {   
+            TestTemplate(2020, 9, 17, 9, 1);
         }
     
         [Fact]
