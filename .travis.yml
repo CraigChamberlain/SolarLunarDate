@@ -12,4 +12,3 @@ script:
   - dotnet test  /p:Configuration=Release ./SolarLunarName.Standard.Tests/
   - dotnet build /p:Configuration=Release ./SolarLunarName.SharedTypes.Tests 
   - dotnet test  /p:Configuration=Release ./SolarLunarName.SharedTypes.Tests/
-  
