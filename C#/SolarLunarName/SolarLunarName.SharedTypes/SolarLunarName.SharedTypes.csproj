@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>SolarLunarName.SharedTypes</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Craig Chamberlain</Authors>
+    <Company>Craig Chamberlain IT</Company>
   </PropertyGroup>
 
   <ItemGroup>
