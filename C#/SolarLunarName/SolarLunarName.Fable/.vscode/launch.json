@@ -1,0 +1,40 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:8080",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack://*": "${workspaceFolder}/*"
+            },
+            "preLaunchTask": "Start",
+        },
+        {
+            "name": "Firefox",
+            "type": "firefox",
+            "request": "launch",
+            "url": "http://localhost:8080",
+            //"sourceMaps": true,
+            "pathMappings":
+                [{"url": "webpack://*",
+                "path": "${workspaceFolder}/*"}]
+            ,
+            "preLaunchTask": "Start",
+        },
+        {
+            "name": "Chrome Attach",
+            "type": "chrome",
+            "request": "attach",
+            "url": "http://localhost:8080",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack://*": "${workspaceFolder}/*",
+            },
+            "port": 9222
+
+        }
+    ]
+}
