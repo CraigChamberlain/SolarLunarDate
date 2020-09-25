@@ -18,18 +18,18 @@ namespace SolarLunarName.Standard.ApplicationServices
 
                 var year = solarDateTime.Year;
                 var startOfYear = new DateTime(year, 1, 1);
-               
-                var newMoons = db.GetYear(year.ToString()).Where(
-                                    x => x < solarDateTime
+                var MoonsOfYear = db.GetYear(year.ToString());
+                var newMoonsToDate = MoonsOfYear.Where(
+                                    x => new DateTime(x.Year,x.Month, x.Day)  <= solarDateTime
                                 )
                                 .OrderBy(x => x);
 
-                var lunarMonth = newMoons.Count();
+                var lunarMonth = newMoonsToDate.Count();
 
                 int lunarDay;
-                if (newMoons.Any())
+                if (newMoonsToDate.Any())
                 {
-                    var dayOfNewMoon = newMoons.Last().DayOfYear;
+                    var dayOfNewMoon = newMoonsToDate.Last().DayOfYear;
                     lunarDay = solarDateTime.DayOfYear - dayOfNewMoon + 1;
                 }
                 else
