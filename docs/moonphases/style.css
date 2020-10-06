@@ -1,0 +1,49 @@
+#target {
+    display: flex;
+    width: 1080px;
+    flex-wrap: wrap;
+    flex-grow: 0; }
+#target div{
+    
+    background-size: contain;
+    background-position: center center;
+    width: 8px;
+    height: 8px;
+    margin: 5px;
+}
+#target div:nth-child(12n -11){
+    background-image: url(1.png);
+}
+#target div:nth-child(12n -10){
+    background-image: url(2.png);
+}
+#target div:nth-child(12n -9){
+    background-image: url(3.png);
+}
+#target div:nth-child(12n -8){
+    background-image: url(4.png);
+}
+#target div:nth-child(12n -7){
+    background-image: url(5.png);
+}
+#target div:nth-child(12n -6){
+    background-image: url(6.png);
+}
+#target div:nth-child(12n -5){
+    background-image: url(7.png);
+}
+#target div:nth-child(12n -4){
+    background-image: url(8.png);
+}
+#target div:nth-child(12n -3){
+    background-image: url(9.png);
+}
+#target div:nth-child(12n -2){
+    background-image: url(10.png);
+}
+#target div:nth-child(12n -1){
+    background-image: url(11.png);
+}
+#target div:nth-child(12n){
+    background-image: url(12.png);
+}
