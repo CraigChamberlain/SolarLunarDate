@@ -1,0 +1,4 @@
+To release bump version,
+dotnet publish
+cd ./bin/Debug/netstandard2.0/publish/
+Publish-Module -Name ./SolarLunarName.psd1 -NuGetApiKey xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
