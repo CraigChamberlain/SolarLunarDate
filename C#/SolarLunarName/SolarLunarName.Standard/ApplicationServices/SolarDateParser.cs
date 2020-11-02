@@ -8,12 +8,6 @@ namespace SolarLunarName.Standard.ApplicationServices
 {
     public partial class SolarDateParser
     {
-        public DateTime ConvertRemoteSolarLunarName(string date){
-
-            var SolarLunarName = ParseSolarLunarName(date);
-
-            return ConvertSolarLunarName(SolarLunarName.Year, SolarLunarName.LunarMonth, SolarLunarName.LunarDay);
-        }
 
         public SolarDateParser(ISolarLunarCalendarClient calendarClient){
             db = calendarClient;
@@ -21,6 +15,12 @@ namespace SolarLunarName.Standard.ApplicationServices
         }
         private ISolarLunarCalendarClient db;
       
+        public DateTime ConvertRemoteSolarLunarName(string date){
+
+            var SolarLunarName = ParseSolarLunarName(date);
+
+            return ConvertSolarLunarName(SolarLunarName.Year, SolarLunarName.LunarMonth, SolarLunarName.LunarDay);
+        }
         public DateTime ConvertSolarLunarName(int year, int month, int day)
         {
 
@@ -35,6 +35,7 @@ namespace SolarLunarName.Standard.ApplicationServices
             
         }
 
+        // Not a good name. Should be resolve out of bounds?  Sounds like add month.
         // will find next month if day not available in month even if in next year.
         // Wraps on month or year but not recursively.  Should probably be targeted better.
         // Wrapping may be better precisely defined before more work.
