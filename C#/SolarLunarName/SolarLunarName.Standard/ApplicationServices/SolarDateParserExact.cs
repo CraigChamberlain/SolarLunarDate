@@ -37,7 +37,9 @@ namespace SolarLunarName.Standard.ApplicationServices
 
                 return new DateTime(solarDateTime.Year, solarDateTime.Month, solarDateTime.Day);
             }
-            catch (System.IO.DirectoryNotFoundException e) {
+            catch (System.IO.DirectoryNotFoundException) {
+                
+                // FIXME
                 // Year or Month not Found in local json set.  
                 // Would like to improve handling of this error to deeper into the codebase - may need contracts.
                 // Will be a different error for each client.  Consider 
