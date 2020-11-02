@@ -2,6 +2,8 @@
 _Utility to help name Beach Cast sculpture on a Solar/Lunar Calendar_
 
 [![Build Status](https://travis-ci.com/CraigChamberlain/SolarLunarDate.svg?branch=master)](https://travis-ci.com/CraigChamberlain/SolarLunarDate)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7843c799cd81a98cf94b/maintainability)](https://codeclimate.com/github/CraigChamberlain/SolarLunarDate/maintainability)
+[![Coverage Status](https://coveralls.io/repos/github/CraigChamberlain/SolarLunarDate/badge.svg?branch=master)](https://coveralls.io/github/CraigChamberlain/SolarLunarDate?branch=master)
 
 ## Calendar Justification and Specification
 I have a written up the justification and specification of the SolarLunarCalendar [here.](https://craigchamberlain.github.io/SolarLunarDate/)
