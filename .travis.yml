@@ -9,4 +9,4 @@ script:
   - cd ./src/SolarLunarName
   - dotnet tool restore 
   - dotnet paket restore
-  - source ../../CreateTestCoverage.sh
+  - ../../CreateTestCoverage.sh
