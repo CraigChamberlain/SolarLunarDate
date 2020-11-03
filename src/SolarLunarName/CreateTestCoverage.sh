@@ -1,5 +1,5 @@
 #!/bin/bash
-export COVERALLS_REPO_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxx
+export COVERALLS_REPO_TOKEN=qHMzC9ocXpqaGTHf1LlitZsY6Vmiytetm
 
 find . -path "*/TestResults/*" -type d -exec rm "{}" -r \;
 
@@ -15,6 +15,6 @@ COVERAGEFILES="$(sed -e 's/;$//' <<< $COVERAGEFILES)"
 csmacnz.Coveralls \
   --multiple \
   -i $COVERAGEFILES \
-  --useRelativePaths --basePath C%23 \
+  --useRelativePaths \
   --commitId $(git log --format="%H" -n 1) \
   --commitBranch $(git rev-parse --abbrev-ref HEAD)

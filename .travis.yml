@@ -3,9 +3,9 @@ mono: none
 dotnet: 3.0
 
 install:
-  - dotnet restore ./C#/SolarLunarName/SolarLunarName.Standard.Tests/SolarLunarName.Standard.Tests.csproj
+  - dotnet restore ./src/SolarLunarName/SolarLunarName.Standard.Tests/SolarLunarName.Standard.Tests.csproj
 script:
-  - cd ./C#/SolarLunarName
+  - cd ./src/SolarLunarName
   - dotnet tool restore 
   - dotnet paket restore
   - dotnet build /p:Configuration=Release ./SolarLunarName.Standard.Tests 

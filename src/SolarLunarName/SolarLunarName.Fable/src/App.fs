@@ -69,18 +69,18 @@ let private update msg model =
         let cmd = Cmd.OfPromise.either getSolarLunarName model.GregorianDate RecvSolarLunarDate ErrorMessage
         { model with AwaitingRequest = true }, cmd
     | RecvSolarLunarDate solarLunarDate ->
-        { model with 
+        { model with
             AwaitingRequest = false
-            SolarLunarDate = Some solarLunarDate; 
-            SolarLunarDateBuilder = { 
-                Year = Int32.Parse(solarLunarDate.Split('-').[0]); 
-                Month =  Int32.Parse(solarLunarDate.Split('-').[1]); 
+            SolarLunarDate = Some solarLunarDate;
+            SolarLunarDateBuilder = {
+                Year = Int32.Parse(solarLunarDate.Split('-').[0]);
+                Month =  Int32.Parse(solarLunarDate.Split('-').[1]);
                 Day = Int32.Parse(solarLunarDate.Split('-').[2])
             }
         }, Cmd.ofMsg ClearError
     | ErrorMessage exn ->
-        { model with 
-            Error = Some exn.Message 
+        { model with
+            Error = Some exn.Message
             AwaitingRequest = false
         }, Cmd.ofMsg ToggleModal
     | ClearError ->
@@ -98,11 +98,11 @@ let private update msg model =
               DatePickerState = { model.DatePickerState with ReferenceDate = date }
               Error = None
               }, Cmd.ofMsg GetSolarLunarDate
-        | Error message -> 
+        | Error message ->
            { model with
                 AwaitingRequest = false
                 Error = Some message }, Cmd.none
- 
+
     | SetYear y ->
         { model with SolarLunarDateBuilder =
                         { model.SolarLunarDateBuilder with Year = y } }, Cmd.ofMsg ValidateYear
@@ -112,11 +112,11 @@ let private update msg model =
     | SetDay d ->
         { model with SolarLunarDateBuilder =
                         { model.SolarLunarDateBuilder with Day = d } }, Cmd.ofMsg ValidateDay
-    | ValidateYear ->        
+    | ValidateYear ->
         let yearErrors = validateYear model.SolarLunarDateBuilder.Year
         let errors = { model.ValidationErrors with Year = Some yearErrors }
         { model with ValidationErrors = errors  }, Cmd.none
-    | ValidateMonth ->        
+    | ValidateMonth ->
         let monthErrors = validateMonth model.SolarLunarDateBuilder.Month
         let errors = { model.ValidationErrors with Month = Some monthErrors }
         { model with ValidationErrors = errors  }, Cmd.none
@@ -133,27 +133,27 @@ let pickerConfig: DatePicker.Types.Config<Msg>  =
           Local = Date.Local.englishUK
           DatePickerStyle = [ Position PositionOptions.Absolute
                               ZIndex 100
-                              MaxWidth "450px" ] 
-             
+                              MaxWidth "450px" ]
+
          }
 
 
 let root model dispatch =
     DatePicker.View.root pickerConfig model.DatePickerState (Some model.GregorianDate) dispatch
 
-let solarLunarDatePickerItem dispatch title (value:int) errors msg = 
+let solarLunarDatePickerItem dispatch title (value:int) errors msg =
   Field.div []
         [ Label.label [] [str title]
           Control.div [] [
-            Input.number [ 
+            Input.number [
               Input.Props
                 [ HTMLAttr.Value value;
                   OnChange (fun y -> y.Value |> int |> msg |> dispatch)
-              ] 
+              ]
               match errors with
                   | Some [] -> Input.Color IsSuccess
                   | Some _ -> Input.Color IsDanger
-                  | None -> () 
+                  | None -> ()
                ]
           ]
           match errors with
@@ -162,7 +162,7 @@ let solarLunarDatePickerItem dispatch title (value:int) errors msg =
               | Some errorList ->
                   let errorListHtml = ul [] (errorList |> List.map (fun e -> li [ ] [ str e ]) )
                   Help.help  [ Help.Color IsDanger ] [errorListHtml]
-              | _ -> ()  
+              | _ -> ()
           ]
 
 let solarLunarDatePicker model dispatch =
@@ -187,25 +187,25 @@ let solarLunarDatePicker model dispatch =
 
      ]
 
-let loading = 
-  div [Class "loading" ] [ 
-    div [Class "lds-ring" ] [ 
-      div [] [] 
+let loading =
+  div [Class "loading" ] [
+    div [Class "lds-ring" ] [
+      div [] []
       div [] []
       div [] []
       div [] []
       ]
     ]
 
-let result model =  
+let result model =
    Panel.panel [ Panel.CustomClass "result" ]
               [ Panel.heading [ ] [ str "Result"]
                 Panel.Block.div [ ]
                   [
 
                     if model.AwaitingRequest then loading
-                    match model.Error with 
-                    | None -> 
+                    match model.Error with
+                    | None ->
                         dl [][
                             dt [] [str "Gregorian Date:"]
                             dd [] [ model.GregorianDate.ToString("D") |> str ]
@@ -216,8 +216,8 @@ let result model =
                                   ]
 
                         ]
-                    | Some error -> str error 
-                    
+                    | Some error -> str error
+
                    ]
               ]
 
@@ -232,15 +232,15 @@ let basicModal  model dispatch =
                         Modal.Close.OnClick (fun _ -> dispatch ToggleModal) ] [ ] ]
 
 let nav =
-    Navbar.navbar [ 
+    Navbar.navbar [
       Navbar.IsFixedTop
       ]
         [ Container.container [ ]
             [ Navbar.Start.div [ ]
                 [ Navbar.Brand.div [ ]
                    [ Navbar.Item.a [
-                      Navbar.Item.Option.Props [ 
-                        OnClick (fun _ -> Browser.Dom.window.history.back() )  
+                      Navbar.Item.Option.Props [
+                        OnClick (fun _ -> Browser.Dom.window.history.back() )
                         ]
                    ]
                     [  str "Back" ]
@@ -251,7 +251,7 @@ let private view model dispatch =
   div [][
     nav
     Hero.hero [ Hero.IsFullHeight ]
-        [ 
+        [
           Hero.body [ ]
             [ Container.container [ ]
                   [ Heading.h1 [ Heading.Modifiers [
@@ -296,7 +296,7 @@ open Elmish.HMR
 
 Program.mkProgram init update view
 |> Program.withReactSynchronous "elmish-app"
-#if DEBUG
+//#if DEBUG
 |> Program.withDebugger
-#endif
+//#endif
 |> Program.run
