@@ -7,6 +7,8 @@ install:
   - dotnet restore ./src/SolarLunarName/SolarLunarName.Standard.Tests/SolarLunarName.Standard.Tests.csproj
 script:
   - cd ./src/SolarLunarName
-  - dotnet tool restore 
+  - dotnet tool restore
   - dotnet paket restore
-  - ../../CreateTestCoverage.sh
+  - cd ../../
+  - ls
+  - ./CreateTestCoverage.sh
