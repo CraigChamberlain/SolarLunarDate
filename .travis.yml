@@ -1,14 +1,13 @@
 language: csharp
 mono: none
-dotnet: 3.0
+dotnet: 3.1
 
 install:
-  - dotnet restore ./C#/SolarLunarName/SolarLunarName.Standard.Tests/SolarLunarName.Standard.Tests.csproj
+  - dotnet tool install coveralls.net --version 2.0.0-beta0002 --tool-path tools
+  - dotnet restore ./src/SolarLunarName/SolarLunarName.Standard.Tests/SolarLunarName.Standard.Tests.csproj
 script:
-  - cd ./C#/SolarLunarName
-  - dotnet tool restore 
+  - cd ./src/SolarLunarName
+  - dotnet tool restore
   - dotnet paket restore
-  - dotnet build /p:Configuration=Release ./SolarLunarName.Standard.Tests 
-  - dotnet test  /p:Configuration=Release ./SolarLunarName.Standard.Tests/
-  - dotnet build /p:Configuration=Release ./SolarLunarName.SharedTypes.Tests 
-  - dotnet test  /p:Configuration=Release ./SolarLunarName.SharedTypes.Tests/
+  - cd ../../
+  - ./CreateTestCoverage.sh
