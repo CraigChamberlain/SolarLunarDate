@@ -1,7 +1,7 @@
 #!/bin/bash
-COVERALLS_REPO_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxx
+export COVERALLS_REPO_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxx
 
-find . -path "*/TestResults/*" -exec rm "{}" -r \;
+find . -path "*/TestResults/*" -type d -exec rm "{}" -r \;
 
 find . -path "*.Tests" -exec dotnet test --collect:"XPlat Code Coverage" "{}" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover  \;
 
@@ -15,5 +15,6 @@ COVERAGEFILES="$(sed -e 's/;$//' <<< $COVERAGEFILES)"
 csmacnz.Coveralls \
   --multiple \
   -i $COVERAGEFILES \
+  --useRelativePaths --basePath C%23 \
   --commitId $(git log --format="%H" -n 1) \
   --commitBranch $(git rev-parse --abbrev-ref HEAD)
