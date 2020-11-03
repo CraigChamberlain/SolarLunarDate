@@ -1,5 +1,5 @@
 #!/bin/bash
-export COVERALLS_REPO_TOKEN=qHMzC9ocXpqaGTHf1LlitZsY6Vmiytetm
+#export COVERALLS_REPO_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 find . -path "*/TestResults/*" -type d -exec rm "{}" -r \;
 
