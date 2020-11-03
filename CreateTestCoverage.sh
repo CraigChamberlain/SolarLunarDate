@@ -12,7 +12,7 @@ for x in $(find . -path */coverage.opencover.xml); do
 done
 COVERAGEFILES="$(sed -e 's/;$//' <<< $COVERAGEFILES)"
 
-csmacnz.Coveralls \
+./tools/csmacnz.Coveralls \
   --multiple \
   -i $COVERAGEFILES \
   --useRelativePaths \

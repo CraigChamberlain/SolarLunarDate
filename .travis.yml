@@ -3,7 +3,7 @@ mono: none
 dotnet: 3.0
 
 install:
-  - dotnet tool install -g coveralls.net --version 1.0.0
+  - dotnet tool install -g coveralls.net --version 1.0.0 --tool-path tools
   - dotnet restore ./src/SolarLunarName/SolarLunarName.Standard.Tests/SolarLunarName.Standard.Tests.csproj
 script:
   - cd ./src/SolarLunarName
