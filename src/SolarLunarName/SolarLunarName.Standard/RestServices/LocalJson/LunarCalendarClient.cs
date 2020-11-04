@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
 using SolarLunarName.SharedTypes.Models;
 using SolarLunarName.SharedTypes.Interfaces;
 using System.IO;
@@ -25,20 +24,11 @@ namespace SolarLunarName.Standard.RestServices.LocalJson
 
             SolarLunarName.SharedTypes.Validation.Helpers.ValidateYear(year);
 
-            string path = System.IO.Path.Combine(_basePath, year, "index.json");
+            string path = Path.Combine(_basePath, year, "index.json");
 
-            using (Stream s = File.OpenRead(path))
-            using (StreamReader sr = new StreamReader(s))
-            using (JsonReader reader = new JsonTextReader(sr))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                return serializer.Deserialize<List<LunarSolarCalendarMonth>>(reader)
+            return Helpers.Deserialize<List<LunarSolarCalendarMonth>>(path)
                                         .Select(month => (ILunarSolarCalendarMonth)month)
                                         .ToList();
-
-
-            }
-
 
 
         }
@@ -51,16 +41,9 @@ namespace SolarLunarName.Standard.RestServices.LocalJson
 
             try
             {
-                string path = System.IO.Path.Combine(_basePath, year.ToString(), month.ToString(), "index.json");
+                string path = Path.Combine(_basePath, year.ToString(), month.ToString(), "index.json");
 
-                using (Stream s = File.OpenRead(path))
-                using (StreamReader sr = new StreamReader(s))
-                using (JsonReader reader = new JsonTextReader(sr))
-                {
-                    JsonSerializer serializer = new JsonSerializer();
-                    return serializer.Deserialize<LunarSolarCalendarMonth>(reader);
-
-                }
+                return Helpers.Deserialize<LunarSolarCalendarMonth>(path);
             }
             catch (System.IO.DirectoryNotFoundException)
             {
