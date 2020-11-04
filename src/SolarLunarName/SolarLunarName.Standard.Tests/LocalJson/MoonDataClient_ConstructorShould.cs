@@ -7,22 +7,11 @@ using SolarLunarName.SharedTypes.Models;
 
 namespace SolarLunarName.Standard.Tests
 {
-    public class MoonDataClient_ConstructorShould
+    public class MoonDataClient_ConstructorShould: LocalJsonClient_ConstructorShould
     {   
-
-        [Fact]
-        public void Constructor_Should_Not_Throw_Expection ()
-        {
-            new Standard.RestServices.LocalJson.MoonDataClient(System.IO.Directory.GetCurrentDirectory());
-            
+        override public void Constructor(string input){
+            new Standard.RestServices.LocalJson.MoonDataClient(input);
         }
-        [Fact]
-        public void Constructor_Should_Throw_Expection ()
-        {
-            Assert.Throws<ArgumentException>(() =>new Standard.RestServices.LocalJson.MoonDataClient("/PPPPPPPPPPPPPPPPPPPPPPP"));
-            
-        }
-
     }
     
 }
