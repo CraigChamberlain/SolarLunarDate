@@ -1,5 +1,4 @@
-﻿using SolarLunarName.SharedTypes.Exceptions;
-using SolarLunarName.SharedTypes.Constants;
+﻿using SolarLunarName.SharedTypes.Validation;
 
 namespace SolarLunarName.SharedTypes.Models
 {
@@ -12,13 +11,6 @@ namespace SolarLunarName.SharedTypes.Models
         LunarDay = lunarDay;
         }
         
-        protected void ValidationHelper<Exp>(int value, Range range) where Exp : System.Exception, new()  {
-                if (! range.InRange(value))
-                {
-                    throw new Exp();
-                }
-        }
-
         private int _year;
         
         public int Year { 
@@ -27,7 +19,7 @@ namespace SolarLunarName.SharedTypes.Models
                 }
             set {
 
-                ValidationHelper<YearOutOfRangeException>(value, Ranges.Year);
+                Helpers.ValidateYear(value);
                 _year = value;
 
             } 
@@ -39,7 +31,7 @@ namespace SolarLunarName.SharedTypes.Models
                 }
             set {
 
-                ValidationHelper<MonthOutOfRangeException>(value, Ranges.Month);
+                Helpers.ValidateLunarMonth(value);;
                 _lunarMonth = value;
 
             } 
@@ -51,7 +43,7 @@ namespace SolarLunarName.SharedTypes.Models
                 }
             set {
                 
-                ValidationHelper<DayOutOfRangeException>(value, Ranges.Day);
+                Helpers.ValidateLunarDay(value);
                 _lunarDay = value;
                 
             } 
