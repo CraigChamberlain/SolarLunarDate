@@ -10,50 +10,67 @@ namespace SolarLunarName.Standard.Tests
     {   
         private SolarDateParser dp;
 
+        //TODO
+        // Should be mocking LunarCalendarClient
         public SolarDateParser_NextMonthShould(){
 
             dp = new SolarDateParser(new LunarCalendarClient(Paths.calendarApi));
 
         }
+
+        [Fact]
+        private void NextMonthShould_ResolveNextMonth_WhenDaysOverFlowMonth(){
+            var initialDate = new SolarLunarNameSimple(1700, 0, 20); 
+            var nextDate = new SolarLunarNameSimple(1700, 1, 1);
+            TestTemplate(initialDate, nextDate);
+        }
+
+        [Fact]
+        private void NextMonthShould_ResolveNextMonth_WhenMonthsOverFlowYear(){
+            var initialDate = new SolarLunarNameSimple(1700, 13, 7); 
+            var nextDate = new SolarLunarNameSimple(1701, 0, 7);
+            TestTemplate(initialDate, nextDate);
+        }
+
+        [Fact]
+        private void NextMonthShould_ResolveNextMonth_WhenDaysOverFlowYear(){
+            var initialDate = new SolarLunarNameSimple(1700, 12, 23);
+            var nextDate = new SolarLunarNameSimple(1701, 0, 1);
+            TestTemplate(initialDate, nextDate);
+        }
+
+        [Fact]
+        private void NextMonthShould_ResolveNextMonth_WhenDaysAndMonthsNotOverFlowMonthOrYear(){
+            var initialDate = new SolarLunarNameSimple(1700, 0, 1);
+            var nextDate = new SolarLunarNameSimple(1700, 0, 1);
+            TestTemplate(initialDate, nextDate);
+        }
+
+        [Fact]
+        private void NextMonthShould_ResolveNextMonth_WhenDaysAndMonthsOverFlowYearAndMonth(){
+            var initialDate = new SolarLunarNameSimple(1700, 13, 9);
+            var nextDate = new SolarLunarNameSimple(1701, 0, 9);
+            // TODO Decide on behavior of this function.  It does not guarantee a fully resolved month.
+            // It may need to be run recursively For example
+            // This date is still not valid so Next Month should be run again.
+            // var nextDate = new SolarLunarNameSimple(1701, 1, 1);
+            TestTemplate(initialDate, nextDate);
+        }
         
-        private void TestTemplate(int year, int lunarMonth, int lunarDay, int nextYear, int nextLunarMonth, int nextLunarDay){
-            var solarLunarDate = new SolarLunarNameSimple(year, lunarMonth, lunarDay);
-            var nextSolarLunarDate = dp.NextMonth(solarLunarDate);
+        private void TestTemplate(SolarLunarNameSimple initialDate, SolarLunarNameSimple nextDate){
+            var nextSolarLunarDate = dp.NextMonth(initialDate);
             
             var result = 
-                nextSolarLunarDate.Year == nextYear &&
-                nextSolarLunarDate.LunarMonth == nextLunarMonth &&
-                nextSolarLunarDate.LunarDay == nextLunarDay;
+                nextSolarLunarDate.Year == nextDate.Year &&
+                nextSolarLunarDate.LunarMonth == nextDate.LunarMonth &&
+                nextSolarLunarDate.LunarDay == nextDate.LunarDay;
 
             Assert.True(result, "Should return expected data.");
 
         }
 
-        [Fact]
-        public void NextMonthShould_InputIs20190531_Return20190601()
-        {   
-            TestTemplate(2019, 5, 31, 2019, 6, 1);
-        }
-    
-        [Fact]
-        public void NextMonthShould_InputIs17001307_Return17010107()
-        {   
-            TestTemplate(1700, 13, 7, 1701, 0, 7);
-        }
-    
-        [Fact]
-        public void NextMonthShould_InputIs17001309_Return17010009()
-        {   
-            TestTemplate(1700, 13, 9, 1701, 0, 9);
-            //TestTemplate(1700, 13, 9, 1701, 1, 1); if applied recursively
-        }
-
-        [Fact]
-        public void NextMonthShould_InputIs17010009_Return17010101()
-        {   
-            TestTemplate(1701, 0, 9, 1701, 1, 1);
-        }
-
+        //TODO This is not really a test of NextMonth which does not throw exceptions of its own
+        // This may be covered by tests on its dependency the calendar client
         private void ExceptionTemplate(int year, int lunarMonth, int lunarDay){
             var solarLunarDate = new SolarLunarNameSimple(year, lunarMonth, lunarDay);
             Assert.Throws<YearOutOfRangeException>(() => dp.NextMonth(solarLunarDate));
