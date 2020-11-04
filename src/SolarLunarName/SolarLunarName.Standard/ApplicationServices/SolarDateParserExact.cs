@@ -19,7 +19,7 @@ namespace SolarLunarName.Standard.ApplicationServices
         public DateTime ConvertSolarLunarNameExact(int year, int month, int day)
         {
        
-            try{
+
                 int daysInMonth = db.GetMonthData(year,month).Days;
                 if( daysInMonth < day){
                     throw new DayDoesNotExistException(year, month, day, daysInMonth);
@@ -36,21 +36,7 @@ namespace SolarLunarName.Standard.ApplicationServices
                 var solarDateTime = newMoon.AddDays(day - 1);
 
                 return new DateTime(solarDateTime.Year, solarDateTime.Month, solarDateTime.Day);
-            }
-            catch (System.IO.DirectoryNotFoundException) {
-                
-                // FIXME
-                // Year or Month not Found in local json set.  
-                // Would like to improve handling of this error to deeper into the codebase - may need contracts.
-                // Will be a different error for each client.  Consider 
-                throw new DateDoesNotExistException();
 
-            }
-            catch (DayDoesNotExistException e ){
-                
-                throw e;
-
-            }
             
         }
         public SolarLunarNameSimple ParseSolarLunarName(string date){

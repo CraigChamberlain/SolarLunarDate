@@ -66,16 +66,22 @@ namespace SolarLunarName.Standard.Tests
             TestStringParserTemplate("1750-2-6", 1750, 2, 11);
         }
         [Fact]
-        public void ConvertSolarLunarNameExact_YearToBig_ThrowFormatException()
+        public void ConvertSolarLunarNameExact_YearOutOfRangeException()
         {
 
-            Assert.Throws<DateDoesNotExistException>(() => dp.ConvertSolarLunarNameExact(2084, 1, 1));
+            Assert.Throws<YearOutOfRangeException>(() => dp.ConvertSolarLunarNameExact(2084, 1, 1));
         }
         [Fact]
-        public void ConvertSolarLunarNameExact_MonthToBig_ThrowFormatException()
+        public void ConvertSolarLunarNameExact_MonthOutOfRangeException()
         {
 
-            Assert.Throws<DateDoesNotExistException>(() => dp.ConvertSolarLunarNameExact(2019, 14, 31));
+            Assert.Throws<MonthOutOfRangeException>(() => dp.ConvertSolarLunarNameExact(2019, 14, 31));
+        }
+        [Fact]
+        public void ConvertSolarLunarNameExact_MonthDoesNotExistException()
+        {
+
+            Assert.Throws<MonthDoesNotExistException>(() => dp.ConvertSolarLunarNameExact(2020, 13, 31));
         }
         [Fact]
         public void ConvertSolarLunarNameExact_DayToBig_ThrowFormatException()
