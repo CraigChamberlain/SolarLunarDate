@@ -5,7 +5,7 @@ using SolarLunarName.SharedTypes.Models;
 
 namespace SolarLunarName.SharedTypes.Tests
 {
-    public class Exceptions
+    public class SolarLunarNameModel_ValidationExceptions
     {
         [Fact]
         public void YearToBig(){
