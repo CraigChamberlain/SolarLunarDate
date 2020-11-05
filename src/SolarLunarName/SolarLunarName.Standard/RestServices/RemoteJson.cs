@@ -8,7 +8,7 @@ using SolarLunarName.SharedTypes.Interfaces;
 
 namespace SolarLunarName.Standard.RestServices.RemoteJson{
 
-    public class  MoonDataClient: IMoonDataClient
+    public class  MoonDataClient
     {
 
         const string BaseUrl = "https://craigchamberlain.github.io/moon-data/api/new-moon-data/";
@@ -21,7 +21,7 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson{
         }
     }
 
-    public class  LunarCalendarClient: ISolarLunarCalendarClient
+    public class  LunarCalendarClient
     {
 
         const string BaseUrl = "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar/";
@@ -56,7 +56,7 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson{
         }
     }
 
-    public class  LunarCalendarClientDetailed: LunarCalendarClient, ISolarLunarCalendarClientDetailed
+    public class  LunarCalendarClientDetailed
     {
 
         const string BaseUrl = "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar-detailed/";

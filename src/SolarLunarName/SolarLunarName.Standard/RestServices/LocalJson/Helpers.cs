@@ -1,5 +1,5 @@
 using System.IO;
-using Newtonsoft.Json;
+using SolarLunarName.SharedTypes.Primitives;
 
 namespace SolarLunarName.Standard.RestServices.LocalJson{
 
@@ -11,17 +11,14 @@ namespace SolarLunarName.Standard.RestServices.LocalJson{
              }
         }
         
-        static internal string CombinePath(string _basePath, string year, string month){
-            SolarLunarName.SharedTypes.Validation.Helpers.ValidateYear(year);
-            SolarLunarName.SharedTypes.Validation.Helpers.ValidateLunarMonth(month);
-            var path = Path.Combine(_basePath, year, month, "index.json");
+        static internal string CombinePath(string _basePath, ValidYear year, ValidLunarMonth month){
+            var path = Path.Combine(_basePath, (string)year, (string)month, "index.json");
             return path;
 
         }
 
-        static internal string CombinePath(string _basePath, string year){
-            SolarLunarName.SharedTypes.Validation.Helpers.ValidateYear(year);
-            var path = Path.Combine(_basePath, year, "index.json");
+        static internal string CombinePath(string _basePath, ValidYear year){
+            var path = Path.Combine(_basePath, (string)year, "index.json");
             return path;
 
         }

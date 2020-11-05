@@ -43,7 +43,7 @@ namespace SolarLunarName.Standard.ApplicationServices
         public SolarLunarNameSimple NextMonth(SolarLunarNameSimple solarLunarNameSimple){
             
                    
-            var data = db.GetYearData(solarLunarNameSimple.Year.ToString());
+            var data = db.GetYearData(solarLunarNameSimple.Year);
             
             var daysOfMonth = 
                             data                

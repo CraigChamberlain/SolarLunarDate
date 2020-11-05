@@ -17,7 +17,7 @@ namespace SolarLunarName.Standard.ApplicationServices
 
         public IList<ILunarSolarCalendarMonthDetailed> GetDetailedSolarLunarYear(int year)
         {       
-                return db.GetYearDataDetailed(year.ToString());
+                return db.GetYearDataDetailed(year);
 
         }
 

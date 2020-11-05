@@ -3,13 +3,14 @@ using SolarLunarName.Standard.ApplicationServices;
 using SolarLunarName.SharedTypes.Models;
 using SolarLunarName.SharedTypes.Exceptions;
 using SolarLunarName.SharedTypes.Interfaces;
+using SolarLunarName.SharedTypes.Primitives;
 using System.Collections.Generic;
 using System;
 
 namespace SolarLunarName.Standard.Tests
 {   public class MockClient: ISolarLunarCalendarClient
     {
-        public IList<ILunarSolarCalendarMonth> GetYearData(string year){
+        public IList<ILunarSolarCalendarMonth> GetYearData(ValidYear year){
             
             return new List<ILunarSolarCalendarMonth>{
                 new LunarSolarCalendarMonth(19, new DateTime(1700,1,1)),
@@ -27,8 +28,11 @@ namespace SolarLunarName.Standard.Tests
                 new LunarSolarCalendarMonth(22,new DateTime(1700,12,10))
             };
         }
+        public ILunarSolarCalendarMonth GetMonthData(ValidYear year, ValidLunarMonth month)=> throw new NotImplementedException();
+        public IList<DateTime> GetYear(ValidYear year)=> throw new NotImplementedException();
         public ILunarSolarCalendarMonth GetMonthData(int year, int month)=> throw new NotImplementedException();
         public IList<DateTime> GetYear(string year)=> throw new NotImplementedException();
+        public IList<ILunarSolarCalendarMonth> GetYearData(string year)=> GetYearData((ValidYear)year);
     }
     public class SolarDateParser_NextMonthShould
     {   
