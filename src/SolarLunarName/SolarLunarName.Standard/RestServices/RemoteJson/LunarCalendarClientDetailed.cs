@@ -9,6 +9,9 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson
 {
     public class LunarCalendarClientDetailed : LunarCalendarClient, ISolarLunarCalendarClientDetailed
     {
+
+        // TODO URI should not be in the compiled code.  
+        // Need in a json file
         public LunarCalendarClientDetailed(HttpClient client, string baseUrl = "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar-detailed/") : base(client, baseUrl)
         {
         }
