@@ -7,20 +7,28 @@ namespace SolarLunarName.Standard.RestServices.LocalJson{
 
         static internal void TestPath(string Path){
              if(!System.IO.Directory.Exists(Path)){
-                 throw new System.ArgumentException("Base URl Does not resolve.");
+                 throw new System.ArgumentException($"Base URl Does not resolve: {Path}");
              }
         }
+        
+        static internal string CombinePath(string _basePath, string year, string month){
+            SolarLunarName.SharedTypes.Validation.Helpers.ValidateYear(year);
+            SolarLunarName.SharedTypes.Validation.Helpers.ValidateLunarMonth(month);
+            var path = Path.Combine(_basePath, year, month, "index.json");
+            return path;
 
-        static internal T Deserialize<T>(string path){
-                using (Stream s = File.OpenRead(path))
-                using (StreamReader sr = new StreamReader(s))
-                using (JsonReader reader = new JsonTextReader(sr))
-                {
-                    JsonSerializer serializer = new JsonSerializer();
-                    return serializer.Deserialize<T>(reader);
-
-                }
         }
+
+        static internal string CombinePath(string _basePath, string year){
+            SolarLunarName.SharedTypes.Validation.Helpers.ValidateYear(year);
+            var path = Path.Combine(_basePath, year, "index.json");
+            return path;
+
+        }
+
+
+            
+
 
     }
 }

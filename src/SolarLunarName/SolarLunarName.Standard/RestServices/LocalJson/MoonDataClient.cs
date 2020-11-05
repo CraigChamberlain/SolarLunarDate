@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
-using SolarLunarName.SharedTypes.Interfaces;
 using System.IO;
 
 namespace SolarLunarName.Standard.RestServices.LocalJson
 {
 
-    public class MoonDataClient : IMoonDataClient
+    public class MoonDataClient : Json.MoonDataClient
     {
 
         public MoonDataClient(string basePath)
@@ -16,12 +15,13 @@ namespace SolarLunarName.Standard.RestServices.LocalJson
         }
 
         private string _basePath;
-        public IList<DateTime> GetYear(string year)
+        public override IList<DateTime> GetYear(string year)
         {
-            SolarLunarName.SharedTypes.Validation.Helpers.ValidateYear(year);
-            string path = Path.Combine(_basePath, year, "index.json");
+            string path = Helpers.CombinePath(_basePath, year);
+            using (Stream s = File.OpenRead(path)){
+                return base.GetYear(year, s);
+            }
 
-            return Helpers.Deserialize<List<DateTime>>(path);
         }
 
     }
