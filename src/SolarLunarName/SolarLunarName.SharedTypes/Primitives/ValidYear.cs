@@ -36,6 +36,10 @@ namespace SolarLunarName.SharedTypes.Primitives
         {
             return p.Value.ToString();
         }
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
 
     }
 }
