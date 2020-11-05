@@ -2,6 +2,7 @@
 using System.Management.Automation;
 using SolarLunarName.Standard.ApplicationServices;
 using SolarLunarName.Standard.RestServices.RemoteJson;
+using System.Net.Http;
 
 namespace SolarLunarName.PoSH
 {
@@ -24,10 +25,10 @@ namespace SolarLunarName.PoSH
         [ValidateDay()]
         public int Day  { get; set; }
         private DateInstantiator di;
-
+        private HttpClient _httpClient;
         protected override void BeginProcessing(){
-
-            di = new DateInstantiator(new MoonDataClient());
+            _httpClient = new HttpClient();
+            di = new DateInstantiator(new MoonDataClient(_httpClient));
 
         }
 

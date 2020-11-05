@@ -2,6 +2,7 @@
 using System.Management.Automation;
 using SolarLunarName.Standard.ApplicationServices;
 using SolarLunarName.Standard.RestServices.RemoteJson;
+using System.Net.Http;
 
 namespace SolarLunarName.PoSH
 {
@@ -50,10 +51,11 @@ namespace SolarLunarName.PoSH
 
         private SolarDateParser sdp;
         private DateTime gregorianCalendarDate;
+        private HttpClient _httpClient;
 
         protected override void BeginProcessing(){
-
-            sdp = new SolarDateParser(new LunarCalendarClient());
+            _httpClient = new HttpClient();
+            sdp = new SolarDateParser(new LunarCalendarClient(_httpClient));
 
         }
 
