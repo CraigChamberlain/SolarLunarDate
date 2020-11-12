@@ -1,4 +1,0 @@
-{
-    "dotnet-test-explorer.autoExpandTree": false,
-    "dotnet-test-explorer.testProjectPath": "./SolarLunarName/*.Tests/"
-}

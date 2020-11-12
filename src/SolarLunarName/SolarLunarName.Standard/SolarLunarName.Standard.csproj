@@ -15,7 +15,7 @@
       <ExcludeAssets></ExcludeAssets>
       <IncludeAssets>All</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0">
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0">
     </PackageReference>
 
       <ProjectReference Include="..\SolarLunarName.SharedTypes\SolarLunarName.SharedTypes.csproj">
