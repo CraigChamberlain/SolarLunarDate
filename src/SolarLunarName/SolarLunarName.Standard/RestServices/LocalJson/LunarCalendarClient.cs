@@ -22,15 +22,17 @@ namespace SolarLunarName.Standard.RestServices.LocalJson
         protected override T StreamDeligate<T>(ValidYear year, ValidLunarMonth month, Func<Stream, T> method){
             
             string path = Helpers.CombinePath(_basePath, year, month);
-            using (Stream s = File.OpenRead(path))
-            {
-                return method(s);
-            }
+            return StreamDeligate<T>(path, method);
 
         }
         protected override T StreamDeligate<T>(ValidYear year, Func<Stream, T> method){
             
             string path = Helpers.CombinePath(_basePath, year);
+            return StreamDeligate<T>(path, method);
+
+        }
+        private T StreamDeligate<T>(string path, Func<Stream, T> method){
+            
             using (Stream s = File.OpenRead(path))
             {
                 return method(s);

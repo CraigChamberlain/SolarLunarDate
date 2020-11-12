@@ -19,14 +19,10 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson
         protected HttpClient _client;
         private string _baseUrl;
 
-        protected override  T StreamDeligate<T>(ValidYear year, Func<Stream, T> method)=> throw new NotImplementedException();
-
-
-        public override IList<DateTime> GetYear(ValidYear year)
-        {
+        protected override  T StreamDeligate<T>(ValidYear year, Func<Stream, T> method){
             Uri uri = Helpers.CombinePath(_baseUrl, year);
             using (Stream s = _client.GetStreamAsync(uri).Result){
-                return base.GetYear(year, s);
+                return method(s);
             }
 
         }

@@ -24,14 +24,16 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson
         protected override T StreamDeligate<T>(ValidYear year, ValidLunarMonth month, Func<Stream, T> method){
             
             Uri uri = Helpers.CombinePath(_baseUrl, year, month);
-            using (Stream s = _client.GetStreamAsync(uri).Result){
-               return method(s);
-            };
+            return StreamDeligate<T>(uri, method);
 
         }
         protected override T StreamDeligate<T>(ValidYear year, Func<Stream, T> method){
             
             Uri uri = Helpers.CombinePath(_baseUrl, year);
+            return StreamDeligate<T>(uri, method);
+
+        }
+        private T StreamDeligate<T>(Uri uri, Func<Stream, T> method){
             using (Stream s = _client.GetStreamAsync(uri).Result){
                return method(s);
             };

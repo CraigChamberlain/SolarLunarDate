@@ -12,11 +12,14 @@ namespace SolarLunarName.Standard.RestServices.Json
 
         protected override abstract T StreamDeligate<T>(ValidYear year, Func<Stream, T> method);
 
-        protected IList<DateTime> GetYear(ValidYear year, Stream s)
-        {
-            return base.Deserialize<List<DateTime>>(s);
+        public IList<DateTime> GetYear(ValidYear year)
+        {   
+            return StreamDeligate<IList<DateTime>>(
+                year,
+                Deserialize<List<DateTime>>
+            );
         }
-        public abstract IList<DateTime> GetYear(ValidYear year);
+
         public IList<DateTime> GetYear(string year){
             return GetYear((ValidYear)year);
         }
