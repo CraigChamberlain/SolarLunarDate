@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using SolarLunarName.SharedTypes.Primitives;
 
+
 namespace SolarLunarName.Standard.RestServices.LocalJson
 {
 
     public class MoonDataClient : Json.MoonDataClient
-    {
+    {   
+        protected override T StreamDeligate<T>(ValidYear year, Func<Stream, T> method)=> throw new NotImplementedException();
 
         public MoonDataClient(string basePath)
         {

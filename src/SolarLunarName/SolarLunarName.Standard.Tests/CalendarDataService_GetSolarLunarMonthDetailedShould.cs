@@ -1,4 +1,6 @@
 using System;
+using System.Diagnostics;
+using System.Threading;
 using System.Collections.Generic;
 using Xunit;
 using SolarLunarName.Standard.ApplicationServices;
@@ -12,13 +14,14 @@ namespace SolarLunarName.Standard.Tests
         private readonly DetailedCalendarDataService _calendarDataService;
 
         public CalendarDataService_GetSolarLunarMonthDetailedShould(){
-            var client = new Standard.RestServices.RemoteJson.LunarCalendarClientDetailed(new System.Net.Http.HttpClient());
+            var client = new Standard.RestServices.LocalJson.LunarCalendarClient(Paths.detailedcalendarApi);
             _calendarDataService = new DetailedCalendarDataService(client);
         }
 
         [Fact]
         public void GetSolarLunarMonthDetailedShould_InputIs1700_ReturnCorrectMonthData()
-        {
+        {   
+            
             var month = _calendarDataService.GetDetailedSolarLunarMonth(1700,0);
 
             var phasesLiteral = new List <MoonPhaseEntity>{

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using SolarLunarName.SharedTypes.Interfaces;
 using SolarLunarName.SharedTypes.Primitives;
 using System.IO;
+using System;
 
 namespace SolarLunarName.Standard.RestServices.LocalJson
 {
@@ -17,34 +18,26 @@ namespace SolarLunarName.Standard.RestServices.LocalJson
 
         protected string _basePath;
 
-        public override IList<ILunarSolarCalendarMonth> GetYearData(ValidYear year)
-        {
+    
+        protected override T StreamDeligate<T>(ValidYear year, ValidLunarMonth month, Func<Stream, T> method){
+            
+            string path = Helpers.CombinePath(_basePath, year, month);
+            using (Stream s = File.OpenRead(path))
+            {
+                return method(s);
+            }
+
+        }
+        protected override T StreamDeligate<T>(ValidYear year, Func<Stream, T> method){
+            
             string path = Helpers.CombinePath(_basePath, year);
-            using (Stream s = File.OpenRead(path)){
-                return base.GetYearData(year, s);
-            }
-        }
-
-        public override ILunarSolarCalendarMonth GetMonthData(ValidYear year, ValidLunarMonth month)
-        {
-            try{
-                string path = Helpers.CombinePath(_basePath, year, month);
-                using (Stream s = File.OpenRead(path)){
-                    return base.GetMonthData(year, month, s);
-                }
-            }
-            catch (System.IO.DirectoryNotFoundException){
-
-                var monthsInYear = GetYear(year).Count;
-                throw new SolarLunarName.SharedTypes.Exceptions.MonthDoesNotExistException(year, month, monthsInYear);
+            using (Stream s = File.OpenRead(path))
+            {
+                return method(s);
             }
 
         }
-        protected override ILunarSolarCalendarMonthDetailed GetMonthDataDetailed(ValidYear year, ValidLunarMonth month, Stream s) =>          
-            base.GetMonthDataDetailed(year, month, s);
 
-        protected override IList<ILunarSolarCalendarMonthDetailed> GetYearDataDetailed(ValidYear year, Stream s) =>
-            base.GetYearDataDetailed(year, s);
 
     }
 

@@ -7,12 +7,14 @@ using System.IO;
 namespace SolarLunarName.Standard.RestServices.Json
 {
 
-    public abstract class MoonDataClient : IMoonDataClient
+    public abstract class MoonDataClient : Client, IMoonDataClient
     {
+
+        protected override abstract T StreamDeligate<T>(ValidYear year, Func<Stream, T> method);
 
         protected IList<DateTime> GetYear(ValidYear year, Stream s)
         {
-            return Helpers.Deserialize<List<DateTime>>(s);
+            return base.Deserialize<List<DateTime>>(s);
         }
         public abstract IList<DateTime> GetYear(ValidYear year);
         public IList<DateTime> GetYear(string year){

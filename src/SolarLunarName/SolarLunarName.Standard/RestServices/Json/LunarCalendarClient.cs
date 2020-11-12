@@ -9,25 +9,29 @@ using SolarLunarName.SharedTypes.Primitives;
 namespace SolarLunarName.Standard.RestServices.Json
 {
 
-    public abstract class LunarCalendarClient : ISolarLunarCalendarClient
+    public abstract class LunarCalendarClient : Client, ISolarLunarCalendarClient, ISolarLunarCalendarClientDetailed
     {
+        protected abstract T StreamDeligate<T>(ValidYear year, ValidLunarMonth month, Func<Stream, T> method);
+        protected override abstract T StreamDeligate<T>(ValidYear year, Func<Stream, T> method);
 
-        protected IList<ILunarSolarCalendarMonth> GetYearData(ValidYear year, Stream s)
+        public IList<ILunarSolarCalendarMonth> GetYearData(ValidYear year)
         {
-
-            return Helpers.Deserialize<List<LunarSolarCalendarMonth>>(s)
-                                        .Select(month => (ILunarSolarCalendarMonth)month)
-                                        .ToList();
-
-
+            return StreamDeligate<IList<ILunarSolarCalendarMonth>>(
+                year, 
+                DeserializeList<LunarSolarCalendarMonth, ILunarSolarCalendarMonth>
+            );
         }
 
-        protected ILunarSolarCalendarMonth GetMonthData(ValidYear year, ValidLunarMonth month, Stream s)
+        public ILunarSolarCalendarMonth GetMonthData(ValidYear year, ValidLunarMonth month)
         {
 
             try
-            {
-                return Helpers.Deserialize<LunarSolarCalendarMonth>(s);
+            {   
+                return StreamDeligate<LunarSolarCalendarMonth>(
+                    year,
+                    month,
+                    Deserialize<LunarSolarCalendarMonth>
+                );
             }
             catch (System.IO.DirectoryNotFoundException)
             {
@@ -46,25 +50,28 @@ namespace SolarLunarName.Standard.RestServices.Json
         public IList<DateTime> GetYear(string year){
                 return GetYear(year);
         }
-        public abstract IList<ILunarSolarCalendarMonth> GetYearData(ValidYear year);
-        public abstract ILunarSolarCalendarMonth GetMonthData(ValidYear year, ValidLunarMonth month);
 
-        protected virtual IList<ILunarSolarCalendarMonthDetailed> GetYearDataDetailed(ValidYear year, Stream s)
+        public IList<ILunarSolarCalendarMonthDetailed> GetYearDataDetailed(ValidYear year)
         {
+            return StreamDeligate<IList<ILunarSolarCalendarMonthDetailed>>(
+                    year,
+                    DeserializeList<LunarSolarCalendarMonthDetailed, ILunarSolarCalendarMonthDetailed>
+            );
+        
+        }
 
-            return Helpers.Deserialize<List<LunarSolarCalendarMonthDetailed>>(s)
-                .Select(month => (ILunarSolarCalendarMonthDetailed)month)
-                .ToList();
-            
+        public ILunarSolarCalendarMonthDetailed GetMonthDataDetailed(ValidYear year, ValidLunarMonth month)
+        {
+            return StreamDeligate<ILunarSolarCalendarMonthDetailed>(
+                    year,
+                    month,
+                    Deserialize<LunarSolarCalendarMonthDetailed>
+            );
+
 
         }
 
-        protected virtual ILunarSolarCalendarMonthDetailed GetMonthDataDetailed(ValidYear year, ValidLunarMonth month, Stream s)
-        {
-
-            return Helpers.Deserialize<LunarSolarCalendarMonthDetailed>(s);
-
-        }
+        
         public IList<ILunarSolarCalendarMonth> GetYearData(string year){
             return GetYearData((ValidYear)year);
         }
@@ -72,6 +79,11 @@ namespace SolarLunarName.Standard.RestServices.Json
             return GetMonthData((ValidYear)year, (ValidLunarMonth)month);
         }
 
+        public ILunarSolarCalendarMonthDetailed GetMonthDataDetailed(int year, int month) =>          
+            GetMonthDataDetailed((ValidYear)year, (ValidLunarMonth)month);
+
+        public IList<ILunarSolarCalendarMonthDetailed> GetYearDataDetailed(string year) =>
+            GetYearDataDetailed((ValidYear)year);
 
     }
 

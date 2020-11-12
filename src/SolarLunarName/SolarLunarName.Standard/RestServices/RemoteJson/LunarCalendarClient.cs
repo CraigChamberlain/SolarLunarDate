@@ -9,10 +9,11 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson
 {
 
     public class LunarCalendarClient : Json.LunarCalendarClient
-    {
+    {   
+        // FIXME Tests are not passing for Remote
         // TODO URI should not be in the compiled code.  
         // Need in a json file
-        public LunarCalendarClient(HttpClient client, string baseUrl = "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar/")
+        public LunarCalendarClient(HttpClient client, string baseUrl = "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar-detailed/")
         {
             _baseUrl = baseUrl;
             _client = client;
@@ -21,36 +22,23 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson
         protected HttpClient _client;
         protected string _baseUrl;
 
-        public override IList<ILunarSolarCalendarMonth> GetYearData(ValidYear year)
-        {
+        protected override T StreamDeligate<T>(ValidYear year, ValidLunarMonth month, Func<Stream, T> method){
+            
             Uri uri = Helpers.CombinePath(_baseUrl, year);
             using (Stream s = _client.GetStreamAsync(uri).Result){
-               return base.GetYearData(year, s);
+               return method(s);
             };
-        }
-
-        public override ILunarSolarCalendarMonth GetMonthData(ValidYear year, ValidLunarMonth month)
-        {
-            try
-            {
-                Uri uri = Helpers.CombinePath(_baseUrl, year, month);
-                using (Stream s = _client.GetStreamAsync(uri).Result){
-                return base.GetMonthData(year, month, s);
-                };
-            }
-            catch (HttpRequestException)
-            {
-
-                var monthsInYear = GetYear(year).Count;
-                throw new SolarLunarName.SharedTypes.Exceptions.MonthDoesNotExistException(year, month, monthsInYear);
-            }
 
         }
-        protected override ILunarSolarCalendarMonthDetailed GetMonthDataDetailed(ValidYear year, ValidLunarMonth month, Stream s) =>
-            base.GetMonthDataDetailed(year, month, s);
+        protected override T StreamDeligate<T>(ValidYear year, Func<Stream, T> method){
+            
+            Uri uri = Helpers.CombinePath(_baseUrl, year);
+            using (Stream s = _client.GetStreamAsync(uri).Result){
+               return method(s);
+            };
 
-        protected override IList<ILunarSolarCalendarMonthDetailed> GetYearDataDetailed(ValidYear year, Stream s) =>
-            base.GetYearDataDetailed(year, s);
+        }
+
 
     }
 
