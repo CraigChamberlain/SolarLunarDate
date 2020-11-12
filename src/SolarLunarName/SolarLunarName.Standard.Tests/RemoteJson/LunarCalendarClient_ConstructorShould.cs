@@ -4,13 +4,14 @@ using Xunit;
 using SolarLunarName.Standard.ApplicationServices;
 using System.Linq;
 using SolarLunarName.SharedTypes.Models;
+using SolarLunarName.Standard.RestServices.RemoteJson;
 
-namespace SolarLunarName.Standard.Tests.LocalJson
+namespace SolarLunarName.Standard.Tests.RemoteJson
 {
-    public class MoonDataClient_ConstructorShould: JsonClient_ConstructorShould
+    public class LunarCalendarClient_ConstructorShould : JsonClient_ConstructorShould
     {   
         override public void Constructor(string input){
-            new Standard.RestServices.LocalJson.MoonDataClient(input);
+            new LunarCalendarClient(_client, input);
         }
     }
     

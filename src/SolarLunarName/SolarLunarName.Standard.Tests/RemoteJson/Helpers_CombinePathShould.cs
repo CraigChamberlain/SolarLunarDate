@@ -6,9 +6,9 @@ using System.Linq;
 using SolarLunarName.SharedTypes.Models;
 using SolarLunarName.Standard.RestServices.RemoteJson;
 
-namespace SolarLunarName.Standard.Tests
+namespace SolarLunarName.Standard.Tests.RemoteJson
 {
-    public class RemoteJsonClient_Helpers
+    public class Helpers_CombinePathShould
     {   
 
         [Fact]

@@ -11,9 +11,11 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson
     {
 
         public MoonDataClient(HttpClient client, string baseUrl="https://craigchamberlain.github.io/moon-data/api/new-moon-data/")
-        {
-            _baseUrl = baseUrl;
+        {   
             _client = client;
+            
+            Helpers.TestUrl(_client, baseUrl);
+            _baseUrl = baseUrl;
         }
 
         protected HttpClient _client;

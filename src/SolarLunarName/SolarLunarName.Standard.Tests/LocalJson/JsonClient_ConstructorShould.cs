@@ -6,9 +6,9 @@ using System.Linq;
 using SolarLunarName.SharedTypes.Models;
 using SolarLunarName.Standard.RestServices.LocalJson;
 
-namespace SolarLunarName.Standard.Tests
+namespace SolarLunarName.Standard.Tests.LocalJson
 {
-    abstract public class LocalJsonClient_ConstructorShould
+    abstract public class JsonClient_ConstructorShould
     {   
 
         public abstract void Constructor(string input);
