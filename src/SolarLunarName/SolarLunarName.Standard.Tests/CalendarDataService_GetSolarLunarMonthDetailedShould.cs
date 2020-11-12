@@ -1,6 +1,4 @@
 using System;
-using System.Diagnostics;
-using System.Threading;
 using System.Collections.Generic;
 using Xunit;
 using SolarLunarName.Standard.ApplicationServices;
@@ -14,7 +12,7 @@ namespace SolarLunarName.Standard.Tests
         private readonly DetailedCalendarDataService _calendarDataService;
 
         public CalendarDataService_GetSolarLunarMonthDetailedShould(){
-            var client = new Standard.RestServices.LocalJson.LunarCalendarClient(Paths.detailedcalendarApi);
+            var client = new Standard.RestServices.RemoteJson.LunarCalendarClient(new System.Net.Http.HttpClient());
             _calendarDataService = new DetailedCalendarDataService(client);
         }
 
