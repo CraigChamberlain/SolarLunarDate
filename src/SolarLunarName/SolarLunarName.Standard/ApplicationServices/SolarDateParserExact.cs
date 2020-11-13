@@ -24,7 +24,7 @@ namespace SolarLunarName.Standard.ApplicationServices
         }
         public DateTime ConvertSolarLunarNameExact(SolarLunarNameSimple solarLunarName)
         {
-                int daysInMonth = db.GetMonthData(solarLunarName.Year, solarLunarName.LunarMonth).Days;
+                int daysInMonth = db.GetMonthData((ValidYear)solarLunarName.Year, (ValidLunarMonth)solarLunarName.LunarMonth).Days;
                 if( daysInMonth < solarLunarName.LunarDay){
                     throw new DayDoesNotExistException(solarLunarName.Year, solarLunarName.LunarMonth, solarLunarName.LunarDay, daysInMonth);
                 };
