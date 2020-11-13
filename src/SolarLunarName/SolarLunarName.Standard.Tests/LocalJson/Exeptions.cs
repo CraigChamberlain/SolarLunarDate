@@ -13,7 +13,7 @@ namespace SolarLunarName.Standard.Tests.LocalJson
     public class LunarCalendarClientExceptions : GetMonthDataExceptions
     {   
         public LunarCalendarClientExceptions(){
-            _client = new LunarCalendarClient(Paths.calendarApi);
+            _client = new LunarCalendarClient(Paths.Local.CalendarApi);
         }
     }
     

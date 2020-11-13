@@ -13,7 +13,7 @@ namespace SolarLunarName.Standard.Tests.SolarDateParserShould
         public ConvertSolarLunarName()
         {
 
-            dp = new SolarDateParser(new LunarCalendarClient(Paths.calendarApi));
+            dp = new SolarDateParser(new LunarCalendarClient(Paths.Local.CalendarApi));
 
         }
 

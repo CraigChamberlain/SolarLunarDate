@@ -15,7 +15,7 @@ namespace SolarLunarName.Standard.Tests.RemoteJson
     {   
         public LunarCalendarClientExceptions(){
             
-            _client = new LunarCalendarClient(_httpClient);
+            _client = new LunarCalendarClient(_httpClient, Paths.Remote.DetailedcalendarApi);
         }
         protected HttpClient _httpClient = new HttpClient();
     }

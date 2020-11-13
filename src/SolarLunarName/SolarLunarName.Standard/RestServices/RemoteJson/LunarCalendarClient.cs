@@ -10,15 +10,24 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson
 
     public class LunarCalendarClient : Json.LunarCalendarClient
     {   
-        // TODO URI should not be in the compiled code.  
-        // Need in a json file
-        public LunarCalendarClient(HttpClient client, string baseUrl = "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar-detailed/")
+        public LunarCalendarClient(HttpClient client, string baseUrl)
         {   
             _client = client;
             
             Helpers.TestUrl(_client, baseUrl);
             _baseUrl = baseUrl;
             
+        }
+
+        // TODO Delete this constructor in version 1.0.0
+        [Obsolete("This Constructor is being deprecated in version 1.0.0, You must provide both a HTTPClient instance and a baseUrl")]
+        public LunarCalendarClient(string baseUrl = "https://craigchamberlain.github.io/moon-data/api/lunar-solar-calendar-detailed/"){
+            
+            _client = new HttpClient();
+            
+            Helpers.TestUrl(_client, baseUrl);
+            _baseUrl = baseUrl;
+
         }
 
         protected HttpClient _client;
