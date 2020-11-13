@@ -13,6 +13,7 @@ namespace SolarLunarName.Standard.RestServices.Json
     {
         protected abstract T StreamDeligate<T>(ValidYear year, ValidLunarMonth month, Func<Stream, T> method);
         protected override abstract T StreamDeligate<T>(ValidYear year, Func<Stream, T> method);
+        protected abstract bool ExpectedExceptionPredicate(Exception e); 
 
         public IList<ILunarSolarCalendarMonth> GetYearData(ValidYear year)
         {
@@ -33,7 +34,7 @@ namespace SolarLunarName.Standard.RestServices.Json
                     Deserialize<LunarSolarCalendarMonth>
                 );
             }
-            catch (System.IO.DirectoryNotFoundException)
+            catch (Exception e) when (ExpectedExceptionPredicate(e))
             {
 
                 var monthsInYear = GetYear(year).Count();
@@ -59,12 +60,22 @@ namespace SolarLunarName.Standard.RestServices.Json
         }
 
         public ILunarSolarCalendarMonthDetailed GetMonthDataDetailed(ValidYear year, ValidLunarMonth month)
-        {
-            return StreamDeligate<ILunarSolarCalendarMonthDetailed>(
-                    year,
-                    month,
-                    Deserialize<LunarSolarCalendarMonthDetailed>
-            );
+        {   
+            try
+            {   
+                return StreamDeligate<ILunarSolarCalendarMonthDetailed>(
+                        year,
+                        month,
+                        Deserialize<LunarSolarCalendarMonthDetailed>
+                );
+            }
+            catch (Exception e) when (ExpectedExceptionPredicate(e))
+            {
+
+                var monthsInYear = GetYear(year).Count();
+                throw new SolarLunarName.SharedTypes.Exceptions.MonthDoesNotExistException(year, month, monthsInYear);
+            }
+
 
 
         }

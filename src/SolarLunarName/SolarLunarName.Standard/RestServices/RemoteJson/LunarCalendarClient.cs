@@ -23,6 +23,9 @@ namespace SolarLunarName.Standard.RestServices.RemoteJson
 
         protected HttpClient _client;
         protected string _baseUrl;
+        protected override bool ExpectedExceptionPredicate(Exception e) => 
+            e.InnerException.GetType() == typeof(System.Net.Http.HttpRequestException); 
+
 
         protected override T StreamDeligate<T>(ValidYear year, ValidLunarMonth month, Func<Stream, T> method){
             

@@ -17,7 +17,8 @@ namespace SolarLunarName.Standard.RestServices.LocalJson
         }
 
         protected string _basePath;
-
+        protected override bool ExpectedExceptionPredicate(Exception e) => 
+            e.GetType() == typeof(System.IO.DirectoryNotFoundException); 
     
         protected override T StreamDeligate<T>(ValidYear year, ValidLunarMonth month, Func<Stream, T> method){
             
