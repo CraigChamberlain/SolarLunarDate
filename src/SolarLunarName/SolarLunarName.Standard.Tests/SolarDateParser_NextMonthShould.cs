@@ -78,10 +78,6 @@ namespace SolarLunarName.Standard.Tests
         private void NextMonthShould_ResolveNextMonth_WhenDaysAndMonthsOverFlowYearAndMonth(){
             var initialDate = new SolarLunarNameSimple(1700, 13, 9);
             var nextDate = new SolarLunarNameSimple(1701, 0, 9);
-            // TODO Decide on behavior of this function.  It does not guarantee a fully resolved month.
-            // It may need to be run recursively For example
-            // This date is still not valid so Next Month should be run again.
-            // var nextDate = new SolarLunarNameSimple(1701, 1, 1);
             TestTemplate(initialDate, nextDate);
         }
         

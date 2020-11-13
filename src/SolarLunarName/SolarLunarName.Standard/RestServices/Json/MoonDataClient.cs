@@ -20,6 +20,8 @@ namespace SolarLunarName.Standard.RestServices.Json
             );
         }
 
+        // TODO Delete method in version 1.0.0
+        [Obsolete("This Overload is being deprecated in version 1.0.0 cast string to ValidYear")]
         public IList<DateTime> GetYear(string year){
             return GetYear((ValidYear)year);
         }

@@ -17,30 +17,35 @@ namespace SolarLunarName.Standard.ApplicationServices
       
         public DateTime ConvertRemoteSolarLunarName(string date){
 
-            var SolarLunarName = ParseSolarLunarName(date);
+            var solarLunarName = ParseSolarLunarName(date);
 
-            return ConvertSolarLunarName(SolarLunarName.Year, SolarLunarName.LunarMonth, SolarLunarName.LunarDay);
+            return ConvertSolarLunarName(solarLunarName);
         }
         public DateTime ConvertSolarLunarName(int year, int month, int day)
         {
+            var solarLunarName = new SolarLunarNameSimple(year, month, day);
+            return ConvertSolarLunarName(solarLunarName);
 
+        }
+        public DateTime ConvertSolarLunarName(SolarLunarNameSimple solarLunarName)
+        {
             try{
-                return ConvertSolarLunarNameExact(year, month, day);
+                return ConvertSolarLunarNameExact(solarLunarName);
             }
-            catch
-            {   
-                var nextMonth = NextMonth(new SolarLunarNameSimple(year, month, day));
-                return ConvertSolarLunarName(nextMonth.Year, nextMonth.LunarMonth, nextMonth.LunarDay);
+            catch{
+                var resolvedDate = ResolveOverflowingDate(solarLunarName);
+                return ConvertSolarLunarNameExact(resolvedDate);
             }
-            
+
         }
 
-        // FIXME
-        // Not a good name. Should be resolve out of bounds?  Sounds like add month.
-        // will find next month if day not available in month even if in next year.
-        // Wraps on month or year but not recursively.  Should probably be targeted better.
-        // Wrapping may be better precisely defined before more work.
+        // TODO Delete method in version 1.0.0
+        [Obsolete("NextMonth is being deprecated in version 1.0.0 use ResolveOverflowingDate which is now recursive, will wrap both overflowing month and year.")]
         public SolarLunarNameSimple NextMonth(SolarLunarNameSimple solarLunarNameSimple){
+            return ResolveOverflowingDate(solarLunarNameSimple);
+        }
+
+        private SolarLunarNameSimple ResolveOverflowingDateInner(SolarLunarNameSimple solarLunarNameSimple){
             
                    
             var data = db.GetYearData(solarLunarNameSimple.Year);
@@ -70,6 +75,21 @@ namespace SolarLunarName.Standard.ApplicationServices
             }
 
             return new SolarLunarNameSimple(year, month, daysRemaining);
+
+        }
+        public SolarLunarNameSimple ResolveOverflowingDate(SolarLunarNameSimple solarLunarNameSimple){
+            
+            var reslovedMonth = ResolveOverflowingDateInner(solarLunarNameSimple);
+            if(
+                reslovedMonth.Year == solarLunarNameSimple.Year &&
+                reslovedMonth.LunarMonth == solarLunarNameSimple.LunarMonth &&
+                reslovedMonth.LunarDay == solarLunarNameSimple.LunarDay
+                ){
+                return reslovedMonth;
+            }
+            else{
+                return ResolveOverflowingDateInner(reslovedMonth);
+            }
         }
        
 

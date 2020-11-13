@@ -1,14 +1,23 @@
 using System.Collections.Generic;
 using SolarLunarName.SharedTypes.Primitives;
+using System;
 
 namespace SolarLunarName.SharedTypes.Interfaces{
 
     public interface ISolarLunarCalendarClient: IMoonDataClient
     {   
-        //N.B Must write warning in compiler and release major version if remove string version of method
-        IList<ILunarSolarCalendarMonth> GetYearData(ValidYear year);
-        ILunarSolarCalendarMonth GetMonthData(ValidYear year, ValidLunarMonth month);
+
+        // TODO Delete method in version 1.0.0
+        [Obsolete("This Overload is being deprecated in version 1.0.0 cast string to ValidYear")]
         IList<ILunarSolarCalendarMonth> GetYearData(string year);
+        
+        // TODO Delete method in version 1.0.0
+        [Obsolete("This Overload is being deprecated in version 1.0.0 cast ints to ValidYear and ValidLunarMonth")]
         ILunarSolarCalendarMonth GetMonthData(int year, int month); 
+        
+        IList<ILunarSolarCalendarMonth> GetYearData(ValidYear year);
+        
+        ILunarSolarCalendarMonth GetMonthData(ValidYear year, ValidLunarMonth month);
+
     }
 }

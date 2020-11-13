@@ -47,9 +47,7 @@ namespace SolarLunarName.Standard.RestServices.Json
                     .Select(x=> x.FirstDay)
                     .ToList();
         }
-        public IList<DateTime> GetYear(string year){
-                return GetYear(year);
-        }
+
 
         public IList<ILunarSolarCalendarMonthDetailed> GetYearDataDetailed(ValidYear year)
         {
@@ -70,18 +68,32 @@ namespace SolarLunarName.Standard.RestServices.Json
 
 
         }
-
         
+        // TODO Delete method in version 1.0.0
+        [Obsolete("This Overload is being deprecated in version 1.0.0 cast string to ValidYear")]
+        public IList<DateTime> GetYear(string year){
+                return GetYear(year);
+        }
+
+        // TODO Delete method in version 1.0.0
+        [Obsolete("This Overload is being deprecated in version 1.0.0 cast string to ValidYear")]
         public IList<ILunarSolarCalendarMonth> GetYearData(string year){
             return GetYearData((ValidYear)year);
         }
+        
+        // TODO Delete method in version 1.0.0
+        [Obsolete("This Overload is being deprecated in version 1.0.0 cast ints to ValidYear and ValidLunarMonth")]
         public ILunarSolarCalendarMonth GetMonthData(int year, int month){
             return GetMonthData((ValidYear)year, (ValidLunarMonth)month);
         }
-
+        
+        // TODO Delete method in version 1.0.0
+        [Obsolete("This Overload is being deprecated in version 1.0.0 cast ints to ValidYear and ValidLunarMonth")]
         public ILunarSolarCalendarMonthDetailed GetMonthDataDetailed(int year, int month) =>          
             GetMonthDataDetailed((ValidYear)year, (ValidLunarMonth)month);
 
+        // TODO Delete method in version 1.0.0
+        [Obsolete("This Overload is being deprecated in version 1.0.0 cast string to ValidYear")]
         public IList<ILunarSolarCalendarMonthDetailed> GetYearDataDetailed(string year) =>
             GetYearDataDetailed((ValidYear)year);
 

@@ -1,5 +1,6 @@
 ﻿using SolarLunarName.SharedTypes.Interfaces;
 using System.Collections.Generic;
+using SolarLunarName.SharedTypes.Primitives;
 
 
 namespace SolarLunarName.Standard.ApplicationServices
@@ -15,13 +16,13 @@ namespace SolarLunarName.Standard.ApplicationServices
 
         public IList<ILunarSolarCalendarMonth> GetSolarLunarYear(int year)
         {       
-                return db.GetYearData(year);
+                return db.GetYearData((ValidYear)year);
 
             }
 
         public ILunarSolarCalendarMonth GetSolarLunarMonth(int year, int month)
         {                
-                return  db.GetMonthData(year, month);
+                return  db.GetMonthData((ValidYear)year, (ValidLunarMonth)month);
 
             }
 
