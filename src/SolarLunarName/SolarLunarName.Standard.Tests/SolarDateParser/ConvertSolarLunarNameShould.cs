@@ -4,13 +4,13 @@ using SolarLunarName.Standard.ApplicationServices;
 using SolarLunarName.Standard.RestServices.LocalJson;
 using SolarLunarName.SharedTypes.Exceptions;
 
-namespace SolarLunarName.Standard.Tests
+namespace SolarLunarName.Standard.Tests.SolarDateParserShould
 {
-    public class SolarDateParser_ConvertSolarLunarName
+    public class ConvertSolarLunarName
     {
         private SolarDateParser dp;
 
-        public SolarDateParser_ConvertSolarLunarName()
+        public ConvertSolarLunarName()
         {
 
             dp = new SolarDateParser(new LunarCalendarClient(Paths.calendarApi));
