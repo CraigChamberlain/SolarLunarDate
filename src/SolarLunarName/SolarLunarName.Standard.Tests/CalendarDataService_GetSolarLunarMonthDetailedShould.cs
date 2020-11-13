@@ -12,7 +12,7 @@ namespace SolarLunarName.Standard.Tests
         private readonly DetailedCalendarDataService _calendarDataService;
 
         public CalendarDataService_GetSolarLunarMonthDetailedShould(){
-            var client = new Standard.RestServices.RemoteJson.LunarCalendarClient(new System.Net.Http.HttpClient());
+            var client = new Standard.RestServices.RemoteJson.LunarCalendarClient(new System.Net.Http.HttpClient(), Paths.Remote.DetailedcalendarApi);
             _calendarDataService = new DetailedCalendarDataService(client);
         }
 
