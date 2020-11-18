@@ -2,5 +2,5 @@ STORAGE: NONE
 RESTRICTION: || (== netcoreapp3.1) (== netstandard2.0) (== netstandard2.1)
 GIT
   remote: https://github.com/CraigChamberlain/moon-data.git
-     (a8db9d071ab3bc701155bcd850febcc1a2be9ac5)
+     (ac78baf7f2e2f0d143157459046c61c1a4eecf0f)
       path: /api/

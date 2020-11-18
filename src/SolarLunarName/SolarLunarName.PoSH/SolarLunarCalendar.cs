@@ -1,5 +1,6 @@
 ﻿using System.Management.Automation;
 using SolarLunarName.Standard.ApplicationServices;
+using System.Net.Http;
 
 namespace SolarLunarName.PoSH
 {
@@ -25,9 +26,11 @@ namespace SolarLunarName.PoSH
         public int Month  { get; set; }
 
         private CalendarDataService cds;
+        private HttpClient _httpClient;
 
         protected override void BeginProcessing(){
-            var client = new Standard.RestServices.RemoteJson.LunarCalendarClient();
+            _httpClient = new HttpClient();
+            var client = new Standard.RestServices.RemoteJson.LunarCalendarClient(_httpClient);
             cds = new CalendarDataService(client);
 
         }

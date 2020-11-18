@@ -18,7 +18,7 @@ namespace SolarLunarName.Standard.ApplicationServices
 
                 var year = solarDateTime.Year;
                 var startOfYear = new DateTime(year, 1, 1);
-                var MoonsOfYear = db.GetYear(year.ToString());
+                var MoonsOfYear = db.GetYear(year);
                 var newMoonsToDate = MoonsOfYear.Where(
                                     x => new DateTime(x.Year,x.Month, x.Day)  <= solarDateTime
                                 )

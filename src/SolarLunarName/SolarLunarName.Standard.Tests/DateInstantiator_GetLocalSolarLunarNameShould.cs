@@ -11,7 +11,7 @@ namespace SolarLunarName.Standard.Tests
 
         public DateInstantiator_GetLocalSolarLunarNameShould(){
 
-            di = new DateInstantiator(new MoonDataClient(Paths.newMoonApi) );
+            di = new DateInstantiator(new MoonDataClient(Paths.Local.NewMoonApi) );
 
         }
 

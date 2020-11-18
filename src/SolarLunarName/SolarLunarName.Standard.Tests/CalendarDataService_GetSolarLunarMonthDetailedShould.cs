@@ -12,13 +12,14 @@ namespace SolarLunarName.Standard.Tests
         private readonly DetailedCalendarDataService _calendarDataService;
 
         public CalendarDataService_GetSolarLunarMonthDetailedShould(){
-            var client = new Standard.RestServices.LocalJson.LunarCalendarClientDetailed(Paths.detailedcalendarApi);
+            var client = new Standard.RestServices.RemoteJson.LunarCalendarClient(new System.Net.Http.HttpClient(), Paths.Remote.DetailedcalendarApi);
             _calendarDataService = new DetailedCalendarDataService(client);
         }
 
         [Fact]
         public void GetSolarLunarMonthDetailedShould_InputIs1700_ReturnCorrectMonthData()
-        {
+        {   
+            
             var month = _calendarDataService.GetDetailedSolarLunarMonth(1700,0);
 
             var phasesLiteral = new List <MoonPhaseEntity>{

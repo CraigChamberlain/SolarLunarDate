@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 using SolarLunarName.SharedTypes.Exceptions;
+using SolarLunarName.SharedTypes.Primitives;
 
 namespace SolarLunarName.Standard.ApplicationServices
 {
@@ -11,46 +12,34 @@ namespace SolarLunarName.Standard.ApplicationServices
 
         public DateTime ConvertSolarLunarNameExact(string date){
 
-            var SolarLunarName = ParseSolarLunarName(date);
-
-            return ConvertSolarLunarNameExact(SolarLunarName.Year, SolarLunarName.LunarMonth, SolarLunarName.LunarDay);
+            var solarLunarName = ParseSolarLunarName(date);
+            return ConvertSolarLunarNameExact(solarLunarName);
         }
 
         public DateTime ConvertSolarLunarNameExact(int year, int month, int day)
         {
-       
-            try{
-                int daysInMonth = db.GetMonthData(year,month).Days;
-                if( daysInMonth < day){
-                    throw new DayDoesNotExistException(year, month, day, daysInMonth);
+            var solarLunarName = new SolarLunarNameSimple(year, month, day);
+            return ConvertSolarLunarNameExact(solarLunarName);
+            
+        }
+        public DateTime ConvertSolarLunarNameExact(SolarLunarNameSimple solarLunarName)
+        {
+                int daysInMonth = db.GetMonthData((ValidYear)solarLunarName.Year, (ValidLunarMonth)solarLunarName.LunarMonth).Days;
+                if( daysInMonth < solarLunarName.LunarDay){
+                    throw new DayDoesNotExistException(solarLunarName.Year, solarLunarName.LunarMonth, solarLunarName.LunarDay, daysInMonth);
                 };
     
-                var startOfYear = new DateTime(year, 1, 1);
+                var startOfYear = new DateTime(solarLunarName.Year, 1, 1);
 
-                DateTime newMoon = db.GetYearData(year.ToString())
+                DateTime newMoon = db.GetYearData(solarLunarName.Year)
                                 .OrderBy(x => x.FirstDay)
-                                .Where((_, index) => index == month )
+                                .Where((_, index) => index == solarLunarName.LunarMonth )
                                 .Select( x => x.FirstDay)
                                 .First();
 
-                var solarDateTime = newMoon.AddDays(day - 1);
+                var solarDateTime = newMoon.AddDays(solarLunarName.LunarDay - 1);
 
                 return new DateTime(solarDateTime.Year, solarDateTime.Month, solarDateTime.Day);
-            }
-            catch (System.IO.DirectoryNotFoundException) {
-                
-                // FIXME
-                // Year or Month not Found in local json set.  
-                // Would like to improve handling of this error to deeper into the codebase - may need contracts.
-                // Will be a different error for each client.  Consider 
-                throw new DateDoesNotExistException();
-
-            }
-            catch (DayDoesNotExistException e ){
-                
-                throw e;
-
-            }
             
         }
         public SolarLunarNameSimple ParseSolarLunarName(string date){

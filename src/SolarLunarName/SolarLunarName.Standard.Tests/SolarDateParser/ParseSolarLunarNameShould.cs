@@ -3,15 +3,15 @@ using SolarLunarName.Standard.ApplicationServices;
 using System;
 using SolarLunarName.Standard.RestServices.LocalJson;
 
-namespace SolarLunarName.Standard.Tests
+namespace SolarLunarName.Standard.Tests.SolarDateParserShould
 {
-    public class SolarDateParser_ParseSolarLunarNameShould
+    public class ParseSolarLunarNameShould
     {   
         private SolarDateParser dp;
 
-        public SolarDateParser_ParseSolarLunarNameShould(){
+        public ParseSolarLunarNameShould(){
 
-            dp = new SolarDateParser(new LunarCalendarClient(Paths.calendarApi));
+            dp = new SolarDateParser(new LunarCalendarClient(Paths.Local.CalendarApi));
 
         }
         
