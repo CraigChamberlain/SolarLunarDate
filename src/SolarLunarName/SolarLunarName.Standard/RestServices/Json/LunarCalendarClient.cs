@@ -27,13 +27,12 @@ namespace SolarLunarName.Standard.RestServices.Json
         {
 
             try
-            {   var martin = StreamDeligate<LunarSolarCalendarMonth>(
+            {   
+                return StreamDeligate<LunarSolarCalendarMonth>(
                                 year,
                                 month,
                                 Deserialize<LunarSolarCalendarMonth>
                             );
-                Console.WriteLine($"{martin.Days} {martin.FirstDay}");            
-                return martin;
             }
             catch (Exception e) when (ExpectedExceptionPredicate(e))
             {
@@ -45,11 +44,11 @@ namespace SolarLunarName.Standard.RestServices.Json
         }
 
         public IList<DateTime> GetYear(ValidYear year){
-                var martin = GetYearData(year)
+
+                return GetYearData(year)
                     .Select(x=> x.FirstDay)
                     .ToList();
-                Console.WriteLine(martin);
-                return martin;
+
         }
 
 
