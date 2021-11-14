@@ -13,7 +13,7 @@ questions:
         This calender could have taken the dates of one of these astronomical events as the start of its year.  However, I have decided to count my years in the Common Era and begin the year on the 1st of January in the Gregorian Calendar.  This will make the calendar simpler to implement and simpler to understand, as a map onto the Gregorian Calendar.  I may make a "strict mode" at a later date, which would be largely in phase but not sync with the Gregorian Calendar.
     - q: 'The Measurement of Months:'
       a: |
-        ![Figure 1.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=d1rjgmgOwa)
+        ![Figure 1.]('/assets/images/1-500.png'| relative_url)
 
         12 complete lunar months have 354.36 days, 10.88 days less than the solar year.  Depending on the age of the moon at the start of a solar year, the solar year may have 11 or 12 whole lunar months and one or two partial months.  In many lunisolar calendars, this means that the lunisolar year is approximated to a whole number of lunar months, mostly resulting in a shorter, but occasionally a longer, year than the solar year.  If a lunisolar year typically has 12 whole lunar months then extra months must be added on special longer years to make up for lost days, in the way leap days are added to years in the Gregorian Calendar.
 
@@ -27,19 +27,19 @@ questions:
         
         When the first day of the year is the first day of a new moon:
 
-        ![Figure 2.2](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=200&select=bUzavqqsE)
+        ![Figure 2.2]('/assets/images/2-500.png'| relative_url)
 
         When the first month is incomplete but long enough to mean only 11 whole months are possible and a further incomplete month at the end:
 
-        ![Figure 2.1](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=427.2&height=214.08&select=ag1mmNc0S)
+        ![Figure 2.1]('/assets/images/3-500.png'| relative_url)
         
         When the last day of the last lunar month of the year is also the last day of the year:
 
-        ![Figure 2.3](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=427.2&height=214.08&select=aKSCDJb1I)
+        ![Figure 2.3]('/assets/images/4-500.png'| relative_url)
 
         When the first month is incomplete but short enough to mean 12 whole months are possible and a further incomplete month at the end:
 
-        ![Figure 2.3](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=427.2&height=214.08&select=a2YzVlfzRu)
+        ![Figure 2.3]('/assets/images/5-500.png'| relative_url)
 
         
 
@@ -53,7 +53,7 @@ questions:
       a: |
         The Lunar month is not a whole number of days.  Therefore the calendar months will have variable lengths.
 
-        ![Figure 3.](https://vectr.com/craigchamberlain11/d9InyNA1qX.svg?width=400&height=400&select=d9InyNA1qXpage0)
+        ![Figure 3.]('/assets/images/6-500.png'| relative_url)
 
         Each month will have have 29-30 days.
     - q: 'Displaying Dates:'
