@@ -15,6 +15,6 @@ questions:
         -  [The United States Naval Observatory (USNO)](https://aa.usno.navy.mil/data/docs/api.php#phase)
         
            Appears to be off-line for maintenance but have permission to serve data processed from this source.
-           [Example response](/USNO/ExampleYear.json){:target="_blank"}
+           [Example response](/SolarLunarDate/USNO/ExampleYear.json){:target="_blank"}
 
 ---
